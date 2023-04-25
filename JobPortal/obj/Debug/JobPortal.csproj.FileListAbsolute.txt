@@ -1,0 +1,790 @@
+E:\JobPortals\JobPortal\bin\JobPortal.dll.config
+E:\JobPortals\JobPortal\bin\JobPortal.dll
+E:\JobPortals\JobPortal\bin\JobPortal.pdb
+E:\JobPortals\JobPortal\bin\roslyn\csc.exe
+E:\JobPortals\JobPortal\bin\roslyn\csc.exe.config
+E:\JobPortals\JobPortal\bin\roslyn\csc.rsp
+E:\JobPortals\JobPortal\bin\roslyn\csi.exe
+E:\JobPortals\JobPortal\bin\roslyn\csi.exe.config
+E:\JobPortals\JobPortal\bin\roslyn\csi.rsp
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.Managed.Core.targets
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\JobPortals\JobPortal\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.AppContext.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Collections.Immutable.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Console.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Globalization.Calendars.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Net.Http.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Net.Sockets.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Reflection.Metadata.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.ValueTuple.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Xml.XmlDocument.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.dll
+E:\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\JobPortals\JobPortal\bin\roslyn\vbc.exe
+E:\JobPortals\JobPortal\bin\roslyn\vbc.exe.config
+E:\JobPortals\JobPortal\bin\roslyn\vbc.rsp
+E:\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe
+E:\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe.config
+E:\JobPortals\JobPortal\bin\Antlr3.Runtime.dll
+E:\JobPortals\JobPortal\bin\JobPortalLibrary.dll
+E:\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\JobPortals\JobPortal\bin\Microsoft.Web.Infrastructure.dll
+E:\JobPortals\JobPortal\bin\Newtonsoft.Json.dll
+E:\JobPortals\JobPortal\bin\System.Web.Helpers.dll
+E:\JobPortals\JobPortal\bin\System.Web.Mvc.dll
+E:\JobPortals\JobPortal\bin\System.Web.Optimization.dll
+E:\JobPortals\JobPortal\bin\System.Web.Razor.dll
+E:\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.dll
+E:\JobPortals\JobPortal\bin\System.Web.WebPages.dll
+E:\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.dll
+E:\JobPortals\JobPortal\bin\WebGrease.dll
+E:\JobPortals\JobPortal\bin\JobPortalLibrary.pdb
+E:\JobPortals\JobPortal\bin\System.Web.Helpers.xml
+E:\JobPortals\JobPortal\bin\System.Web.Mvc.xml
+E:\JobPortals\JobPortal\bin\System.Web.Optimization.xml
+E:\JobPortals\JobPortal\bin\System.Web.Razor.xml
+E:\JobPortals\JobPortal\bin\System.Web.WebPages.xml
+E:\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.xml
+E:\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.xml
+E:\JobPortals\JobPortal\bin\Newtonsoft.Json.xml
+E:\JobPortals\JobPortal\bin\Antlr3.Runtime.pdb
+E:\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.AssemblyReference.cache
+E:\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CoreCompileInputs.cache
+E:\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
+E:\JobPortals\JobPortal\obj\Debug\JobPortal.dll
+E:\JobPortals\JobPortal\obj\Debug\JobPortal.pdb
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\JobPortal.dll.config
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\JobPortal.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\JobPortal.pdb
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\csc.exe
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\csc.exe.config
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\csc.rsp
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\csi.exe
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\csi.exe.config
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\csi.rsp
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Console.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Net.Http.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.ValueTuple.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\vbc.exe
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\vbc.exe.config
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\vbc.rsp
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\JobPortalLibrary.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Helpers.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Mvc.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Optimization.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Razor.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.WebPages.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\WebGrease.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\JobPortalLibrary.pdb
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Helpers.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Mvc.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Optimization.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.Razor.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.WebPages.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\Desktop\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\Desktop\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
+C:\Users\Admin\Desktop\JobPortals\JobPortal\obj\Debug\JobPortal.dll
+C:\Users\Admin\Desktop\JobPortals\JobPortal\obj\Debug\JobPortal.pdb
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortal.dll.config
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortal.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortal.pdb
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csc.exe
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csc.exe.config
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csc.rsp
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csi.exe
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csi.exe.config
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csi.rsp
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.AppContext.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Console.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Net.Http.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.ValueTuple.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\vbc.exe
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\vbc.exe.config
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\vbc.rsp
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Antlr3.Runtime.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortalLibrary.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Newtonsoft.Json.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Helpers.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Mvc.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Optimization.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Razor.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\WebGrease.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortalLibrary.pdb
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Helpers.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Mvc.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Optimization.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Razor.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Newtonsoft.Json.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Antlr3.Runtime.pdb
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.pdb
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortal.dll.config
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortal.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortal.pdb
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csc.exe
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csc.exe.config
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csc.rsp
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csi.exe
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csi.exe.config
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\csi.rsp
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.CSharp.Core.targets
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.Managed.Core.targets
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\Microsoft.Win32.Primitives.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.AppContext.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Collections.Immutable.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Console.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Diagnostics.StackTrace.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Globalization.Calendars.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.Compression.ZipFile.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.IO.FileSystem.Primitives.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Net.Http.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Net.Sockets.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Reflection.Metadata.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Encoding.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.Primitives.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Text.Encoding.CodePages.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.ValueTuple.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.ReaderWriter.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.XmlDocument.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\System.Xml.XPath.XDocument.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\vbc.exe
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\vbc.exe.config
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\vbc.rsp
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\roslyn\VBCSCompiler.exe.config
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Antlr3.Runtime.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortalLibrary.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Web.Infrastructure.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Newtonsoft.Json.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Helpers.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Mvc.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Optimization.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Razor.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\WebGrease.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortalLibrary.pdb
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Helpers.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Mvc.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Optimization.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.Razor.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Deployment.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Web.WebPages.Razor.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Newtonsoft.Json.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Antlr3.Runtime.pdb
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.AssemblyReference.cache
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CoreCompileInputs.cache
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\obj\Debug\JobPortal.pdb
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Features.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.DotNet.PlatformAbstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyModel.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.ObjectPool.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Options.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Primitives.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Net.Http.Headers.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Buffers.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.ComponentModel.Annotations.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Diagnostics.DiagnosticSource.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Memory.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Numerics.Vectors.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Text.Encodings.Web.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Threading.Tasks.Extensions.dll
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortalLibrary.dll.config
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Features.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.ObjectPool.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Options.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Primitives.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Net.Http.Headers.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Buffers.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Diagnostics.DiagnosticSource.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Memory.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Numerics.Vectors.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Text.Encodings.Web.xml
+H:\.NET\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Options.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Buffers.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.ComponentModel.Annotations.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Memory.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Numerics.Vectors.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Text.Encodings.Web.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\JobPortalLibrary.dll.config
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.ObjectPool.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Options.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Buffers.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Memory.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Numerics.Vectors.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Text.Encodings.Web.xml
+C:\Users\Dell\Desktop\job portal\TemplateBindedJobPortal\JobPortals\JobPortal\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\JobPortal.dll.config
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\JobPortal.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\JobPortal.pdb
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\csc.exe
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\csc.exe.config
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\csc.rsp
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\csi.exe
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\csi.exe.config
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\csi.rsp
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Console.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.IO.Compression.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Net.Http.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.ValueTuple.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\vbc.exe
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\vbc.exe.config
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\vbc.rsp
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\JobPortalLibrary.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Options.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Buffers.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.ComponentModel.Annotations.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Memory.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Numerics.Vectors.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Text.Encodings.Web.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Helpers.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Mvc.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Optimization.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Razor.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.WebPages.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\WebGrease.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\JobPortalLibrary.pdb
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\JobPortalLibrary.dll.config
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.ObjectPool.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Options.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Buffers.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Memory.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Numerics.Vectors.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Text.Encodings.Web.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Helpers.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Mvc.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Optimization.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.Razor.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.WebPages.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\obj\Debug\JobPortal.dll
+C:\Users\Admin\Desktop\JOBPORTAL\JobPortal\obj\Debug\JobPortal.pdb
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\JobPortal.dll.config
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\JobPortal.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\JobPortal.pdb
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\csc.exe
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\csc.exe.config
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\csc.rsp
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\csi.exe
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\csi.exe.config
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\csi.rsp
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.AppContext.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Console.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.IO.Compression.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Net.Http.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.ValueTuple.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\vbc.exe
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\vbc.exe.config
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\vbc.rsp
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\VBCSCompiler.exe
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Antlr3.Runtime.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\JobPortalLibrary.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Options.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Newtonsoft.Json.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Buffers.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.ComponentModel.Annotations.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Memory.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Numerics.Vectors.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Text.Encodings.Web.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Helpers.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Mvc.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Optimization.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Razor.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.WebPages.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Razor.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\WebGrease.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\JobPortalLibrary.pdb
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\JobPortalLibrary.dll.config
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authentication.Core.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Authorization.Policy.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.Core.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Mvc.DataAnnotations.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Hosting.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Localization.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.ObjectPool.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Options.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Buffers.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Memory.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Numerics.Vectors.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Text.Encodings.Web.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Helpers.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Mvc.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Optimization.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.Razor.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.WebPages.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\System.Web.WebPages.Razor.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Newtonsoft.Json.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Antlr3.Runtime.pdb
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.dll
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.pdb

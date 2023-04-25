@@ -1,0 +1,140 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+@{
+    ViewBag.Title = "EmploymentDetailsPopup";
+}
+
+
+@section Scripts {
+
+    <link href="~/Scripts/chosen.min.css" rel="stylesheet" />
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>*@
+    <script type="text/javascript">
+        /*Multiselect Dropdown*/
+        $(function () {
+            $("#Skills").chosen({
+                width: "100%"
+
+            });
+            $(function () {
+                $(".Year").chosen({
+                    width: "15%"
+                });
+            })
+            $(function () {
+                $(".Month").chosen({
+                    width: "15%"
+                });
+            })
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CurrentEmployement, "Is this your current employment?", htmlAttributes: new { @class = "control-label col-md-5" })
+        <div class="col-md-10">
+            @Html.Label("Yes")
+            @Html.RadioButtonFor(Model => Model.CurrentEmployement, "0")
+            @Html.Label("No")
+            @Html.RadioButtonFor(model => model.CurrentEmployement, "1")
+            @Html.ValidationMessageFor(model => model.CurrentEmployement, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployementType, "Employment Type", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Label("Full – Time ")
+            @Html.RadioButtonFor(Model => Model.EmployementType, "Full – Time ")
+            @Html.Label("Internship")
+            @Html.RadioButtonFor(model => model.EmployementType, "Internship")
+            @Html.ValidationMessageFor(model => model.EmployementType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.TotalExperience, "Total Experience", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ExYear, new SelectList(ViewBag.EXYear), htmlAttributes: new { @class = "form-control Year" })
+            @Html.DropDownListFor(model => model.ExMonth, new SelectList(ViewBag.EXMonth), htmlAttributes: new { @class = "form-control Month" })
+            @Html.ValidationMessageFor(model => model.TotalExperience, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.CompanyName, "Current/ Previous Company Name", htmlAttributes: new { @class = "control-label col-md-5" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Designation, "Current/ Previous Designation", htmlAttributes: new { @class = "control-label col-md-5" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.PassingYear, "Joining Date", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Year, new SelectList(ViewBag.YearList), "Select Year", htmlAttributes: new { @class = "form-control Year" })
+            @Html.DropDownListFor(model => model.Month, new SelectList(ViewBag.Monthlist), "Select Month", htmlAttributes: new { @class = "form-control Month" })
+            @Html.ValidationMessageFor(model => model.PassingYear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.CurrentSalary, "Current Salary", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CurrentSalary, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CurrentSalary, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.SkillName, "Skills", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.ListBoxFor(m => m.SkillList, new MultiSelectList(ViewBag.SkillName, "Value", "Text"), new { id = "Skills", Multiple = "multiple" })
+            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.JobProfile, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.JobProfile, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.JobProfile, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.NoticePeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.NoticePeriod, new SelectList(ViewBag.Noticelist), "--Select--", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-left:550px">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+            <input type="submit" formaction="@Url.Action("EmploymentDetails","JobSeeker",new  { Seekercode = Model.Seekercode })" value="SAVE" formmethod="post" class="btn btn-primary" />
+        </div>
+    </div>
+}
+

@@ -1,0 +1,105 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "CareerProfilePopup";
+}
+
+
+
+
+@section Scripts {
+
+    <link href="~/Scripts/chosen.min.css" rel="stylesheet" />
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>*@
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#IndustryID").change(function () {
+                var id = $(this).val();
+                $("#JobCategoryId").empty();
+                $.get("/JobSeeker/JobCategory", { Industry_id: id }, function (data) {
+                    var v = "<option>---Select---</option>";
+                    $.each(data, function (i, v1) {
+                        v += "<option value=" + v1.Value + ">" + v1.Text + "</option>";
+                    });
+                    $("#JobCategoryId").html(v);
+                    /* $("#JobCategoryId").chosen();*/
+                });
+            });
+        });
+
+        $(function () {
+            $("#location").chosen({
+                width: "170%"
+
+            });
+        });
+        $(function () {
+            $(".Year").chosen({
+                width: "15%"
+            });
+        })
+        $(function () {
+            $(".Month").chosen({
+                width: "15%"
+            });
+        });
+
+
+    </script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group ">
+        @Html.LabelFor(model => model.IndustryID, "Current Industry*", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("IndustryID", null, "--Select--", htmlAttributes: new { @class = "form-control Qualification" })
+            @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.JobCategoryId, "Role Categoty", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select id="JobCategoryId" name="JobCategoryId" style="width:640px;height:35px">----Select----</select><br />
+            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TotalExperience, "Total Experience", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ExYear, new SelectList(ViewBag.EXYear), htmlAttributes: new { @class = "form-control Year" })
+            @Html.DropDownListFor(model => model.ExMonth, new SelectList(ViewBag.EXMonth), htmlAttributes: new { @class = "form-control Month" })
+            @Html.ValidationMessageFor(model => model.TotalExperience, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="item form-group">
+        @Html.LabelFor(model => model.Language, "Preferred Work Location", htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align required" })
+        <div class="col-md-6 col-sm-6 ">
+            @Html.ListBoxFor(m => m.LocationList, new MultiSelectList(ViewBag.CityId, "Value", "Text"), new { id = "location", Multiple = "multiple" })
+            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br /><hr />
+
+    <div class="form-group" style="margin-left:550px">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+            <input type="submit" formaction="@Url.Action("CareerProfilePopup","JobSeeker",new  { Seekercode = Model.Seekercode })" value="SAVE" formmethod="post" class="btn btn-primary" />
+        </div>
+    </div>
+}

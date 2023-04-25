@@ -1,0 +1,77 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "AllCompany";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .tabprofile {
+            height: 180px;
+            padding: 30px;
+        }
+
+        .profile-image {
+            padding: 10px;
+        }
+
+        .img-seeker {
+            background-image: url('../../content/images/companylogo1.jpg');
+            background-position: center;
+            background-size: 80px;
+        }
+
+        .company {
+            margin-left: 110px;
+            margin-top: -100px;
+        }
+        .checked {
+            color: gold;
+        }
+    </style>
+</head>
+
+
+
+
+@foreach (var item in Model.lstuser)
+{  
+        <div class="tabprofile" >         
+                    <div class="card" onclick="location.href = '/JobSeeker/CompanysDetails'" style="width:60rem;height:140px; margin-left:85px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+                        <a href="@Url.Action("CompanysDetails", "JobSeeker", new {id=@item.CompanyId})" data-id="@item.CompanyId">
+                        
+                            @using (Html.BeginForm("AllCompany", "JobSeeker", FormMethod.Post))
+                             {
+                                <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+                                    <div class="profile-image">
+                                        <dd style="font-size:22px;color:black">
+                                            @Html.HiddenFor(modelItem => item.CompanyId)
+                                        </dd>
+                                        <dd style="font-size:25px;color:black">
+                                            <img class="img-seeker" src="~/Content/images/@item.CompanyLogo" height="75" width="75">
+                                        </dd>
+                                    </div>
+                                    <div class="company">
+                                        <dd style="font-size:25px;color:black">
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </dd>
+                                        <dd style="font-size: 14px; color: darkslategray; margin-top: -12px; ">
+                                            <i class="fa fa-star checked"></i> @Html.DisplayFor(modelItem => item.Rating) |
+                                            @Html.DisplayFor(modelItem => item.Follow) Reviews
+                                        </dd>
+                                        <dd style="font-size: 14px; color: darkslategray;margin-top:-16px;">
+                                            @Html.DisplayFor(modelItem => item.Slogan)
+                                        </dd>
+                                    </div>
+
+                                </dl>
+                             }
+                        </a>
+                   </div>          
+
+        </div>
+   
+ }
+   
+

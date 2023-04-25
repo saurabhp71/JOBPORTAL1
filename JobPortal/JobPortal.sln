@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal", "JobPortal.csproj", "{27F3C18A-093E-40D8-A9F5-C81F767E186B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortalLibrary", "..\JobPortalLibrary\JobPortalLibrary.csproj", "{7492F985-317B-41FB-B458-68E96C2E703C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27F3C18A-093E-40D8-A9F5-C81F767E186B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F3C18A-093E-40D8-A9F5-C81F767E186B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F3C18A-093E-40D8-A9F5-C81F767E186B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F3C18A-093E-40D8-A9F5-C81F767E186B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7492F985-317B-41FB-B458-68E96C2E703C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7492F985-317B-41FB-B458-68E96C2E703C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7492F985-317B-41FB-B458-68E96C2E703C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7492F985-317B-41FB-B458-68E96C2E703C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4071B752-DCDD-419C-912D-808F0BA5BB37}
+	EndGlobalSection
+EndGlobal

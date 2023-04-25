@@ -1,0 +1,150 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "CompanysDetails";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .tabprofile {
+            height: 600px;
+            padding: 30px;
+        }
+
+        .profile-image {
+            padding: 10px;
+        }
+
+        .img-seeker {
+            background-image: url('../../content/images/companylogo1.jpg');
+            background-position: center;
+            background-size: 80px;
+        }
+
+        .company {
+            margin-left: 145px;
+            margin-top: -125px;
+            display: flex
+        }
+
+        .checked {
+            color: gold;
+        }
+        .follow-user {
+            margin-left: 227px;
+            height: 42px;
+            font-size: 27px;
+            border-radius: 16px;
+            background-color: blue;
+        }
+    </style>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function () {
+
+
+        $(".follow-user").click(function () {
+        var $buttonClicked = $(this);
+        var json = $buttonClicked.attr('data-id')
+
+        $.ajax({
+            type: 'POST',
+            url: "/JobSeeker/FollowCompany",
+            dataType: "json",     
+            data: { "Companyid": json},
+            success: function (data) {
+                if (data.status == "true") {
+                    //swal({
+                    //    title: data.msg,
+                    //    icon: "success",
+                    //    button: "Ok",
+                    //});
+                    parent.find(".follow-user").css("background-color", "red");
+
+                }
+                if (data.status == "false") {
+
+                    //swal({
+                    //    title: data.msg,
+                    //    icon: "success",
+                    //    button: "Ok",
+                    //});
+                    parent.find(".follow-user").css("background-color", "blue");
+                }
+            },
+            error: function (result) {
+                swal({
+                    title: "You Need To Login",
+                    icon: "warning",
+                    button: "Ok",
+                }).then(function () {
+                    window.location.href = "/Account/Register";
+                })           
+            }
+        });
+    });
+});
+    </script>
+</head>
+
+
+
+
+    <div class="tabprofile">
+        <div class="card" style="width:60rem;height:450px; margin-left:85px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">     
+
+              
+                    <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+                        <div class="profile-image">
+                            <dd style="font-size:22px;color:black">
+                                @Html.HiddenFor(modelItem => Model.CompanyId)
+                                @Html.HiddenFor(modelItem => Model.Employercode)
+                            </dd>
+                            <dd style="font-size:25px;color:black">
+                                <img class="img-seeker" src="~/Content/images/@Model.CompanyLogo" height="100" width="100">
+                            </dd>
+                        </div>
+                        <div class="company">
+                            <dd style="font-size:40px;color:black">
+                                @Html.DisplayFor(modelItem => Model.CompanyName)
+                            </dd>
+
+                            <dd style="margin-top:20px;margin-left:10px;">
+                                <i class="fa fa-star checked"></i> @Html.DisplayFor(modelItem => Model.Rating) |
+                                @Html.DisplayFor(modelItem => Model.Follow) reviews
+                            </dd>
+                            <dd>
+                                @*<a class="follow-user fg-button ui-state-default" href="#" data-id="@Model.CompanyId"></a>*@
+                                <span  id="sp-@Model.CompanyId"><input @*id="@Model.CompanyId"*@ data-id="@Model.CompanyId" name="submit" type="submit" value="Follow" class="follow-user fg-button ui-state-default" /></span>
+                            </dd>
+
+                        </div>
+                        <dd style="font-size: 17px; color: darkslategray;margin-top:2px;margin-left:140px">
+                            @Html.DisplayFor(modelItem => Model.Slogan)
+                        </dd>
+                        <div class="About">
+                            <label for="html" style="color: black;margin-left:35px;margin-top:40px;font-size:22px; ">About Company</label>
+                            <dd style="font-size: 17px; color: darkslategray;margin-top:2px;margin-left:40px">
+                                @Html.DisplayFor(modelItem => Model.AboutCompany)
+                            </dd>
+                        </div>
+                        <div class="More">
+                            <label for="html" style="color: black;margin-left:35px;margin-top:40px;font-size:18px; ">More Information</label>
+                            <dd style="font-size: 14px; color: darkslategray;margin-top:2px;margin-left:40px">
+                                @Html.LabelFor(modelItem => Model.NoOfEmployees, "Company Size:")
+                                @Html.DisplayFor(modelItem => Model.NoOfEmployees)
+                            </dd>
+                            <dd style="font-size: 14px; color: blue;margin-top:2px;margin-left:40px">
+                                <label for="html" style="color: darkslategray; ">Company Website:</label>
+                                @Html.DisplayFor(modelItem => Model.CompanyWebsite)
+                            </dd>
+                        </div>
+                    </dl>
+          
+        </div>
+
+    </div>
+
+
+

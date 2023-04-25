@@ -1,0 +1,156 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "ADDEducationDetails";
+}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $("#QualificationId").change(function () {
+                var id = $(this).val();
+                $("#DegreeId").empty();
+                $.post("/JobSeeker/Degree", { Qualification_id: id }, function (data) {
+                    var v = "<option>---Select---</option>";
+                    $.each(data, function (i, v1) {
+                        v += "<option value=" + v1.Value + ">" + v1.Text + "</option>";
+                    });
+                    $("#DegreeId").html(v);
+                    //$("#DegreeId").select2();
+                });
+            });
+
+            $("#DegreeId").change(function () {
+                var sid = $(this).val();
+                $("#SpecializationId").empty();
+                $.post("/JobSeeker/Specialization", { Degree_id: sid }, function (data) {
+                    var v = "<option>---Select---</option>";
+                    $.each(data, function (i, v1) {
+                        v += "<option value=" + v1.Value + ">" + v1.Text + "</option>";
+                    });
+                    $("#SpecializationId").html(v);
+                    //$("#SpecializationId").select2();
+                });
+            });
+        });
+        //$(function () {
+        //    $(".Year").chosen();
+        //})
+        //$(function () {
+        //    $(".Qualification").chosen();
+        //});
+
+        $(function () {
+            $("#QualificationId").change(function () {
+                var type = $("#QualificationId").val();
+                if (type == 3 || type == 4) {
+                    $("#Specialization").show();
+                    $("#University").show();
+                    $("#CourseType").show();
+                }
+                else {
+                    $("#Specialization").hide();
+                    $("#University").hide();
+                    $("#CourseType").hide();
+                }
+            });
+
+        });
+
+
+    </script>
+
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+
+
+
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="color:black">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group ">
+            @Html.LabelFor(model => model.QualificationId, "Qualification*", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("QualificationId", null, "--Select--", htmlAttributes: new { @class = "form-control Qualification" })
+                @Html.ValidationMessageFor(model => model.QualificationId, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Degree, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="DegreeId" name="DegreeId" style="width:640px;height:35px">----Select----</select><br />
+                @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group" id="Specialization" style="display:block">
+            @Html.LabelFor(model => model.Specialization, "Specialization", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="SpecializationId" name="SpecializationId" style="width:640px;height:35px">----Select----</select><br />
+                @Html.ValidationMessageFor(model => model.Specialization, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group" id="University" style="display:block">
+            @Html.LabelFor(model => model.University, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.University, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group" id="CourseType" style="display:block">
+            @Html.LabelFor(model => model.CourseType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label style="margin-left:10px">
+                    <input type="radio" name="CourseType" value="Full-Time" />
+                    Full-Time
+                    <span></span>
+                </label>
+                <label style="margin-left:50px">
+                    <input type="radio" name="CourseType" value="Part-Time" />
+                    Part-Time
+                    <span></span>
+                </label>
+                <label style="margin-left:50px">
+                    <input type="radio" name="CourseType" value="Distance Learning" />
+                    Distance Learning
+                    <span></span>
+                </label>
+                @Html.ValidationMessageFor(model => model.CourseType, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.PassingYear, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PassingYear, new SelectList(ViewBag.YearList), "--Select--", htmlAttributes: new { @class = "form-control Year" })
+                @Html.ValidationMessageFor(model => model.PassingYear, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Marks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Marks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Marks, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group" style="margin-left:550px">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+}

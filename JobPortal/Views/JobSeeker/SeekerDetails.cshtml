@@ -1,0 +1,262 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "SeekerDetails";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+<html>
+<head>
+
+    @section Scripts {
+
+        <script type="text/javascript">
+            $(function () {
+                $(".SeekerDetailsPhoto").click(function () {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id')
+                    /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                    $.ajax({
+                        type: "GET",
+                        url: "/JobSeeker/SeekerDetailsPhoto",
+                        data: '{id: "' + id + '" }',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+            $(function () {
+                $(".SeekerDetailsPopup").click(function () {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id')
+                    /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                    $.ajax({
+                        type: "GET",
+                        url: "/JobSeeker/SeekerDetailsPopup",
+                        data: '{id: "' + id + '" }',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+
+
+    <style type="text/css">
+        .ProfilePanel {
+            /* margin-top: -20%;
+            margin-bottom: 40%;*/
+            background-color: lightblue !important;
+            height: 200px !important;
+            width: 70rem !important;
+        }
+
+        .tabprofile {
+            margin-top: -17%;
+            margin-bottom: 10%;
+        }
+
+        .tbprofiless {
+            height: 650px;
+            padding: 20px;
+        }
+
+        a {
+            color: darkslategray;
+            font-weight: bold;
+        }
+
+            a:hover {
+                color: red;
+            }
+
+        .img-seeker {
+            height: 120px;
+            width: 120px;
+            border: 2px ridge;
+            border-radius: 300%;
+            background-image: url('../../Content/images/profile icon.jpg');
+            background-position: center;
+            background-size: 150px;
+        }
+
+        .profile-image {
+            padding: 50px;
+            
+        }
+
+        .SeekerDetailsPhoto {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 65px;
+            margin-top: -29px;
+            width: 50px;
+        }
+
+        .caneraseek{
+
+        }
+    </style>
+
+</head>
+<body>
+
+    <hr />
+
+    <hr />
+
+    <!-- ProfilePanel Start -->
+    <form style="margin-left:35px">
+        <div class="ProfilePanel">         
+            <div class="profile-image">
+                <img class="img-seeker" src="~/Content/images/@Model.ProfileIMG" height="250" width="250">
+                <a href="javascript:void(0);" class="SeekerDetailsPhoto" data-id="@Model.Seekercode">
+                    <i class='fa fa-camera' style='font-size:25px'></i>
+                </a>
+                <dd style="margin-left:16%;margin-top:-5%; font-size:24px;color:black;">
+                    @Html.DisplayFor(model => model.SeekerName)
+                </dd>
+            </div><br />              
+                <div class="progress" style="width:70%; height:10px; margin-left:19%;margin-top:-60px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:@ViewBag.Total%;">
+                        <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>
+        </div>
+    </form>
+    <!-- ProfilePanel End -->
+    <hr />
+    <!-- Dashboard start -->
+
+    <form style="margin-left:50px">
+
+        <div class="card" style="width:15rem;">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="CreateRound">  <a href="@Url.Action("SeekerDetails","JobSeeker")">Personal Details</a> </li>
+                <li class="list-group-item">  <a href="@Url.Action("EducationDetails", "JobSeeker")">Education Details</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("EmploymentDetails", "JobSeeker")">Employment Details</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("ProjectDetails","JobSeeker")">Project Details</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("CareerProfile", "JobSeeker")">Career Profile</a></li>
+            </ul>
+        </div>
+    </form>
+    <!-- Dashboard End -->
+    @*<form style="margin-left:50px">*@
+    <div class="tabprofile">
+        <div class="card" style="width:50rem; margin-left:350px;border-radius:20px;box-shadow: 5px 10px 10px lightgrey">
+
+            <div class="tbprofiless">
+                <div style="display: flex">
+                    <h3 style="text-align: left; font-family:  Constantia;">Personal Details</h3>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="display: flex;align-items: center; justify-content: center" href="javascript:void(0);" class="SeekerDetailsPopup" data-id="@Model.Seekercode"><i class='fas fa-pen' style='font-size:15px'></i></a>
+
+                </div>
+                <dl class="dl-horizontal" style=" margin-left: 40px;">
+                    <dd>
+                        @Html.HiddenFor(model => model.Seekercode, new { })
+                    </dd>
+                    <label for="html" style="color:lightgray ">Profile Summary</label>
+                    <dd>
+                        @Html.DisplayFor(model => model.ProfileSummary)
+                    </dd>
+                    <br />
+                    <div style="margin-left:15px; float:left">
+                        <label for="html" style="color:lightgray ">Name</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.SeekerName)
+                        </dd>
+                        <br />
+                        <label for="html" style="color:lightgray ">Date Of Birth</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.DOB1)
+                        </dd>
+                        <br />
+                        <label for="html" style="color:lightgray ">Category</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.CasteCategory)
+                        </dd>
+                        <br />
+                        <label for="html" style="color:lightgray ">Differently Abled</label>
+                        <dd>
+                            @if (Model.Physically == "True")
+                            {
+                                <label for="html" style="color:darkslategray ">No</label>
+                            }
+                            @if (Model.Physically == "False") 
+                            {
+                                <label for="html" style="color: darkslategray ">Yes</label>
+                            }
+                        </dd>
+                        <br />
+                    </div>
+
+                    <div style="margin-left:450px;margin-top:10px">
+                        <label for="html" style="color:lightgray ">Personal</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.Gender),
+                            @Html.DisplayFor(model => model.MaritalStatus)
+                        </dd>
+                        <br />
+                        <label for="html" style="color:lightgray ">Contact No</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.AlternateContactNo)
+                        </dd>
+                        <br />
+                        <label for="html" style="color:lightgray ">Address</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.CorrespondenceAddress)
+                        </dd>
+                        <br />
+                        <label for="html" style="color:lightgray ">Pincode</label>
+                        <dd>
+                            @Html.DisplayFor(model => model.Pincode1)
+                        </dd>
+                        <br />
+                    </div>
+                    <label for="html" style="color:lightgray ">Language</label>
+                    <dd>
+                        @Html.DisplayFor(model => model.Language)
+                    </dd>
+                    <br />
+
+                </dl>
+
+            </div>
+        </div>
+    </div>
+    @*</form>*@
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

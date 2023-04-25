@@ -1,0 +1,307 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "EducationDetails";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+<html>
+<head>
+
+    @section Scripts {
+
+        <script type="text/javascript">
+            $(function () {
+                $(".SeekerDetailsPhoto").click(function () {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id')
+                    /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                    $.ajax({
+                        type: "GET",
+                        url: "/JobSeeker/SeekerDetailsPhoto",
+                        data: '{id: "' + id + '" }',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+
+            $(function () {
+                $(".ADDEducationDetails").click(function () {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id')
+                    /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                    $.ajax({
+                        type: "GET",
+                        url: "/JobSeeker/ADDEducationDetails",
+                        data: '{id: "' + id + '" }',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+
+
+    <style type="text/css">
+        .ProfilePanel {
+            /* margin-top: -20%;
+            margin-bottom: 40%;*/
+            background-color: lightblue !important;
+            height: 200px !important;
+            width: 70rem !important;
+        }
+
+        .tabprofile {
+            margin-top: -17%;
+            margin-bottom: 10%;
+        }
+
+        .tbprofiless {
+            height: 650px;
+            padding: 20px;
+        }
+
+        a {
+            color: darkslategray;
+            font-weight: bold;
+        }
+
+            a:hover {
+                color: red;
+            }
+
+        .img-seeker {
+            height: 120px;
+            width: 120px;
+            border: 2px ridge;
+            border-radius: 300%;
+            background-image: url('../../Content/images/profile icon.jpg');
+            background-position: center;
+            background-size: 150px;
+        }
+
+        .profile-image {
+            padding: 50px;
+        }
+
+        .SeekerDetailsPhoto {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 65px;
+            margin-top: -29px;
+            width: 50px;
+        }
+
+        .caneraseek {
+        }
+    </style>
+
+</head>
+<body>
+
+    <hr />
+    <hr />
+    <!-- ProfilePanel Start -->
+    <form style="margin-left:35px">
+        <div class="ProfilePanel">         
+            <div class="profile-image">
+                <img class="img-seeker" src="~/Content/images/@Model.ProfileIMG" height="250" width="250">
+                <a href="javascript:void(0);" class="SeekerDetailsPhoto" data-id="@Model.Seekercode">
+                    <i class='fa fa-camera' style='font-size:25px'></i>
+                </a>
+                <dd style="margin-left:16%;margin-top:-5%; font-size:24px;color:black;">
+                    @Html.DisplayFor(model => model.SeekerName)
+                </dd>
+            </div><br />              
+                <div class="progress" style="width:70%; height:10px; margin-left:19%;margin-top:-60px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:@ViewBag.Total%;">
+                        <span class="sr-only">70% Complete</span>
+                    </div>
+                </div>
+        </div>
+    </form>
+    <!-- ProfilePanel End -->
+    <hr />
+    <!-- Dashboard start -->
+
+    <form style="margin-left:50px">
+
+        <div class="card" style="width:15rem;">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="CreateRound">  <a href="@Url.Action("SeekerDetails","JobSeeker")">Personal Details</a> </li>
+                <li class="list-group-item">  <a href="@Url.Action("EducationDetails", "JobSeeker")">Education Details</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("EmploymentDetails", "JobSeeker")">Employment Details</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("ProjectDetails","JobSeeker")">Project Details</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("CareerProfile", "JobSeeker")">Career Profile</a></li>
+            </ul>
+        </div>
+    </form>
+    <!-- Dashboard End -->
+    @*<form style="margin-left:50px">*@
+    <div class="tabprofile">
+        <div class="card" style="width:50rem; margin-left:350px;border-radius:20px;box-shadow: 5px 10px 10px lightgrey">
+
+            <div class="tbprofiless">
+                <div style="display: flex">
+                    <h3 style="text-align: left; font-family:  Constantia;">Education Details</h3>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="display: flex;align-items: center; color:lightblue; justify-content: center" href="javascript:void(0);" class="ADDEducationDetails" data-id="@Model.Seekercode"><i class='fas fa-pen' style='font-size:15px'></i> ADD Education</a>
+
+                </div>
+               
+                <dl class="dl-horizontal" style=" margin-left: 40px;">
+                    <dd>
+                        @Html.HiddenFor(model => model.Seekercode, new { })
+                    </dd>
+                    @using (Html.BeginForm("DeleteSSC", "JobSeeker", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @if (ViewBag.SSC == "1")
+                            {
+                                <div id="div1">
+                                    <label for="html" style="color:black ">Class X</label>
+                                    <dd>
+
+                                        @Html.HiddenFor(Model => Model.SSC)
+                                        <lable for="html" value="@ViewBag.SSCBoard">@ViewBag.SSCDegree </lable><br />
+                                        @Html.DisplayFor(model => model.SSCPassingYear)
+                                        <button style="margin-left:571px" type="submit"><i class="fa fa-trash"></i></button>
+
+                                    </dd>
+                                </div>
+                            }
+                        </div>
+                    }
+                    @using (Html.BeginForm("DeleteHSC", "JobSeeker", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @if (ViewBag.HSC == "2")
+                            {
+                                <div id="div1">
+                                    <label for="html" style="color:black ">Class XII</label>
+                                    <dd>
+                                        @Html.HiddenFor(Model => Model.HSC)
+                                        <lable for="html" value="@ViewBag.HSCBoard">@ViewBag.HSCDegree </lable><br />
+                                        @Html.DisplayFor(model => model.HSCPassingYear)
+
+                                        <button style="margin-left:571px" type="submit"><i class="fa fa-trash"></i></button>
+                                    </dd>
+                                </div>
+                            }
+                        </div>
+                    }
+                    @using (Html.BeginForm("DeleteUG", "JobSeeker", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @if (ViewBag.UG == "3" && ViewBag.UGDegree == "97")
+                            {
+                                <div id="div1">
+
+                                    @Html.HiddenFor(Model => Model.UG)
+                                    @Html.HiddenFor(Model => Model.UGDegree)
+                                    <lable for="html" style="color:black;" value="@ViewBag.UGSpecialization">@ViewBag.UGSpecialization1 </lable>
+                                    <br />
+                                    <dd>
+                                        @Html.DisplayFor(model => model.UGUniversity)
+                                    </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.UGPassingYear)
+                                        @Html.DisplayFor(model => model.UGCourseType)
+                                        <button style="margin-left:500px" type="submit"><i class="fa fa-trash"></i></button>
+                                    </dd>
+
+                                </div>
+                            }
+                        </div>
+                    }
+                    @using (Html.BeginForm("DeleteGraduation", "JobSeeker", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @if (ViewBag.Graduation == "3")
+                            {
+                                <div id="div1">
+
+                                    @Html.HiddenFor(Model => Model.Graduation)
+                                    @Html.HiddenFor(Model => Model.GraduationDegree)
+                                    <lable for="html" style="color:black;" value="@ViewBag.GraduationSpecialization">@ViewBag.GSpecialization1 </lable>
+                                    <br />
+                                    <dd>
+                                        @Html.DisplayFor(model => model.GraduationUniversity)
+                                    </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.GraduationPassingYear)
+                                        @Html.DisplayFor(model => model.GCourseType)
+                                        <button style="margin-left:500px" type="submit"><i class="fa fa-trash"></i></button>
+                                    </dd>
+
+                                </div>
+                            }
+                        </div>
+                    }
+                    @using (Html.BeginForm("DeletePG", "JobSeeker", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @if (ViewBag.PG == "4")
+                            {
+                                <div id="div1">
+
+                                    @Html.HiddenFor(Model => Model.PG)
+                                    <lable for="html" style="color:black;" value="@ViewBag.PGSpecialization">@ViewBag.PGSpecialization1 </lable>
+                                    <br />
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PGUniversity)
+                                    </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PGmarks)
+                                        @Html.DisplayFor(model => model.PGCourseType)
+
+                                        <button style="margin-left:500px" type="submit"><i class="fa fa-trash"></i></button>
+                                    </dd>
+
+                                </div>
+                            }
+                        </div>
+                    }
+                    </dl>
+                
+            </div>
+        </div>
+    </div>
+    @*</form>*@
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
