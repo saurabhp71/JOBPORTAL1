@@ -1,10 +1,15 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.ComponentModel;
+using System.Xml.Linq;
+using System.Web;
+using System.IO;
 
 namespace JobPortalLibrary.Employer
 {
@@ -164,7 +169,47 @@ namespace JobPortalLibrary.Employer
 
         public string SkillName { get; set; }
 
+        //---mahesh property------//
+        public int ApplicationReceived { get; set; }
+        public List<EmployerUser> joblist { get; set; }
+        public string Actions { get; set; }
+        public string SeekerName { get; set; }
+        public DateTime ApplyDate { get; set; }
+        public string Eligible { get; set; }
+        public int Aprove { get; set; }
+        public int Reject { get; set; }
+        public string NoOfOpenings { get; set; }
+        public Int64 Alternativecontact { get; set; }
+        public string FullName { get; set; }
+        public DateTime DOB { get; set; }
+        public string Education { get; set; }
+        public List<EmployerUser> Educationlist { get; set; }
+        public string Univercity { get; set; }
+        public string ViewResume { get; set; }
 
+
+        public List<EmployerUser> Jobs { get; set; }
+
+        public string[] AllLocation { get; set; }
+
+        public string AllCompany { get; set; }
+
+        public string AllJobBenifits { get; set; }
+
+        public string[] JobBenifitList { get; set; }
+
+        public string[] Locationlist { get; set; }
+        public string[] QualificationList { get; set; }
+
+        public string Min { get; set; }
+        public string Max { get; set; }
+        public string Resume { get; set; }
+       // public HttpPostedFileBase myFile { get; set; }
+        public int HSC { get; set; }
+        public int HSCBoard { get; set; }
+        public int SSC { get; set; }
+        public int SSCBoard { get; set; }
+        //---mahesh property------//
 
 
     }

@@ -2379,6 +2379,15 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\JobSeeker\AllCompany.cshtml" />
     <Content Include="Views\JobSeeker\CompanysDetails.cshtml" />
+    <Content Include="Views\Employer\Addcandidate.cshtml" />
+    <Content Include="Views\Employer\Approve.cshtml" />
+    <Content Include="Views\Employer\Approved.cshtml" />
+    <Content Include="Views\Employer\Deletecandidate.cshtml" />
+    <Content Include="Views\Employer\Jobapplystud.cshtml" />
+    <Content Include="Views\Employer\JobDetails.cshtml" />
+    <Content Include="Views\Employer\jobgrid.cshtml" />
+    <Content Include="Views\Employer\RepostJob.cshtml" />
+    <Content Include="Views\Employer\viewphonedetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
