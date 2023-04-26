@@ -1,0 +1,183 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+@{
+    ViewBag.Title = "Addcandidate";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+
+<h3>Addcandidate</h3>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#QualificationId").change(function () {
+            var id = $(this).val();
+            $("#Degree").empty();
+            $.get("/Employer/getdegree", { Educationid: id }, function (data) {
+                var v = "<option>----select---</option>";
+                $.each(data, function (i, v1) {
+                    v += "<option value=" + v1.Value + ">" + v1.Text + "</option > ";
+
+                });
+                $("#Degree").html(v);
+            });
+        });
+    });
+    $(document).ready(function () {
+        $("#Degree").change(function () {
+            var id = $(this).val();
+            var name = $("#state option:selected").text();
+            $("#hidden1").val(name);
+            $("#Specialization").empty();
+            $.get("/Employer/getspecialization", { DegreeId: id }, function (data) {
+                var v = "<option>----select---</option>";
+                $.each(data, function (i, v1) {
+                    v += "<option value=" + v1.Value + ">" + v1.Text + "</option > ";
+
+                });
+                $("#Specialization").html(v);
+            });
+
+        });
+
+    });
+    $(document).ready(function () {
+        $("#Specialization").change(function () {
+            var id = $(this).val();
+            var name = $("#Specialization option:selected").text();
+            $("#hidden2").val(name);
+        });
+    });
+    $(document).ready(function () {
+        $(".popup").click(function (e) {
+            e.preventDefault();
+            $("#modal").remove();
+            var url = $(this).attr("href");
+            $.get(url, function (data) {
+                $(data).modal();
+            });
+
+        });
+    });
+
+</script>
+
+
+
+
+
+@using (Html.BeginForm("Addcandidate", "Employer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="card" style="width:55rem;height:1100px; margin-left:310px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+        <div class="form-horizontal" style="margin-left:100px">
+            <h2>Personel Information</h2>
+            <h4>Add Candidate</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="display:none">
+                @Html.LabelFor(model => model.PostJobCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.HiddenFor(modelItem => Model.PostJobCode)
+                    @Html.ValidationMessageFor(model => model.PostJobCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    <input type="date" id="birthday" name="DOB">
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    <textarea id="w3review" name="Address" rows="4" cols="50"></textarea>
+                </div>
+            </div>
+            <h4>Educational Details</h4>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Education, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+
+                    @Html.DropDownListFor(model => model.QualificationId, new SelectList(ViewBag.Educationlist, "Value", "Text"), "--Select--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.QualificationId, "", new { @class = "text-danger" })
+                    <input type="hidden" id="hidden" name="hidden" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DegreeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select id="Degree" name="degreeId" class="form-control">---select--- </select>
+
+                    <input type="hidden" id="hidden1" name="hidden1" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.SpecializationId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select id="Specialization" name="SpecializationId" class="form-control">---select--- </select>
+                    <input type="hidden" id="hidden2" name="hidden2" />
+                </div>
+            </div>
+            <div>
+                <label for="Resume">Upload Resume</label> <br />
+
+                @*@Html.TextBox("file", "Addcandidate", new { type = "file",name="file" }) <br />*@
+                @*<input type="submit" value="Upload"/>*@
+                @ViewBag.Message
+            </div>
+            <div>
+                <input type="file" id="myFile" name="myFile" />
+
+            </div>
+        </div>
+        <div class="form-group" style="margin-left:100px">
+            @Html.LabelFor(model => model.Univercity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Univercity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Univercity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+            @*<button type="button" style="margin-left:320px;" onclick="@Url.Action("Savecandidate","Employer")">Save</button>*@
+            @*<button type="button" >
+                    @Html.ActionLink("Save", "Savecandidate")
+                </button>*@
+            <input style="margin-left:100px; border-block:solid black" type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+    //Password DOB  Address Education Degree Specialization  Univercity
+
+
+
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
