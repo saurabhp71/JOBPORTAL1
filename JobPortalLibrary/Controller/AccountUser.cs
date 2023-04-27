@@ -17,7 +17,7 @@ namespace JobPortalLibrary.Controller
 
         [Required(ErrorMessage = "Name is required")]
         [StringLength(100, MinimumLength = 3)]
-        [RegularExpression(@"^[a - zA - Z] * $", ErrorMessage = "Please enter correct Name")]
+       // [RegularExpression(@"^[a - zA - Z] * $", ErrorMessage = "Please enter correct Name")]
         public string SeekerName { get; set; }      
         public string Employercode { get; set; } 
         public string EmployerName { get; set; }
@@ -31,7 +31,7 @@ namespace JobPortalLibrary.Controller
 
         [Required(ErrorMessage = "Contact is required")]
         [Display(Name = "Contact No")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+      //  [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public Int64 ContactNo { get; set; }
 
         [Required(ErrorMessage = "Confirm Password")]

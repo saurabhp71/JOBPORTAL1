@@ -15,25 +15,6 @@
     <script src="~/Scripts/jquery.validate.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#submit").click(function () {
-                ValidationForm();
-            });
-
-        });
-        function ValidationForm() {
-            if ($("#EmailId").val() == "") {
-                alert("EmailId is Required..!");
-                return false;
-            }
-        }
-
-    </script>
-
-
-
 
     <style>
         /*------------login form css---------------*/
@@ -210,90 +191,87 @@
         </div>
     }
 
-        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-        {
-            <div class="modal" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <div class="modal" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
 
-                        <form class="form-signin" role="form" action="index.html">
-                            <div class="form-group">
-                                @*<div class="col-sm-12">*@
-                                <div class="input-group-addon">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", placeholder = "EmailId" } })
-                                        @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
-                                    </div>
-                                    @*</div>*@
-                                </div>
+                    <form class="form-signin" role="form" action="index.html">
+                        <div class="form-group">
+                            @*<div class="col-sm-12">*@
+                            <div class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i>
                             </div>
-                            <div class="form-group">
-                                @*<div class="col-sm-12">*@
-                                <div class="input-group-addon">
-                                    <i class=" glyphicon glyphicon-lock "></i>
-                                </div>
-                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
-                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", placeholder = "EmailId" } })
+                                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
                                 </div>
                                 @*</div>*@
                             </div>
-                            @*<div class="col-sm-12">
-                                <label class="checkbox">
-                                    <input type="checkbox" value="remember-me"> &nbsp; Remember me
-                                </label>*@
+                        </div>
+                        <div class="form-group">
+                            @*<div class="col-sm-12">*@
+                            <div class="input-group-addon">
+                                <i class=" glyphicon glyphicon-lock "></i>
+                            </div>
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <div class="col-form-label-sm" style="margin-right:90px;width:270px;">
+                            </div>
+                            @*</div>*@
+                        </div>
+                        @*<div class="col-sm-12">
+                            <label class="checkbox">
+                                <input type="checkbox" value="remember-me"> &nbsp; Remember me
+                            </label>*@
 
-                                    <button class="btn btn-lg btn-primary btn-block" id="submit" style="align-content: center; background-color: #04AA6D; width:300px; ">Login</button>
-                                    <br />
-                                    @*<a href="#" style="margin-left:200px;">Forgotpassword?</a>*@
-                                    <a href="forgotpassword" target="_blank" style="margin-left:150px;">Forgot password</a>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <div class="col-form-label-sm" style="margin-right:90px;width:270px;">
 
-                                </div>
+                                <button class="btn btn-lg btn-primary btn-block" id="submit" style="align-content: center; background-color: #04AA6D; width:300px; ">Login</button>
+                                <br />
+                                @*<a href="#" style="margin-left:200px;">Forgotpassword?</a>*@
+                                <a href="forgotpassword" target="_blank" style="margin-left:150px;">Forgot password</a>
 
                             </div>
 
-
-                            @*<input type="password" placeholder="Password" />*@
-
-
-                            @*</div>*@
-
-                            @*--------------------------------Login with facebook Google----------------------*@
+                        </div>
 
 
-                            @*<div class="hr">*@
-                            @*<div></div>*@
+                        @*<input type="password" placeholder="Password" />*@
 
-                            @*<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR </div>*@
-                            @*<div></div>*@
-                            @*</div>*@
 
-                            <div class=col-lg-4>
+                        @*</div>*@
 
-                                @*<button class="loginBtn loginBtn--facebook">Login with facebook</button>*@
+                        @*--------------------------------Login with facebook Google----------------------*@
 
-                                <button class="loginBtn loginBtn--google">Login with Google</button>
 
-                            </div>
-                        </form>
-                    </div>
+                        @*<div class="hr">*@
+                        @*<div></div>*@
+
+                        @*<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR </div>*@
+                        @*<div></div>*@
+                        @*</div>*@
+
+                        <div>
+                            <a href="@ViewBag.response">
+                                <button type="button" class="loginBtn loginBtn--google">Login with Google</button>
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
 
-        }
-    </body>
+    }
+</body>
 </html>
-

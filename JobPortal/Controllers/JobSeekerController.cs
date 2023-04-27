@@ -1087,9 +1087,10 @@ namespace JobPortal.Controllers
                
             }
             dr.Close();
+            
             return await Task.Run(() => View(obj));
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult> FollowCompany( int Companyid)
         {
             if (Session["SeekerCode"] != null)
@@ -1114,13 +1115,13 @@ namespace JobPortal.Controllers
                 {
                     obj.Follow1 = false;
                     obj1.FollowCompany(obj);
-                    return await Task.Run(() => Json(new { status = "false"}));
+                    return await Task.Run(() => Json("false",JsonRequestBehavior.AllowGet));
                 }
                 else
                 {
                     obj.Follow1 = true;
                     obj1.FollowCompany(obj);
-                    return await Task.Run(() => Json(new { status = "true"}));
+                    return await Task.Run(() => Json( "true",JsonRequestBehavior.AllowGet));
                 }
                
                 

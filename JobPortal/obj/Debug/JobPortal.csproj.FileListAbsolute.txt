@@ -788,3 +788,4 @@ C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.
 C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
 C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.dll
 C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\obj\Debug\JobPortal.pdb
+C:\Users\Dell\Desktop\job portal\JOBPORTAL\JobPortal\bin\GoogleAuthentication.dll
