@@ -51,7 +51,27 @@ namespace JobPortalLibrary.Admin
         public string Status { get; set; }
 
 
+        //rita patil
+        public List<AdminUser> Users { get; set; }
+        public string PostJobCode { get; set; }
+        public string JobTitle { get; set; }
+        public string JobDescription { get; set; }
+        public DateTime ApplicationStartDate { get; set; }
+        public string RejectionReason { get; set; }
+        public string Statusname { get; set; }
 
+        public string CompanyName { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public string AboutCompany { get; set; }
+        public string Rating { get; set; }
+        public string Review { get; set; }
+        public int isDelete { get; set; }
+        public int CompanyId { get; set; }
+        public int ReviewId { get; set; }
+        public string Rdate { get; set; }
+        public string EmployerName { get; set; }
+
+        public string StatusType { get; set; }
 
 
     }

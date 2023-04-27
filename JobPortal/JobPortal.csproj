@@ -2397,9 +2397,17 @@
     <Content Include="Views\JobSeeker\Search.cshtml" />
     <Content Include="Views\JobSeeker\SubmitPDF.cshtml" />
     <Content Include="Views\JobSeeker\SubmitApplication.cshtml" />
+    <Content Include="Views\Admin\ApplicationApprovel.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\RejectionReason.cshtml" />
+    <Content Include="Views\Admin\RPAdminEmployeGrid.cshtml" />
+    <Content Include="Views\Admin\RPCompanyGridview.cshtml" />
+    <Content Include="Views\Admin\RPCompanyGridviewDetails.cshtml" />
+    <Content Include="Views\Admin\view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Admin\" />
     <Folder Include="Content\PDF Files\" />
     <Folder Include="Models\" />
   </ItemGroup>

@@ -1,191 +1,609 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
-    <title>JobPortal-Admin Template</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="shortcut icon" href="favicon_16.ico" />
-    <link rel="bookmark" href="favicon_16.ico" />
-    <!-- site Content/css -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link href="~/Content/css/site.min.css" rel="stylesheet" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/Content/css">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/Content/css'> -->
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other Content/js at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="Content/js/html5shiv.Content/js"></script>
-      <script src="Content/js/respond.min.Content/js"></script>
-    <![endif]-->
-    <script type="text/javascript" src="Content/js/site.min.js"></script>
+    <!-- theme meta -->
+    <meta name="theme-name" content="quixlab" />
+
+    <title>Job Portal</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="20x20" href="Content/Admin/images/favicon.png">
+    
+    <!-- Pignose Calender -->
+    <link href="~/Content/Admin/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet" />
+
+    <!-- Chartist -->
+    <link href="~/Content/Admin/plugins/chartist/css/chartist.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css" rel="stylesheet" />
+    <!-- Custom Stylesheet -->
+
+    <link href="~/Content/Admin/css/style.css" rel="stylesheet" />
+
 </head>
 <body>
-    <!--nav-->
-    <nav role="navigation" class="navbar navbar-custom">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="navbar-brand">JobPortal-Admin</a>
-            </div>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="getting-started.html">Getting Started</a></li>
-                    <li class="active"><a href="index.html">Documentation</a></li>
-                    <!-- <li class="disabled"><a href="#">Link</a></li> -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Silverbux <b class="caret"></b></a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li class="dropdown-header">Setting</li>
-                            <li><a href="#">Action</a></li>
-                            <li class="divider"></li>
-                            <li class="active"><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li class="disabled"><a href="#">Signout</a></li>
+
+        Nav header start
+        <!--**********************************
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <b class="logo-abbr"><img src="~/Content/Admin/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/Content/Admin/images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <b> <p style="color:white; font:200px">ADMIN</p></b>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="mdi mdi-email-outline"></i>
+                                <span class="badge badge-pill gradient-1">3</span>
+                            </a>
+                            <div class="drop-down animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-heading d-flex justify-content-between">
+                                    <span class="">3 New Messages</span>
+                                    <a href="javascript:void()" class="d-inline-block">
+                                        <span class="badge badge-pill gradient-1">3</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li class="notification-unread">
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/1.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Saiful Islam</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="notification-unread">
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/2.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Adam Smith</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Can you do me a favour?</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/3.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Barak Obama</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/4.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Hilari Clinton</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hello</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="mdi mdi-bell-outline"></i>
+                                <span class="badge badge-pill gradient-2">3</span>
+                            </a>
+                            <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
+                                <div class="dropdown-content-heading d-flex justify-content-between">
+                                    <span class="">2 New Notifications</span>
+                                    <a href="javascript:void()" class="d-inline-block">
+                                        <span class="badge badge-pill gradient-2">5</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Events near you</h6>
+                                                    <span class="notification-text">Within next 5 days</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Event Started</h6>
+                                                    <span class="notification-text">One hour ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Event Ended Successfully</h6>
+                                                    <span class="notification-text">One hour ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Events to Join</h6>
+                                                    <span class="notification-text">After two days</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown d-none d-md-flex">
+                            <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
+                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                            </a>
+                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li><a href="javascript:void()">English</a></li>
+                                        <li><a href="javascript:void()">Dutch</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="~/Content/Admin/images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
+                                            </a>
+                                        </li>
+
+                                        <hr class="my-2">
+                                        <li>
+                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                        </li>
+                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Dashboard</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="@Url.Action("view","Admin")">Home 1</a></li>
+                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                        </ul>
+                    </li>
+                    @*<li class="mega-menu mega-menu-sm">
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="./layout-blank.html">Blank</a></li>
+                <li><a href="./layout-one-column.html">One Column</a></li>
+                <li><a href="./layout-two-column.html">Two column</a></li>
+                <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
+                <li><a href="./layout-vertical.html">Vertical</a></li>
+                <li><a href="./layout-horizontal.html">Horizontal</a></li>
+                <li><a href="./layout-boxed.html">Boxed</a></li>
+                <li><a href="./layout-wide.html">Wide</a></li>
+
+
+                <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
+                <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
+            </ul>
+        </li>*@
+                    <!--<li class="nav-label">Apps</li>
+    <li>
+        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+        </a>
+        <ul aria-expanded="false">
+            <li><a href="./email-inbox.html">Inbox</a></li>
+            <li><a href="./email-read.html">Read</a></li>
+            <li><a href="./email-compose.html">Compose</a></li>
+        </ul>
+    </li>
+    <li>
+        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
+        </a>
+        <ul aria-expanded="false">
+            <li><a href="./app-profile.html">Profile</a></li>
+            <li><a href="./app-calender.html">Calender</a></li>
+        </ul>
+    </li>
+    <li>
+        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
+        </a>
+        <ul aria-expanded="false">
+            <li><a href="./chart-flot.html">Flot</a></li>
+            <li><a href="./chart-morris.html">Morris</a></li>
+            <li><a href="./chart-chartjs.html">Chartjs</a></li>
+            <li><a href="./chart-chartist.html">Chartist</a></li>
+            <li><a href="./chart-sparkline.html">Sparkline</a></li>
+            <li><a href="./chart-peity.html">Peity</a></li>
+        </ul>
+    </li>
+    <li class="nav-label">UI Components</li>
+    <li>
+        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
+        </a>
+        <ul aria-expanded="false">
+            <li><a href="./ui-accordion.html">Accordion</a></li>
+            <li><a href="./ui-alert.html">Alert</a></li>
+            <li><a href="./ui-badge.html">Badge</a></li>
+            <li><a href="./ui-button.html">Button</a></li>
+            <li><a href="./ui-button-group.html">Button Group</a></li>
+            <li><a href="./ui-cards.html">Cards</a></li>
+            <li><a href="./ui-carousel.html">Carousel</a></li>
+            <li><a href="./ui-dropdown.html">Dropdown</a></li>
+            <li><a href="./ui-list-group.html">List Group</a></li>
+            <li><a href="./ui-media-object.html">Media Object</a></li>
+            <li><a href="./ui-modal.html">Modal</a></li>
+            <li><a href="./ui-pagination.html">Pagination</a></li>
+            <li><a href="./ui-popover.html">Popover</a></li>
+            <li><a href="./ui-progressbar.html">Progressbar</a></li>
+            <li><a href="./ui-tab.html">Tab</a></li>
+            <li><a href="./ui-typography.html">Typography</a></li>-->
+                    <!-- </ul>
+    </li>
+    <li>
+        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="icon-layers menu-icon"></i><span class="nav-text">Components</span>
+        </a>
+        <ul aria-expanded="false"> -->
+                    <!--<li><a href="./uc-nestedable.html">Nestedable</a></li>
+            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
+            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
+            <li><a href="./uc-toastr.html">Toastr</a></li>
+        </ul>
+    </li>-->
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="fa fa-money"></i><span class="nav-text">Site Earning</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="fa fa-briefcase"></i><span class="nav-text">Jobs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            <i class="fa fa-users"></i><span class="nav-text">JobSeeker</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("RPAdminEmployeGrid","Admin")" aria-expanded="false">
+                           @* <a href="@Url.Action("RPAdminEmployeGrid","Admin")">*@
+                                <i class="fa fa-user"> </i>
+                               <span class="nav-text">Employer</span>
+                            @*</a>*@
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("RPCompanyGridview","Admin")" aria-expanded="false">
+                            @*<a href="@Url.Action("RPCompanyGridview","Admin")">*@
+                                <i class="fa fa-industry"></i>
+                                <span class="nav-text">Company Review</span>
+                            @*</a>*@
+                            </a>
+                      </li>
+                    <li>
+                        <a href="widgets.html" aria-expanded="false">
+                            @*<a href="@Url.Action("RPCompanyGridview","Admin")">*@
+                                <i class="icon-badge menu-icon"></i><span class="nav-text">Add/Manage Subscriptions</span>
+                            </a>
+                            </a>
+                     </li>
+                    <li class="nav-label">Forms</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./form-basic.html">Basic Form</a></li>
+                            <li><a href="./form-validation.html">Form Validation</a></li>
+                            <li><a href="./form-step.html">Step Form</a></li>
+                            <li><a href="./form-editor.html">Editor</a></li>
+                            <li><a href="./form-picker.html">Picker</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Table</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
+                            <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Pages</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./page-login.html">Login</a></li>
+                            <li><a href="./page-register.html">Register</a></li>
+                            <li><a href="./page-lock.html">Lock Screen</a></li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="./page-error-404.html">Error 404</a></li>
+                                    <li><a href="./page-error-403.html">Error 403</a></li>
+                                    <li><a href="./page-error-400.html">Error 400</a></li>
+                                    <li><a href="./page-error-500.html">Error 500</a></li>
+                                    <li><a href="./page-error-503.html">Error 503</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
-
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-    <!--header-->
-    <div class="container-fluid">
-        <!--documents-->
-        <div class="row row-offcanvas row-offcanvas-left">
-            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
-                <ul class="list-group panel">
-                    <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>SIDE PANEL</b></li>
-                    <li class="list-group-item"><input type="text" class="form-control search-query" placeholder="Search Something"></li>
-                    <li class="list-group-item"><a href="index.html"><i class="glyphicon glyphicon-home"></i>Dashboard </a></li>
-                    <li class="list-group-item"><a href="icons.html"><i class="glyphicon glyphicon-usd"></i>Site Earning </a></li>
-                    <li class="list-group-item"><a href="list.html"><i class="glyphicon glyphicon-briefcase"></i>Jobs </a></li>
-                    <li class="list-group-item"><a href="forms.html"><i class="glyphicon glyphicon-list-alt"></i>JobSeeker</a></li>
-                    <li class="list-group-item"><a href="alerts.html"><i class="glyphicon glyphicon glyphicon-user"></i>Employers</li>
-                    <li class="list-group-item"><a href="timeline.html"><i class="glyphicon glyphicon-indent-left"></i>Company Reviews</a></li>
-                    <li class="list-group-item"><a href="calendars.html"><i class="glyphicon glyphicon-calendar"></i>ADD/Manage Subscriptions</a></li>
-                    <li class="list-group-item"><a href="typography.html"><i class="glyphicon glyphicon-font"></i>Typography</a></li>
-                    <li class="list-group-item"><a href="footers.html"><i class="glyphicon glyphicon-minus"></i>Footers</a></li>
-                    <li class="list-group-item"><a href="panels.html"><i class="glyphicon glyphicon-list-alt"></i>Panels</a></li>
-                    <li class="list-group-item"><a href="navs.html"><i class="glyphicon glyphicon-th-list"></i>Navs</a></li>
-                    <li class="list-group-item"><a href="colors.html"><i class="glyphicon glyphicon-tint"></i>Colors</a></li>
-                    <li class="list-group-item"><a href="flex.html"><i class="glyphicon glyphicon-th"></i>Flex</a></li>
-                    <li class="list-group-item"><a href="login.html"><i class="glyphicon glyphicon-lock"></i>Login</a></li>
-                    <li>
-                        <a href="#demo3" class="list-group-item " data-toggle="collapse">Item 3  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                        <div class="collapse" id="demo3">
-                            <a href="#SubMenu1" class="list-group-item" data-toggle="collapse">Subitem 1  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                            <div class="collapse list-group-submenu" id="SubMenu1">
-                                <a href="#" class="list-group-item">Subitem 1 a</a>
-                                <a href="#" class="list-group-item">Subitem 2 b</a>
-                                <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse">Subitem 3 c <span class="glyphicon glyphicon-chevron-right"></span></a>
-                                <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-                                    <a href="#" class="list-group-item">Sub sub item 1</a>
-                                    <a href="#" class="list-group-item">Sub sub item 2</a>
-                                </div>
-                                <a href="#" class="list-group-item">Subitem 4 d</a>
-                            </div>
-                            <a href="javascript:;" class="list-group-item">Subitem 2</a>
-                            <a href="javascript:;" class="list-group-item">Subitem 3</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#demo4" class="list-group-item " data-toggle="collapse">Item 4  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    <li class="collapse" id="demo4">
-                        <a href="" class="list-group-item">Subitem 1</a>
-                        <a href="" class="list-group-item">Subitem 2</a>
-                        <a href="" class="list-group-item">Subitem 3</a>
-                    </li>
-                    </li>
-                </ul>
             </div>
-            <div class="col-xs-12 col-sm-9 content">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a> Panel Title</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="content-row">
-                            <h2 class="content-row-title">
-                                Color Swatches
-                                <span>(<b>More Colors See</b>: <a href="colors.html">Flat UI Color Picker</a>)</span>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        <!--**********************************
+            Content body start
+        ***********************************-->
+       
+                @*</div>
+            </div>
+        </div>*@
+
+
+
+
                 @RenderBody()
-            </div> <!--footer-->
-            <div class="site-footer">
-                <div class="container">
-                    <div class="download">
-                        <span class="download__infos">You simply have to <b>try it</b>.</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="btn btn-primary" href="https://github.com/silverbux/bootflat-admin/archive/master.zip">Download Bootflat-Admin</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <!-- SmartAddon BEGIN -->
-                        <script type="text/javascript">
-                            (function () {
-                                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
-                                s.src = 'http://s1' + '.smartaddon.com/share_addon.js';
-                                var j = document.getElementsByTagName('script')[0]; j.parentNode.insertBefore(s, j);
-                            })();
-                        </script>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
-                        <a href="http://www.smartaddon.com/?share" title="Share Button" onclick="return sa_tellafriend('','bookmarks')"><img alt="Share" src="http://bootflat.github.io/img/share.gif" border="0" /></a>
-                        <!-- SmartAddon END -->
-                    </div>
-                    <hr class="dashed" />
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h3>Get involved</h3>
-                            <p>Bootflat is hosted on <a href="https://github.com/silverbux/bootflat-admin" target="_blank" rel="external nofollow">GitHub</a> and open for everyone to contribute. Please give us some feedback and join the development!</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>Contribute</h3>
-                            <p>You want to help us and participate in the development or the documentation? Just fork Bootflat on <a href="https://github.com/silverbux/bootflat-admin" target="_blank" rel="external nofollow">GitHub</a> and send us a pull request.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>Found a bug?</h3>
-                            <p>Open a <a href="https://github.com/silverbux/bootflat-admin/issues" target="_blank" rel="external nofollow">new issue</a> on GitHub. Please search for existing issues first and make sure to include all relevant information.</p>
-                        </div>
-                    </div>
-                    <hr class="dashed" />
-                    <div class="row">
-                        @*<div class="col-md-6">
-                                <h3>Talk to us</h3>
-                                <ul>
-                                    <li>Tweet us at <a href="https://twitter.com" target="_blank">@YourTwitter</a>&nbsp;&nbsp;&nbsp;&nbsp;Email us at <span class="connect">info@yourdomain.com</span></li>
-                                    <li>
-                                        <a title="Twitter" href="https://twitter.com" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe121"></i></a>
-                                        <a title="Facebook" href="https://www.facebook.com" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe10b"></i></a>
-                                        <a title="Google+" href="https://plus.google.com/" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe110"></i></a>
-                                        <a title="Github" href="https://github.com/alexquiambao" target="_blank" rel="external nofollow"><i class="icon" data-icon="&#xe10e"></i></a>
-                                    </li>
-                                </ul>
-                            </div>*@
-                        <div class="col-md-6">
-                            <!-- Begin MailChimp Signup Form -->
-                            <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/Content/css">
-                            <div id="mc_embed_signup">
-                                <h3 style="margin-bottom: 15px;">Newsletter</h3>
-                                <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
-                                    <input style="margin-bottom: 10px;" type="email" value="" name="EMAIL" class="email form-control" id="mce-EMAIL" placeholder="email address" required>
-                                    <span class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary"></span>
-                                </form>
+                @*<div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="social-graph-wrapper widget-facebook">
+                                <span class="s-icon"><i class="fa fa-facebook"></i></span>
                             </div>
-                            <!--End mc_embed_signup-->
+                            <div class="row">
+                                <div class="col-6 border-right">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">89k</h4>
+                                        <p class="m-0">Friends</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">119k</h4>
+                                        <p class="m-0">Followers</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <hr class="dashed" />
-                    <div class="copyright clearfix">
-                        <p><b>Bootflat</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="getting-started.html">Getting Started</a>&nbsp;&bull;&nbsp;<a href="index.html">Documentation</a>&nbsp;&bull;&nbsp;<a href="https://github.com/Bootflat/Bootflat.UI.Kit.PSD/archive/master.zip">Free PSD</a>&nbsp;&bull;&nbsp;<a href="colors.html">Color Picker</a></p>
-                        <p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html" target="_blank" rel="external nofollow">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="social-graph-wrapper widget-linkedin">
+                                <span class="s-icon"><i class="fa fa-linkedin"></i></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 border-right">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">89k</h4>
+                                        <p class="m-0">Friends</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">119k</h4>
+                                        <p class="m-0">Followers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="social-graph-wrapper widget-googleplus">
+                                <span class="s-icon"><i class="fa fa-google-plus"></i></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 border-right">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">89k</h4>
+                                        <p class="m-0">Friends</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">119k</h4>
+                                        <p class="m-0">Followers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="social-graph-wrapper widget-twitter">
+                                <span class="s-icon"><i class="fa fa-twitter"></i></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 border-right">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">89k</h4>
+                                        <p class="m-0">Friends</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                        <h4 class="m-1">119k</h4>
+                                        <p class="m-0">Followers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>*@
+            <!-- #/ container -->
+        
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
             </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <!--**********************************
+        Scripts
+    ***********************************-->
+
+    <script src="~/Content/Admin/plugins/common/common.min.js"></script>
+
+    <script src="~/Content/Admin/js/custom.min.js"></script>
+    <script src="~/Content/Admin/js/settings.js"></script>
+    <script src="~/Content/Admin/js/gleek.js"></script>
+    <script src="~/Content/Admin/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="~/Content/Admin/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/Content/Admin/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="~/Content/Admin/plugins/d3v3/index.js"></script>
+    <script src="~/Content/Admin/plugins/topojson/topojson.min.js"></script>
+    <script src="~/Content/Admin/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="~/Content/Admin/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Content/Admin/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="~/Content/Admin/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/Admin/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="~/Content/Admin/plugins/chartist/js/chartist.min.js"></script>
+    <script src="~/Content/Admin/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+
+
+    <script src="~/Content/Admin/js/dashboard/dashboard-1.js"></script>
+
 </body>
 </html>
