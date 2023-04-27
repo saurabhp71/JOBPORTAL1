@@ -1,0 +1,92 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+<div>
+    <h4>SeekerUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.HiddenFor(model => model.SeekerId)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.SeekerId)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.Seekercode)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.Seekercode)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.SeekerName)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.SeekerName)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResumePDF)
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        
+        <dt>
+            @Html.HiddenFor(model => model.PostJobCode)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.PostJobCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppliedJobID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppliedJobID)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.UploadFile)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.UploadFile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
