@@ -20,6 +20,7 @@ namespace JobPortal.Controllers
 
         //---------------------------mahesh start-------------------------//
         public string fileName;
+        string Code;
         public string jobseekercode;
         // GET: Employer
         public ActionResult Index()
@@ -214,8 +215,8 @@ namespace JobPortal.Controllers
                     obj.Address = dr["Address"].ToString();
                     obj.Salary = dr["Salary"].ToString();
                     obj.TotalExperience = dr["TotalExperience"].ToString();
-                    //obj.ExpectedJoiningDate =Convert.ToDateTime(dr["JoiningDate"].ToString());
-                    //obj.ApplicationEndDate = Convert.ToDateTime(dr["JoiningDate"].ToString());
+                    obj.ExpectedJoiningDate1=dr["ExpectedJoiningDate"].ToString();
+                    obj.ApplicationEndDate1=dr["ApplicationEndDate"].ToString();
                 }
                 dr.Close();
                 return await Task.Run(() => PartialView(obj));
@@ -419,10 +420,17 @@ namespace JobPortal.Controllers
                 return await Task.Run(() => View("Register", "Account"));
             }
         }
+        [HttpGet]
         public async Task <ActionResult> RepostJob(EmployerUser obj, string PostJobCode)
         {
             if (Session["Employercode"] != null)
             {
+                JobLocation();
+                QualificationRequire();
+                AllList();
+                //  JobCategory();
+                JobBenefits();
+                Company();
                 string Employercode = Session["Employercode"].ToString();
                 //EmployerUser obj = new EmployerUser();
                 obj.PostJobCode = PostJobCode;
@@ -432,7 +440,7 @@ namespace JobPortal.Controllers
                 while (dr.Read())
                 {
                     //obj.PostJobCode = dr["PostJobCode"].ToString();
-                    obj.CompanyId = Convert.ToInt32(dr["CompanyId"].ToString());
+                    //obj.CompanyId = Convert.ToInt32(dr["CompanyId"].ToString());
                     obj.CompanyName = dr["CompanyName"].ToString();
                     obj.ContactPerson = dr["ContactPerson"].ToString();
                     obj.JobTitle = dr["JobTitle"].ToString();
@@ -449,7 +457,7 @@ namespace JobPortal.Controllers
                     obj.RequiredQualificationId = dr["RequiredQualificationId"].ToString();
                 }
                 dr.Close();
-
+               
 
                 return await Task.Run(() => View(obj));
             }
@@ -457,8 +465,347 @@ namespace JobPortal.Controllers
             {
                 return await Task.Run(() => View("Register", "Account"));
             }
+
+
         }
+        [HttpPost]
+        public async Task<ActionResult> RepostJob(EmployerUser ObjEmployerUser)
+        {
+            if (Session["Employercode"]!=null)
+            {
+                string employerCode = Session["Employercode"].ToString();
+                ObjEmployerUser.Employercode = employerCode;
+                PostJob_Code();
+                ObjEmployerUser.PostJobCode = Code;
+                ObjEmployerUser.ApplicationStartDate = DateTime.Now;
+                ObjEmployerUser.City=string.Join(",", ObjEmployerUser.Locationlist);
+                ObjEmployerUser.RequireQualification=string.Join(",", ObjEmployerUser.QualificationList);
+                ObjEmployerUser.JobBenifit=string.Join(",", ObjEmployerUser.JobBenifitList);
+                BALEmployer objB = new BALEmployer();
+                if (ObjEmployerUser.SalaryType == "Fixed")
+                {
+                    objB.Editjob(ObjEmployerUser);
+                    return await Task.Run(() => RedirectToAction("jobgrid"));
+                }
+                if (ObjEmployerUser.SalaryType == "Flexible")
+                {
+                    ObjEmployerUser.Salary = ObjEmployerUser.Min + " - " + ObjEmployerUser.Max;
+                    objB.Editjob(ObjEmployerUser);
+                    return await Task.Run(() => RedirectToAction("jobgrid"));
+                }
+                if (ObjEmployerUser.SalaryType == "Not Disclosed")
+                {
+                    ObjEmployerUser.Salary = "Not Disclosed";
+                    objB.Editjob(ObjEmployerUser);
+                    return await Task.Run(() => RedirectToAction("jobgrid"));
+                }
+
+
+            }
+
+            else
+            {
+                return await Task.Run(() => RedirectToAction("RepostJob"));
+
+            }
+            return await Task.Run(() => View("Register", "Account"));
+        }
+
         //---------------------------mahesh end-------------------------//
+        //-----------------------------Mitali Start--------------------------//
+        [HttpGet]
+        public async Task<ActionResult> JobRegister()
+        {
+            if (Session["Employercode"]!=null)
+            {
+                string EmployerCode = Session["Employercode"].ToString();
+
+
+                JobLocation();
+                QualificationRequire();
+                AllList();
+                //  JobCategory();
+                JobBenefits();
+                Company();
+
+                return await Task.Run(() => View());
+            }
+            else
+            {
+                return await Task.Run(() => View("Register", "Account"));
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> JobRegister(EmployerUser ObjEmployerUser)
+        {
+            if (Session["Employercode"]!=null)
+            {
+                string employerCode = Session["Employercode"].ToString();
+                ObjEmployerUser.Employercode = employerCode;
+                PostJob_Code();
+                ObjEmployerUser.PostJobCode = Code;
+                ObjEmployerUser.ApplicationStartDate = DateTime.Now;
+                ObjEmployerUser.City=string.Join(",", ObjEmployerUser.Locationlist);
+                ObjEmployerUser.RequireQualification=string.Join(",", ObjEmployerUser.QualificationList);
+                ObjEmployerUser.JobBenifit=string.Join(",", ObjEmployerUser.JobBenifitList);
+                BALEmployer objB = new BALEmployer();
+                if (ObjEmployerUser.SalaryType == "Fixed")
+                {
+                    objB.JobRegister(ObjEmployerUser);
+                    return await Task.Run(() => RedirectToAction("JobRegister"));
+                }
+                if (ObjEmployerUser.SalaryType == "Flexible")
+                {
+                    ObjEmployerUser.Salary = ObjEmployerUser.Min + " - " + ObjEmployerUser.Max;
+                    objB.JobRegister(ObjEmployerUser);
+                    return await Task.Run(() => RedirectToAction("JobRegister"));
+                }
+                if (ObjEmployerUser.SalaryType == "Not Disclosed")
+                {
+                    ObjEmployerUser.Salary = "Not Disclosed";
+                    objB.JobRegister(ObjEmployerUser);
+                    return await Task.Run(() => RedirectToAction("JobRegister"));
+                }
+
+
+            }
+
+            else
+            {
+                return await Task.Run(() => RedirectToAction("JobRegister"));
+
+            }
+            return await Task.Run(() => View("Register", "Account"));
+        }
+        public async Task<ActionResult> PostJob_Code()
+        {
+
+            EmployerUser objB = new EmployerUser();
+
+            BALEmployer objC = new BALEmployer();
+            SqlDataReader dr;
+            dr=objC.PostJobCode();
+            while (dr.Read())
+            {
+
+                int PostJobcode = Convert.ToInt32(dr["PostJobId"].ToString());
+                PostJobcode=PostJobcode + 1;
+                string PostJobId = "PJC";
+                Code=PostJobId+PostJobcode;
+                //objB.PostJobCode = PostJobcode;
+
+
+            }
+            dr.Close();
+            return await Task.Run(() => View());
+        }
+        public async Task<ActionResult> Company()                              // regular dropdown
+        {
+            if (Session["Employercode"]!=null)
+            {
+                string EmployerCode = Session["Employercode"].ToString();
+
+
+                BALEmployer objB = new BALEmployer();
+                EmployerUser obj = new EmployerUser();
+                obj.Employercode = EmployerCode;
+                DataSet ds = objB.GetCompany(obj);
+                List<SelectListItem>
+                Companylist = new List<SelectListItem>();
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    Companylist.Add(new SelectListItem
+                    {
+                        Text=dr["CompanyName"].ToString(),
+                        Value=dr["CompanyId"].ToString()
+                    });
+                }
+                ViewBag.CompanyId = Companylist;
+                return await Task.Run(() => View());
+            }
+            else
+            {
+                return await Task.Run(() => View("Register", "Account"));
+            }
+        }
+        public async Task<ActionResult> JobBenefits()                        //multiselect dropdown
+        {
+            BALEmployer objB = new BALEmployer();
+            EmployerUser obj = new EmployerUser();
+            DataSet ds = objB.GetJobBenifits();
+            List<SelectListItem>
+            Benifitlist = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Benifitlist.Add(new SelectListItem
+                {
+                    Text=dr["JobBenefit"].ToString(),
+                    Value=dr["JobBenefitId"].ToString()
+                });
+            }
+            ViewBag.JobBenifit = new SelectList(Benifitlist, "Value", "Text");
+            return await Task.Run(() => View());
+        }
+        //[HttpGet]
+        public JsonResult JobCategory(int companyid)                              // regular dropdown
+        {
+            BALEmployer objB = new BALEmployer();
+            DataSet ds = objB.GetJobCategory(companyid);
+            List<SelectListItem>
+            Categorylist = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Categorylist.Add(new SelectListItem
+                {
+                    Text=dr["JobCategory"].ToString(),
+                    Value=dr["JobCategoryId"].ToString()
+                });
+
+            }
+
+            return Json(Categorylist, JsonRequestBehavior.AllowGet);
+        }
+        public async Task<ActionResult> JobLocation()                        //multiselect dropdown
+        {
+            BALEmployer objB = new BALEmployer();
+            EmployerUser obj = new EmployerUser();
+            DataSet ds = objB.GetLocation();
+            List<SelectListItem>
+            Locationlist = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Locationlist.Add(new SelectListItem
+                {
+                    Text=dr["Location"].ToString(),
+                    Value=dr["CityId"].ToString()
+                });
+            }
+            ViewBag.City = new SelectList(Locationlist, "Value", "Text");
+            return await Task.Run(() => View());
+
+        }
+
+        public async Task<ActionResult> AllList()                                                                // hardcoded dropdown
+        {
+            var list = new List<string>() { "In Office", "Work from Home", "On Field", "Hybrid" };
+            ViewBag.JobTypelist = list;
+            var list1 = new List<string>() { "Day", "Night", "US", "12hrs" };
+            ViewBag.WorkingShiftlist = list1;
+            var list2 = new List<string>() { "Per Year", "Per Month", "Per Week", "Per Day" };
+            ViewBag.SalaryRangeList = list2;
+            //var list3 = new List<string>() { "Per Year", "Per Month", "Per Week", "Per Day" };
+            //ViewBag.Fixsalarylist = list3;
+            return await Task.Run(() => View());
+        }
+
+        public async Task<ActionResult> QualificationRequire()                        //multiselect dropdown
+        {
+            BALEmployer objB = new BALEmployer();
+            EmployerUser obj = new EmployerUser();
+            DataSet ds = objB.QualificationRequired();
+            List<SelectListItem>
+            Qualificationlist = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Qualificationlist.Add(new SelectListItem
+                {
+                    Text=dr["RequireQualification"].ToString(),
+                    Value=dr["RequireQualificationId"].ToString()
+                });
+            }
+            ViewBag.Requirequalification = new SelectList(Qualificationlist, "Value", "Text");
+            return await Task.Run(() => View());
+        }
+        //-----------------------------------------Mitali End----------------------------------//
+        //-----------------------------------------Kartik Start--------------------------------//
+        public async Task<ActionResult> CompanyRegistration()
+        {
+            if (Session["Employercode"]!=null)
+            {
+                string EmployerCode = Session["Employercode"].ToString();
+
+                CompanyCategory();
+                KTJobLocation();
+                return await Task.Run(() => View());
+
+            }
+
+            else
+            {
+                return await Task.Run(() => View("Register", "Account"));
+            }
+
+        }
+        [HttpPost]
+        public async Task<ActionResult> CompanyRegistration(EmployerUser objEmployerUser, HttpPostedFileBase CompanyLogo)
+        {
+            //obj.Employercode = "EMP0015";
+            if (Session["Employercode"]!=null)
+            {
+                string employercode = Session["Employercode"].ToString();
+                objEmployerUser.Employercode=employercode;
+                if (CompanyLogo != null && CompanyLogo.ContentLength > 0)
+                {
+                    string image = Path.GetFileName(CompanyLogo.FileName);
+                    string imgpath = Path.Combine(Server.MapPath("~/Content/Photos"), image);
+                    CompanyLogo.SaveAs(imgpath);
+                }
+                objEmployerUser.RegistrationDate = DateTime.Now;
+
+                BALEmployer obj1 = new BALEmployer();
+                obj1.KTCompanyRegisteration(objEmployerUser);
+                return await Task.Run(() => RedirectToAction("CompanyRegistration"));
+            }
+
+            else
+            {
+                return await Task.Run(() => View("Register", "Account"));
+            }
+            
+
+        }
+
+
+
+
+        [HttpPost]
+        public JsonResult CompanyCategory()
+        {
+            BALEmployer objUser = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = objUser.KTCompanyCategoryBind();
+            List<SelectListItem> Industrylist = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Industrylist.Add(new SelectListItem
+                {
+                    Text = dr["IndustryName"].ToString(),
+                    Value = dr["IndustryId"].ToString()
+                });
+            }
+            ViewBag.Industry = Industrylist;
+            return Json(Industrylist, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<ActionResult> KTJobLocation()
+        {
+            BALEmployer objUser = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = objUser.Locationbind();
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = dr["Location"].ToString(),
+                    Value = dr["CityId"].ToString()
+                });
+            }
+            ViewBag.City = new SelectList(list, "Value", "Text");
+            return await Task.Run(() => View());
+        }
+        //-----------------------------------------Kartik End----------------------------------//
 
     }
 }

@@ -12,7 +12,7 @@ namespace JobPortalLibrary.Controller
 {
     public class BALAccount
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=LAPTOP-4MS3KTQO;Initial Catalog=\"Job Portal\";Integrated Security=True");
 
         //--------------------------------------Saurabh Start--------------------------------//
         public void SeekerRegister(AccountUser objaccount)

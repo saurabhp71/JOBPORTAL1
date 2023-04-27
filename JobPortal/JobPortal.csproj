@@ -2388,6 +2388,8 @@
     <Content Include="Views\Employer\jobgrid.cshtml" />
     <Content Include="Views\Employer\RepostJob.cshtml" />
     <Content Include="Views\Employer\viewphonedetails.cshtml" />
+    <Content Include="Views\Employer\JobRegister.cshtml" />
+    <Content Include="Views\Employer\CompanyRegistration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

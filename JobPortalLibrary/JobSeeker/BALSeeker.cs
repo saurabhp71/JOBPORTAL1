@@ -12,7 +12,10 @@ namespace JobPortalLibrary.JobSeeker
 {
     public class BALSeeker
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        //saurabh//
+      //  SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        //mitali//
+        SqlConnection con = new SqlConnection("Data Source=LAPTOP-4MS3KTQO;Initial Catalog=\"Job Portal\";Integrated Security=True");
 
 
         //--------------------------------------Saurabh Start--------------------------------//
