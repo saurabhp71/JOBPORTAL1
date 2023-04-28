@@ -2364,7 +2364,6 @@
     <Content Include="Views\Shared\JobSeeker_Layout.cshtml" />
     <Content Include="Views\Shared\Employer_Layout.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
-    <Content Include="Views\Employer\EmployeerIndex.cshtml" />
     <Content Include="Views\Shared\Account_Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\JobSeeker\SeekerIndex.cshtml" />
@@ -2383,15 +2382,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\JobSeeker\AllCompany.cshtml" />
     <Content Include="Views\JobSeeker\CompanysDetails.cshtml" />
-    <Content Include="Views\Employer\Addcandidate.cshtml" />
-    <Content Include="Views\Employer\Approve.cshtml" />
-    <Content Include="Views\Employer\Approved.cshtml" />
-    <Content Include="Views\Employer\Deletecandidate.cshtml" />
-    <Content Include="Views\Employer\Jobapplystud.cshtml" />
-    <Content Include="Views\Employer\JobDetails.cshtml" />
-    <Content Include="Views\Employer\jobgrid.cshtml" />
-    <Content Include="Views\Employer\RepostJob.cshtml" />
-    <Content Include="Views\Employer\viewphonedetails.cshtml" />
     <Content Include="Views\JobSeeker\ApplicationGrid.cshtml" />
     <Content Include="Views\JobSeeker\ApplyJobs.cshtml" />
     <Content Include="Views\JobSeeker\Search.cshtml" />
@@ -2404,6 +2394,18 @@
     <Content Include="Views\Admin\RPCompanyGridview.cshtml" />
     <Content Include="Views\Admin\RPCompanyGridviewDetails.cshtml" />
     <Content Include="Views\Admin\view.cshtml" />
+    <Content Include="Views\Employer\Addcandidate.cshtml" />
+    <Content Include="Views\Employer\Approve.cshtml" />
+    <Content Include="Views\Employer\Approved.cshtml" />
+    <Content Include="Views\Employer\CompanyRegistration.cshtml" />
+    <Content Include="Views\Employer\Deletecandidate.cshtml" />
+    <Content Include="Views\Employer\EmployeerIndex.cshtml" />
+    <Content Include="Views\Employer\Jobapplystud.cshtml" />
+    <Content Include="Views\Employer\JobDetails.cshtml" />
+    <Content Include="Views\Employer\jobgrid.cshtml" />
+    <Content Include="Views\Employer\JobRegister.cshtml" />
+    <Content Include="Views\Employer\RepostJob.cshtml" />
+    <Content Include="Views\Employer\viewphonedetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

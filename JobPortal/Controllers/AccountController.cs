@@ -189,7 +189,7 @@ namespace JobPortal.Controllers
 
                     if (drA.HasRows)
                     {
-                        while (drE.Read())
+                        while (drA.Read())
                         {
 
                             //employeerCode = drE["Employercode"].ToString();
@@ -197,7 +197,7 @@ namespace JobPortal.Controllers
                             //TempData["MessageLogin"] = "Login Successfully...!!";
                             //Session["Employercode"] = employeerCode;
                             //Session["EmployerName"] = employername;
-                            return RedirectToAction("EmployeerIndex", "Employer");
+                            return RedirectToAction("view", "Admin");
                         }
                         drE.Close();
                     }
