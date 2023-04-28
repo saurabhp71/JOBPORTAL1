@@ -14,6 +14,7 @@ namespace JobPortalLibrary.Controller
     {
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
 
+
         //--------------------------------------Saurabh Start--------------------------------//
         public void SeekerRegister(AccountUser objaccount)
         {
@@ -185,8 +186,11 @@ namespace JobPortalLibrary.Controller
         //--------------------employerlogin---------------------------------------------------
         public SqlDataReader LoginEmp(AccountUser objaccount)
         {
-            con.Close();
-            con.Open();
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+
+            }
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "LoginEmployer");
@@ -200,8 +204,11 @@ namespace JobPortalLibrary.Controller
         //--------------------Adminlogin---------------------------------------------------
         public SqlDataReader LoginAdmin(AccountUser objaccount)
         {
-            con.Close();
-            con.Open();
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+
+            }
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Loginadmin");

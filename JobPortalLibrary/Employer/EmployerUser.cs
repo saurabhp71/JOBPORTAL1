@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Xml.Linq;
 using System.Web;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace JobPortalLibrary.Employer
 {
@@ -106,11 +107,11 @@ namespace JobPortalLibrary.Employer
         public int CollectResume { get; set; }
 
         public string TotalExperience { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime ExpectedJoiningDate { get; set; }
 
         public DateTime ApplicationStartDate { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime ApplicationEndDate { get; set; }
 
         public int StatusId { get; set; }
@@ -204,12 +205,25 @@ namespace JobPortalLibrary.Employer
         public string Min { get; set; }
         public string Max { get; set; }
         public string Resume { get; set; }
-       // public HttpPostedFileBase myFile { get; set; }
+        // public HttpPostedFileBase myFile { get; set; }
         public int HSC { get; set; }
         public int HSCBoard { get; set; }
         public int SSC { get; set; }
         public int SSCBoard { get; set; }
         //---mahesh property------//
+
+        public string ExpectedJoiningDate1 { get; set; }
+
+        public string ApplicationEndDate1 { get; set; }
+        //------------------------------------------Kartik Start-------------------------------------//
+        [Required(ErrorMessage = "Company Email Required..!")]
+        public string CompanyEmail { get; set; }
+        public string CityId { get; set; }
+        [Required(ErrorMessage = "HR Number Required..!")]
+        public string HRNumber { get; set; }
+        [Required(ErrorMessage = "No.Of Employees Required..!")]
+        public string NoOfEmployees { get; set; }
+        //------------------------------------------Kartik End---------------------------------------//
 
 
     }
