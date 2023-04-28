@@ -16,9 +16,9 @@ namespace JobPortal.Controllers
     {
         //--------------------------------------Saurabh Start--------------------------------//
         // GET: Account
-        string SeekerCode;
+        string seekerCode;
         string IMG;
-        string EmployeerCode;
+        string employeerCode;
         
         public ActionResult Index()
         {
@@ -40,38 +40,54 @@ namespace JobPortal.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(AccountUser obj)
         {
-            Category();
             if (ModelState.IsValid)
             {
-                Code();
-                obj.DateOfRegistration = DateTime.Now;
-                if (obj.Category == "I am Seeker")
+                Category();
+                BALAccount objs = new BALAccount();
+                SqlDataReader drs;
+                drs = objs.forgetpasswords(obj);
+                BALAccount obje = new BALAccount();
+                SqlDataReader dre;
+                dre = obje.forgetpasswordE(obj);
+                BALAccount objA = new BALAccount();
+                SqlDataReader drA;
+                drA = objA.Adminemail(obj);
+                if (drs.HasRows || dre.HasRows || drA.HasRows)
                 {
-                    obj.Code = SeekerCode;
-                    obj.ResumePDF = "null";
-                   
-                    BALAccount objsave = new BALAccount();
-                    objsave.SeekerRegister(obj);
-                    objsave.EducationDetails(obj);
-                    objsave.EmploymentDetails(obj);
-                    objsave.ProjectDetails(obj);
-                    objsave.JobAlertSave(obj);
-                    Session["SeekerCode"] = obj.Code;
-                    Session["SeekerName"] = obj.SeekerName;
-                    Session["ProfileIMG"] = IMG;
-                    return RedirectToAction("SeekerDetails","JobSeeker");
+                    ViewBag.Message = "Account already created..!";
+                    return await Task.Run(() => View("Register"));
                 }
-                if (obj.Category == "I am Employeer")
+                else
                 {
-                    obj.Code = EmployeerCode;
+                    Code();
+                    obj.DateOfRegistration = DateTime.Now;
+                    if (obj.Category == "I am Seeker")
+                    {
+                        obj.Seekercode = seekerCode;
+                        obj.ResumePDF = "null";
 
-                    BALAccount objsave = new BALAccount();
-                    objsave.EmployeerRegister(obj);
-                    Session["Employercode"] = obj.Code;
-                    Session["EmployerName"] = obj.SeekerName;
-                    return RedirectToAction("EmployeerIndex","Employer");
+                        BALAccount objsave = new BALAccount();
+                        objsave.SeekerRegister(obj);
+                        objsave.EducationDetails(obj);
+                        objsave.EmploymentDetails(obj);
+                        objsave.ProjectDetails(obj);
+                        objsave.JobAlertSave(obj);
+                        Session["SeekerCode"] = obj.Code;
+                        Session["SeekerName"] = obj.SeekerName;
+                        Session["ProfileIMG"] = IMG;
+                        return RedirectToAction("SeekerDetails", "JobSeeker");
+                    }
+                    if (obj.Category == "I am Employeer")
+                    {
+                        obj.Employercode = employeerCode;
+
+                        BALAccount objsave = new BALAccount();
+                        objsave.EmployeerRegister(obj);
+                        Session["Employercode"] = obj.Code;
+                        Session["EmployerName"] = obj.SeekerName;
+                        return RedirectToAction("EmployeerIndex", "Employer");
+                    }
                 }
-               
             }
             return await Task.Run(() => View("Register"));
         }
@@ -87,7 +103,7 @@ namespace JobPortal.Controllers
                 IMG = dr["ProfileIMG"].ToString();
                 seekercode = seekercode + 1;
                 string ID = "JSC00";
-                SeekerCode = ID + seekercode;
+                seekerCode = ID + seekercode;
 
             }
             dr.Close();
@@ -99,7 +115,7 @@ namespace JobPortal.Controllers
                 int employeercode = Convert.ToInt32(dt["EmployeerId"].ToString());
                 employeercode = employeercode + 1;
                 string ID = "EMP00";
-                EmployeerCode = ID + employeercode;
+                employeerCode = ID + employeercode;
 
             }
             dt.Close();
@@ -115,13 +131,14 @@ namespace JobPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Login()
         {
+            Category();
             return await Task.Run(() => View());
 
         }
         [HttpPost]
         public async Task<ActionResult> Login(AccountUser log)
         {
-
+            Category();
             string seekercode = null;
             string seekername = null;
             string employername = null;
@@ -144,7 +161,7 @@ namespace JobPortal.Controllers
                 }
             }
 
-            else
+            if(dr.HasRows == false) 
             {
                 BALAccount objE = new BALAccount();
                 SqlDataReader drE;
@@ -155,18 +172,49 @@ namespace JobPortal.Controllers
                     while (drE.Read())
                     {
 
-                        EmployeerCode = drE["Employercode"].ToString();
+                        employeerCode = drE["Employercode"].ToString();
                         employername = drE["EmployerName"].ToString();
                         TempData["MessageLogin"] = "Login Successfully...!!";
-                        Session["Employercode"] = EmployeerCode;
+                        Session["Employercode"] = employeerCode;
                         Session["EmployerName"] = employername;
                         return RedirectToAction("EmployeerIndex","Employer");
                     }
                     drE.Close();
                 }
-                TempData["Message"] = "Please Enter Correct EmailId And Password....!!!";
+                if( drE.HasRows == false)
+                {
+                    BALAccount objA = new BALAccount();
+                    SqlDataReader drA;
+                    drA = obj.LoginAdmin(log);
+
+                    if (drA.HasRows)
+                    {
+                        while (drE.Read())
+                        {
+
+                            //employeerCode = drE["Employercode"].ToString();
+                            //employername = drE["EmployerName"].ToString();
+                            //TempData["MessageLogin"] = "Login Successfully...!!";
+                            //Session["Employercode"] = employeerCode;
+                            //Session["EmployerName"] = employername;
+                            return RedirectToAction("EmployeerIndex", "Employer");
+                        }
+                        drE.Close();
+                    }
+                    else
+                    {
+                        TempData["Message"] = "Please Enter Correct EmailId And Password....!!!";
+                        return await Task.Run(() => RedirectToAction("Login","Account"));
+                    }
+                }
+
             }
-            return await Task.Run(() => View("Login"));
+            else
+            {
+                TempData["Message"] = "Please Enter Correct EmailId And Password....!!!";
+                return await Task.Run(() => RedirectToAction("Login", "Account"));
+            }
+            return await Task.Run(() => RedirectToAction("Login", "Account"));
 
 
         }

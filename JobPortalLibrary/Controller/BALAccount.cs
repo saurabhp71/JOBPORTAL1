@@ -140,6 +140,22 @@ namespace JobPortalLibrary.Controller
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public SqlDataReader Adminemail(AccountUser objaccount)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+
+            }
+            SqlCommand cmd = new SqlCommand("SPAdmin", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "Adminemail");
+            cmd.Parameters.AddWithValue("@EmailId", objaccount.EmailId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
         //--------------------------------------Saurabh End--------------------------------//
 
 
@@ -174,6 +190,21 @@ namespace JobPortalLibrary.Controller
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "LoginEmployer");
+            cmd.Parameters.AddWithValue("@EmailId", objaccount.EmailId);
+            cmd.Parameters.AddWithValue("@Password", objaccount.Password);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
+        //--------------------Adminlogin---------------------------------------------------
+        public SqlDataReader LoginAdmin(AccountUser objaccount)
+        {
+            con.Close();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SPAdmin", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "Loginadmin");
             cmd.Parameters.AddWithValue("@EmailId", objaccount.EmailId);
             cmd.Parameters.AddWithValue("@Password", objaccount.Password);
             SqlDataReader dr;

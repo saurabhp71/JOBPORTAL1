@@ -1,0 +1,134 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        /* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+/* Add Animation */
+-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
+</head>
+<body >
+
+    <div class="modal-content">
+       
+        <div class="modal-body">
+            <div>
+
+                <hr />
+                <dl class="dl-horizontal">
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ReviewId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ReviewId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CompanyName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Rdate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RegistrationDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AboutCompany)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AboutCompany)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Rating)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Rating)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Review)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Review)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+
+
+
+                </dl>
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

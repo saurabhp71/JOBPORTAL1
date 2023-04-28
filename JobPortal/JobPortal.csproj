@@ -386,6 +386,7 @@
     <Content Include="Content\img\courses\2.jpg" />
     <Content Include="Content\img\courses\3.jpg" />
     <Content Include="Content\img\cropper\1.jpg" />
+    <Content Include="Content\img\Delet Icon.png" />
     <Content Include="Content\img\design.png" />
     <Content Include="Content\img\divider.png" />
     <Content Include="Content\img\faces\1.jpg" />
@@ -412,6 +413,7 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo\logo.png" />
     <Content Include="Content\img\logo\logosn.png" />
+    <Content Include="Content\img\Message.png" />
     <Content Include="Content\img\notification\1.jpg" />
     <Content Include="Content\img\notification\2.jpg" />
     <Content Include="Content\img\notification\3.jpg" />
@@ -430,6 +432,7 @@
     <Content Include="Content\img\product\profile-bg.jpg" />
     <Content Include="Content\img\profile\1.jpg" />
     <Content Include="Content\img\prototyping.png" />
+    <Content Include="Content\img\Red-Download-Now-Button-PNG-File.png" />
     <Content Include="Content\img\screensho1.png" />
     <Content Include="Content\img\screenshot2.png" />
     <Content Include="Content\img\share.gif" />
@@ -449,6 +452,7 @@
     <Content Include="Content\img\thumbnail-3.jpg" />
     <Content Include="Content\img\thumbnail-4.jpg" />
     <Content Include="Content\img\together.png" />
+    <Content Include="Content\img\ViewPDF.png" />
     <Content Include="Content\img\wild_flowers.png" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -2388,9 +2392,23 @@
     <Content Include="Views\Employer\jobgrid.cshtml" />
     <Content Include="Views\Employer\RepostJob.cshtml" />
     <Content Include="Views\Employer\viewphonedetails.cshtml" />
+    <Content Include="Views\JobSeeker\ApplicationGrid.cshtml" />
+    <Content Include="Views\JobSeeker\ApplyJobs.cshtml" />
+    <Content Include="Views\JobSeeker\Search.cshtml" />
+    <Content Include="Views\JobSeeker\SubmitPDF.cshtml" />
+    <Content Include="Views\JobSeeker\SubmitApplication.cshtml" />
+    <Content Include="Views\Admin\ApplicationApprovel.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\RejectionReason.cshtml" />
+    <Content Include="Views\Admin\RPAdminEmployeGrid.cshtml" />
+    <Content Include="Views\Admin\RPCompanyGridview.cshtml" />
+    <Content Include="Views\Admin\RPCompanyGridviewDetails.cshtml" />
+    <Content Include="Views\Admin\view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Admin\" />
+    <Folder Include="Content\PDF Files\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

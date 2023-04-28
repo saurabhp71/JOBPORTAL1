@@ -1,0 +1,214 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "ApplicationApprovel";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2  style="margin-left:300px">ApplicationApproval</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".popup").click(function (e) {
+                e.preventDefault();
+                $("#modal").remove();
+                var url = $(this).attr("href");
+                $.get(url, function (data) {
+                    $(data).modal();
+                });
+            });
+        });
+    </script>*@
+@*<style>
+    .table {
+        border:groove;
+        padding: 10px;
+        border-color:aqua;
+    }
+</style>*@
+<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" style="margin-left:300px;width:1000px; border:solid ">
+    <thead>
+        <tr >
+            <b>
+            <th style="width: 100px; text-align: center;font-size:15px">
+                @Html.DisplayNameFor(model => model.PostJobCode)
+            </th>
+            <th style="width: 100px; text-align: center; font-size: 15px">
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th style="width: 260px; text-align: center; font-size: 15px">
+                @Html.DisplayNameFor(model => model.JobDescription)
+            </th>
+            <th style="width: 150px; text-align: center; font-size: 15px">
+                @Html.DisplayNameFor(model => model.ApplicationStartDate)
+            </th>
+            <th style="width: 80px; text-align: center;" font-size:15px>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th style="width: 200px; text-align: center; font-size: 15px">
+                Approve/Reject
+            </th>
+            <th style="width: 100px;" ></th>
+            </b>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostJobCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rdate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td style="width:150px">
+
+
+                    <button type="button" id="Approve" class="btn btn-success response">
+                       
+                        @*<i class="fa fa-check"></i>*@
+                        @*@Html.ActionLink("Aproval", "Update", new { PostJobCode = item.PostJobCode })*@
+
+                        <a href="@Url.Action("Update","Admin",new { PostjobCode = @item.PostJobCode })" > &#10004 </a>
+                    </button>
+
+                    <button type="button" id="Reject" class="btn btn-danger response" style="margin-left:15px">
+                        
+                        @*<i class="fa fa-times"></i>*@
+                        @*@Html.ActionLink("Reject", "UpdateReject", new { PostjobCode = item.PostJobCode })*@
+                        <a class="RejectionReason" href="javascript:;" data-id="@item.PostJobCode"> &#10060</a>
+                    </button>
+
+                </td>
+
+
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+
+                    @*<button type="button" id="Details">
+                            @Html.ActionLink("Details", "Details", new { PostJobCode = item.PostJobCode })
+                        </button>*@
+                    <button type="button"  >
+                        <a class="Details" href="javascript:;" data-id="@item.PostJobCode" style="font-size:20px">Details</a>
+                    </button>
+                    @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color:lightgreen; font-size:xx-large">Post Job Details</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".Details").click(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id')
+            /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+            $.ajax({
+                type: "GET",
+                url: "/Admin/Details",
+                data: { PostJobCode: id },
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $("#partialModal").find(".modal-body").html(response);
+                    $("#partialModal").modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+    });
+</script>
+<script>
+<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" style="color:lightgreen; font-size:xx-large">User RejectReason</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script type="text/javascript">
+            $(function () {
+                $(".RejectionReason").click(function () {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id')
+                    /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                    $.ajax({
+                        type: "GET",
+                        url: "/Admin/RejectionReason",
+                        data: {PostJobCode:id},
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#partialModal").find(".modal-body").html(response);
+                            $("#partialModal").modal('show');
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+</script>
+

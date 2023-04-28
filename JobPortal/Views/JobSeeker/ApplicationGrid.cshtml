@@ -1,0 +1,138 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "ApplicationGrid";
+    //Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+<h2>Manage Application</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.HiddenFor(model => model.Seekercode)
+        </th>
+        <th>
+            @Html.HiddenFor(model => model.AppliedJobID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppliedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </th>
+        <th>
+            Download
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.user)
+    {
+        <tr>
+
+            <td>
+                @Html.HiddenFor(modelItem => item.Seekercode)
+            </td>
+            <td>
+                @Html.HiddenFor(modelItem => item.AppliedJobID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppliedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResumePDF)
+                @*<a href="~/Content/PDF Files" onclick="Download" id="Download" CommandArgument ='<%# Eval("PDFName") %>'>Download</a>*@
+
+
+
+            </td>
+            <td>
+                @*<a href="~/Content/PDF Files/resume-963001.pdf">~/Content/PDF Files/resume-963001.pdf</a>*@
+                @*<a href="~/Content/PDF Files/resume-963001.pdf">~/Content/PDF Files/resume-963001.pdf</a>*@
+
+                <a href="@item.ResumePDF">Download</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                <img src="~/Content/img/Delet Icon.png" style="width: 20px; height: 20px;" />
+                <button type="button" style="margin-left:15px ; background-color:transparent; border:none">
+
+
+                    @Html.ActionLink("Delete", "IsDelete", new { AppliedJobID = item.AppliedJobID })
+                </button>
+
+                @*<button type="button" id="Delete" style="margin-left:15px ; background-color:transparent; border:none">
+                        <img class="flex-shrink-0 img-fluid border rounded"
+                         img src="~/Content/img/Delet Icon.png" alt="" style="width: 20px; height: 20px; border:none;">
+                        <i class="fa fa-check" ></i>
+                         @Html.ActionLink("Delete", "IsDelete", new { AppliedJobID = item.AppliedJobID })
+                    </button>*@
+
+                <button type="submit" id="Message" style="margin-left:10px ; background-color:transparent; border:none">
+                    <img class="flex-shrink-0 img-fluid border rounded"
+                    <img src="~/Content/img/Message.png" alt="" style="width:20px; height:20px;">
+                    <i class="fa fa-check"></i>
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<style type="text/css">
+    body {
+        font: 14px Times New Roman;
+    }
+
+    .table {
+        border-collapse: collapse;
+    }
+
+        .table tr th {
+            padding: 10px;
+            color: black;
+            border: 2px solid black;
+        }
+
+
+        .table tr:nth-child(even) {
+            background-color: rgb(0,255,144)
+        }
+
+        .table tr:nth-child(odd) {
+            background-color: #00C157;
+        }
+
+        .table td {
+            border: 2px solid black;
+            padding: 8px;
+        }
+
+        .button {
+            color: darkblue;
+        }
+
+        .
+</style>

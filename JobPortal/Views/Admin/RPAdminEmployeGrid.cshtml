@@ -1,0 +1,197 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "RPAdminEmployeGrid";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+<style>
+
+    /*<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" / >
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"/ >
+    */
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/ >
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"/ >
+</style>
+<h2 style="margin-left:300px">AdminEmployeGrid</h2>
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+
+    }*@
+
+<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" id="example" style="margin-left:300px;width:1000px">
+    <thead>
+        <tr>
+            <th style="width: 150px; text-align: center">
+                @Html.DisplayNameFor(model => model.Employercode)
+            </th>
+            <th style="width: 500px; text-align: center">
+                @Html.DisplayNameFor(model => model.EmployerName)
+            </th>
+            <th style="width: 100px; text-align: center">
+                @Html.DisplayNameFor(model => model.Plans)
+            </th>
+            <th style="width: 150px; text-align: center">
+                @Html.DisplayNameFor(model => model.SubscriptionDate)
+            </th>
+
+            <th style="width: 150px; text-align: center">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th style="width: 100px; text-align: center">
+                @Html.DisplayNameFor(model => model.PlanDuration)
+            </th>
+
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.PaymentMode)
+                </th>*@
+
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Rdate)
+                </th>*@
+
+
+            <th style="width: 100px; text-align: left">Status Update</th>
+        </tr>
+    </thead>
+    @using (Html.BeginForm("EmployerStatus", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <tbody class="infotbody">
+            @foreach (var item in Model.Users)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employercode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plans)
+                    </td>
+
+                    @*<td>
+                               @Html.DisplayFor(modelItem => item.PaymentMode)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubscriptionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlanDuration)
+                    </td>
+
+                    <td style="width: 500px;display:flex">
+
+                        @*  @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(model => model.StatusId, new SelectList(ViewBag.slist, "Value", "Text"), "Select", new { @class = "form-control status" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        @* <input type="button" formaction="@Url.Action("EmployerStatus","Admin",new  { Employercode = item.Employercode, StatusId = item.StatusId})" value="Go" formmethod="post" class="btn btn-default Status"   />*@
+                        @*<button>
+
+            @Html.ActionLink("Go", "EmployerStatus", new { Employercode = item.Employercode, StatusId = item.StatusId }, new { @class = "Status" })
+
+        </button>*@
+                   
+
+                        <input style="width:40px;height:40px; background-color:cadetblue" type="button" class="Status" value="Go" data-id="@item.Employercode" StatusId="@item.StatusId" />
+
+                   
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    }
+</table>
+
+@*<script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>*@
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".Status").click(function () {
+            var $buttonClicked = $(this);
+            var PARENT = $buttonClicked.parent().parent();
+            var status = PARENT.find('.status').val();
+            var Empcode = $(this).attr("data-id")
+            //$.ajax({
+            //    type: "post",
+            //    url: "/Admin/EmployerStatus",
+            //    data: {  "StatusId": status },
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "html",
+            //});
+            $.post("/Admin/EmployerStatus", { StatusId: status, Employercode: Empcode });
+        });
+    });
+</script>
+
+
+
+@*<script src="~/Content/js/jquery-3.4.1.min.js"></script>*@
+
+
+@*<script>
+      $(document).ready(function () {
+          $("#Status").change(function ()
+               /* var id = $(this).val();*/
+               /* var name = $("#Country option:selected").text();*/
+                //$("#hidden").val(name);
+                //$("#Status").empty();
+          url:'/Admin/RPGetStatus', { StatusId: StatusId }, function (data) {
+                    var v = "<option>----select---</option>";
+                    $.each(data, function (i, v1) {
+                        v += "<option value=" + v1.Value + ">" + v1.Text + "</option > ";
+
+                    });
+                    $("#Status").html(v);
+                });
+
+            });
+
+        });
+    </script>*@
+
+
+
+
+
+@*//------------------------PDF,Excel.Print---------------------//*@
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
+

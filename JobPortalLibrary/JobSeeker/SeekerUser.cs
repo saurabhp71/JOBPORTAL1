@@ -260,6 +260,20 @@ namespace JobPortalLibrary.JobSeeker
         public string CompanyWebsite { get; set; }
         public bool Follow1 { get; set; }
         public string Follow2 { get; set; }
+        //--------Sanket Side---------//
+
+        public string JobLocation { get; set; }
+        public string Salary { get; set; }
+
+        public string EndDate { get; set; }
+
+        public string JobDescription { get; set; }
+        public DateTime AppliedDate { get; set; }
+        public int AppliedJobID { get; set; }
+
+        public string UploadFile { get; set; }
+
+        public List<SeekerUser> user { get; set; }
 
 
     }
