@@ -591,9 +591,108 @@ namespace JobPortalLibrary.Employer
 
 
         //---------------------------------Kartik End----------------------------//
+        //---------------------------------sachin start----------------------------//
+        public DataSet GetJobCategory()
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmb = new SqlCommand("Employeer", con);
+            cmb.CommandType = CommandType.StoredProcedure;
+            cmb.Parameters.AddWithValue("@Flag", "GetJobCategory");
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmb;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+            con.Close();
+        }
+        public DataSet GetJobTitle(int JobCategoryId)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmb = new SqlCommand("Employeer", con);
+            cmb.CommandType = CommandType.StoredProcedure;
+            cmb.Parameters.AddWithValue("@Flag", "GetJobTitle");
+            cmb.Parameters.AddWithValue("@JobCatagoryId", +JobCategoryId);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmb;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+            con.Close();
+        }
+        public DataSet GetJobLocation()
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmb = new SqlCommand("Employeer", con);
+            cmb.CommandType = CommandType.StoredProcedure;
+            cmb.Parameters.AddWithValue("@Flag", "GetJobLocation");
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmb;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+            con.Close();
+        }
+        public DataSet GetFindResume(int CityId, string JobTitle)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Flag", "GetFindResume");
+            cmd.Parameters.AddWithValue("@CityId", CityId);
+            cmd.Parameters.AddWithValue("@JobTitle", JobTitle);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+            con.Close();
+        }
+
+        public SqlDataReader SeekerDetails(EmployerUser obj)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "SeekerDetails");
+            cmd.Parameters.AddWithValue("@Seekercode", obj.Seekercode);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
+        public void Update(EmployerUser obj)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "Update");
+            cmd.Parameters.AddWithValue("@StatusId", obj.StatusId);
+            cmd.Parameters.AddWithValue("@Seekercode", obj.Seekercode);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
     }
 }
-
+//---------------------------------sachin start----------------------------//
 
 
 

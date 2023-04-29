@@ -224,7 +224,10 @@ namespace JobPortalLibrary.Employer
         [Required(ErrorMessage = "No.Of Employees Required..!")]
         public string NoOfEmployees { get; set; }
         //------------------------------------------Kartik End---------------------------------------//
-
-
+        //------------------------------------------sachin Start-------------------------------------//
+        public List<EmployerUser> ListUser { get; set; }
+        public string ResumePDF { get; set; }
+        public int CityId1 { get; set; }
+        //------------------------------------------sachin End---------------------------------------//
     }
 }

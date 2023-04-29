@@ -807,7 +807,223 @@ namespace JobPortal.Controllers
         }
 
         //-----------------------------------------Kartik End----------------------------------//
+        //-----------------------------------------sachin start----------------------------------//
 
+        [HttpGet]
+        public JsonResult GetJobCategory()
+        {
+
+            BALEmployer objBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = objBal.GetJobCategory();
+            List<SelectListItem> CategoryList = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                CategoryList.Add(new SelectListItem
+                {
+                    Text = dr["JobCategory"].ToString(),
+
+                    Value = dr["JobCategoryId"].ToString()
+                });
+            }
+            ViewBag.Category = CategoryList;
+            return Json(CategoryList, JsonRequestBehavior.AllowGet);
+
+
+
+        }
+
+        public JsonResult GetJobTitle(int JobCatId)
+        {
+            BALEmployer objBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = objBal.GetJobTitle(JobCatId);
+            List<SelectListItem> JobtitleList = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                JobtitleList.Add(new SelectListItem
+                {
+                    Text = dr["JobTitle"].ToString(),
+                    Value = dr["JobCategoryId"].ToString()
+                });
+            }
+            return Json(JobtitleList, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult JobLocationSM()
+        {
+            BALEmployer objUser = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = objUser.GetJobLocation();
+            List<SelectListItem> CityList = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+
+            {
+                CityList.Add(new SelectListItem
+                {
+                    Text = dr["CityName"].ToString(),
+                    Value = dr["CityId"].ToString()
+
+                });
+            }
+            ViewBag.City = CityList;
+            return Json(CityList, JsonRequestBehavior.AllowGet);
+        }
+        public async Task<ActionResult> FindResume()
+        {
+            if (Session["Employercode"] != null)
+            {
+                GetJobCategory();
+                JobLocationSM();
+                int cityid = Convert.ToInt32(Session["city"]);
+                if (cityid == 0)
+                {
+                    return await Task.Run(() => View());
+                }
+                else
+                {
+                    int cid = Convert.ToInt32(Session["city"]);
+                    string jtitle = (Session["jobtitle"].ToString());
+                    BALEmployer objE = new BALEmployer();
+                    DataSet ds = new DataSet();
+                    ds = objE.GetFindResume(cid, jtitle);
+                    EmployerUser obj = new EmployerUser();
+                    EmployerUser objuser = new EmployerUser();
+                    List<EmployerUser> ListUser = new List<EmployerUser>();
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        EmployerUser obju = new EmployerUser();
+                        obju.Seekercode = ds.Tables[0].Rows[i]["Seekercode"].ToString();
+                        obju.SeekerName = ds.Tables[0].Rows[i]["SeekerName"].ToString();
+                        obju.TotalExperience = ds.Tables[0].Rows[i]["TotalExperience"].ToString();
+                        obju.RequireQualification = ds.Tables[0].Rows[i]["RequireQualification"].ToString();
+                        obju.JobType = ds.Tables[0].Rows[i]["JobType"].ToString();
+                        obju.ResumePDF = ds.Tables[0].Rows[i]["ResumePDF"].ToString();
+
+                        ListUser.Add(obju);
+
+                    }
+                    ViewBag.ResumePDF = obj.ResumePDF;
+
+
+                    objuser.ListUser = ListUser;
+                    return await Task.Run(() => View(objuser));
+                }
+            }
+            else
+            {
+                return await Task.Run(() => View());
+            }
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> FindResume(FormCollection objcoll)
+        {
+            if (Session["Employercode"] != null)
+            {
+                JobLocationSM();
+                GetJobCategory();
+                EmployerUser obj = new EmployerUser();
+                obj.CityId1= Convert.ToInt32(objcoll["cityid"].ToString());
+                obj.JobTitle = objcoll["jobtitle"].ToString();
+                Session["city"] = obj.CityId;
+                Session["jobtitle"] = obj.JobTitle;
+                BALEmployer objE = new BALEmployer();
+                DataSet ds = new DataSet();
+                ds = objE.GetFindResume(obj.CityId1, obj.JobTitle);
+
+                EmployerUser objuser = new EmployerUser();
+                List<EmployerUser> ListUser = new List<EmployerUser>();
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    EmployerUser obju = new EmployerUser();
+                    obju.Seekercode = ds.Tables[0].Rows[i]["Seekercode"].ToString();
+                    obju.SeekerName = ds.Tables[0].Rows[i]["SeekerName"].ToString();
+                    obju.TotalExperience = ds.Tables[0].Rows[i]["TotalExperience"].ToString();
+                    obju.RequireQualification = ds.Tables[0].Rows[i]["RequireQualification"].ToString();
+                    obju.JobType = ds.Tables[0].Rows[i]["JobType"].ToString();
+                    obju.ResumePDF = ds.Tables[0].Rows[i]["ResumePDF"].ToString();
+
+                    ListUser.Add(obju);
+
+                }
+                ViewBag.ResumePDF = obj.ResumePDF;
+
+
+                objuser.ListUser = ListUser;
+                return await Task.Run(() => View(objuser));
+            }
+            else
+            {
+                return await Task.Run(() => View());
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> SeekerDetails(string seekercode)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obju = new EmployerUser();
+                obju.Seekercode = seekercode;
+                BALEmployer obj1 = new BALEmployer();
+                SqlDataReader dr;
+                dr = obj1.SeekerDetails(obju);
+                while (dr.Read())
+                {
+                    //EmployerUser obju = new EmployerUser();
+                    //   obj.Seekercode =dr["Seekercode"].ToString();
+
+                    obju.SeekerName = dr["SeekerName"].ToString();
+                    obju.EmailId = dr["EmailId"].ToString();
+                    obju.ContactNo = Convert.ToInt64(dr["ContactNo"].ToString());
+                    obju.City = dr["CityName"].ToString();
+                    obju.ResumePDF = dr["ResumePDF"].ToString();
+
+                }
+                dr.Close();
+                ViewBag.ResumePDF = obju.ResumePDF;
+                return await Task.Run(() => PartialView(obju));
+            }
+            else
+            {
+                return await Task.Run(() => View());
+            }
+
+        }
+        public ActionResult UpdateApporval(EmployerUser obj)
+        {
+
+            obj.StatusId = 9;
+            BALEmployer obj1 = new BALEmployer();
+            obj1.Update(obj);
+            var Status = new { data = "success" };
+            return Json(Status, JsonRequestBehavior.AllowGet);
+            //return RedirectToAction("FindResume");
+
+        }
+        public ActionResult UpdateHold(EmployerUser obj)
+        {
+            obj.StatusId = 3;
+            BALEmployer obj1 = new BALEmployer();
+            obj1.Update(obj);
+            var Status = new { data = "Hold" };
+            // return RedirectToAction("FindResume");
+            return Json(Status, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UpdateRejected(EmployerUser obj)
+        {
+            obj.StatusId = 10;
+            BALEmployer obj1 = new BALEmployer();
+            obj1.Update(obj);
+            var Status = new { data = "Reject" };
+            return Json(Status, JsonRequestBehavior.AllowGet);
+            // return RedirectToAction("FindResume");
+        }
+
+        //-----------------------------------------sachin start----------------------------------//
     }
 }
 

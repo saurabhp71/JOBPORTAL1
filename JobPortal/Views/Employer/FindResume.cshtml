@@ -1,0 +1,370 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+@{
+    ViewBag.Title = "FindResume";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+<html>
+<head>
+
+</head>
+<body style="background-image: linear-gradient(to right, rgba(0,50,80,0), rgba(0,44,0,2)); ">
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @*//--------------------------------CardView-----------------//*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                gridDataTableView("Grid Example.xls");
+                gridDataTableView = function (fname) {
+                    $('#tblGrid').dataTable({
+                        "bFilter": true,
+                        "bLengthChange": false, "bPaginate": true, "bInfo": true,
+                        dom: 'Bfrtip',
+                        "order": [[0, 'desc'], [1, 'desc']],
+                        buttons: [{ extend: 'excelHtml5', text: 'Export to Excel', className: 'link_button', title: fname }]
+                    })
+                };
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            var JobCategoryId = document.getElementById("JobCategoryId");
+            var JobTitle = document.getElementById("JobTitle");
+            var cityid = document.getElementById("City");
+            if (JobCategoryId.Value == "Select") {
+                alert("Please select Category")
+                return false;
+            }
+            else if (JobTitle.Value == "Select") {
+                alert("Please select Title")
+                return false;
+            }
+            else if (cityid.Value == "Select") {
+                alert("Please select Title")
+                return false;
+            }
+            return true;
+        </script>
+
+        @*//--------------------------------Dropdown bind-----------------//*@
+        <style>
+            .form-horizontal {
+                display: flex;
+                margin-top: 100px;
+                margin-left: -95px;
+            }
+
+            .form-inline {
+                width: 200px;
+            }
+
+            .col-md-1 {
+                margin-left: 15px;
+            }
+
+            .form-horizontal {
+                margin-left: 25%;
+            }
+
+            .col-md-5 {
+                margin-left: 20px;
+            }
+        </style>
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobCategory, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-5">
+                    @Html.DropDownListFor(model => model.JobCategoryId, new SelectList(ViewBag.Category, "Value", "Text"), "Select", new { @class = "form-inline" })
+                    @Html.ValidationMessageFor(model => model.JobCategory, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobTitle, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-5">
+                    <select id="JobTitle" class="form-inline">---Select Title</select><br />
+                    @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+                    <input type="hidden" id="jobtitle" name="jobtitle" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-5">
+                    @Html.DropDownListFor(model => model.City, new SelectList(ViewBag.City, "Value", "Text"), "Select", new { @class = "form-inline" })
+                    <input type="hidden" id="cityid" name="cityid" />
+                    @Html.ValidationMessageFor(model => model.JobLocation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" style="background-color: blueviolet">
+                <div class="col-md-offset-1 col-md-1">
+                    <input style="color:white; text-align:center" type="submit" value="FindResume" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <br />
+    <br />
+    <br />
+
+    @*//--------------------------------CardView-----------------//*@
+    @if (Model != null)
+
+    {
+        foreach (var item in @Model.ListUser)
+        {
+
+            <div class="card" style="width:50rem;height:10rem;background-color:violet;margin-left:25%;">
+                <table id="tblGrid">
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.Seekercode)
+                            </td>
+                            <td style="font-size:25px;font-style:oblique">
+                                <strong style="font-size:30px">@item.JobTitle</strong>
+                                <br />
+                                @item.SeekerName
+                                <br />
+                                @item.TotalExperience
+                                <br />
+                                @item.RequireQualification
+                                <br />
+                                @item.JobType
+                            </td>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.ResumePDF)
+                            </td>
+                            <td style="font-size:25px; font-style:oblique">
+                                <button type="button">
+                                <a class="SeekerDetails" href="javascript:;" style="background-color:transparent" data-id="@item.Seekercode">Details</a>
+                                </button>
+                            </td>
+                            <td style="font-size:25px; font-style:oblique">
+                                    <a style="border:3px solid black" href="@item.ResumePDF" target="_blank">View</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <br />
+        }
+    }
+    @*//------------DetailsPopup-----------//*@
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color:wheat;font-size:20px">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="color:lightgreen; font-size:xx-large"></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button"><a href="~/Employer/SeekerDetails">Close</a></button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".SeekerDetails").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+                    type: "GET",
+                    url: "/Employer/SeekerDetails",
+                    data: { Seekercode: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+    @*//--------------------------------ViewPopup-----------------//*@
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="color:lightgreen; font-size:xx-large"></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button"><a href="~/Employer/SeekerDetails">Close</a></button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+
+    @*//--------------------------------ResumePDF-----------------//*@
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".ResumePdf").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+                    type: "GET",
+                    url: "/Employer/ResumePdf",
+                    data: { Seekercode: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+    @*//--------------------------------Dropdown bind-----------------//*@
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#JobCategoryId").change(function () {
+                var jobcatid = $(this).val();
+                $("#JobTitle").empty();
+                $.get("/Employer/GetJobTitle", { JobCatId: jobcatid }, function (data) {
+                    var v = "<option>Select</option>";
+                    $.each(data, function (i, v1) {
+                        v += "<option value=" + v1.Value + ">" + v1.Text + "</option>";
+                    });
+                    $("#JobTitle").html(v);
+                });
+            });
+            $("#JobTitle").change(function () {
+                var value = $("#JobTitle option:selected").text();
+                $("#jobtitle").val(value);
+            });
+            $("#City").change(function () {
+                var value = $("#City ").val();
+                $("#cityid").val(value);
+            });
+        })
+    </script>
+
+
+    <style type="text/css">
+        body {
+            font: 14px Times New Roman;
+        }
+
+        .Submit tr th {
+            padding: 8px;
+            color: black;
+            border: 2px solid black;
+        }
+
+        .card {
+            /* Add shadows to create the "card" effect */
+            box-shadow: 0 6px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.5s;
+        }
+
+            /* On mouse-over, add a deeper shadow */
+            .card:hover {
+                box-shadow: 0 20px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        /* Add some padding inside the card container */
+        .container {
+            padding: 2px 16px;
+        }
+
+        .FindResume {
+            padding: 0px;
+            background-color: darkgreen;
+        }
+
+        .FindResume {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
+        .FindResume {
+            display: block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            font-family: Times New Roman;
+            color: black;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all .50s;
+        }
+
+
+
+            .FindResume:after {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: #ff003b;
+                transition: all .35s;
+            }
+
+        /*#tblGrid {
+            padding: 0px;
+            background-color: forestgreen;
+        }*/
+
+        .SearchView {
+            /background-color: darkgoldenrod;
+            / background-image: linear-gradient(to right, rgba(0,50,80,0), rgba(0,44,0,2));
+        }
+    </style>
+
+</body>
+</html>

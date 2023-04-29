@@ -1,0 +1,135 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+<div>
+    <h4>EmployerUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeekerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeekerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </dt>
+
+        <dd>
+            <a href="@ViewBag.ResumePDF" target="_blank">Download</a>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")*@
+    <label>Interested ?</label>
+
+    <button type="button" id="Approve" class="btn btn-success response">
+        <a class="Approve" href="#" data-id="@Model.Seekercode"> &#10004 </a>
+    </button>
+
+    <button type="button" id="Hold" class="btn btn-quest response" style="background-color:gold" >
+        <a class="Hold" href="#" data-id="@Model.Seekercode"> &#63 </a>
+    </button>
+
+    <button type="button" id="Reject" class="btn btn-danger response">
+        <a class="Reject" href="#" data-id="@Model.Seekercode"> &#10005 </a>
+    </button>
+</p>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".Approve").click(function () {
+            var Seekercode = $(this).attr("data-id");
+            $.ajax({
+                url: "/Employer/UpdateApporval/",
+                data: { "Seekercode": Seekercode },
+                success: function (Status) {
+                    if (Status.data == "success") {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Your Resume is Approved!!!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        .then(function () {
+                            window.location.href = "/Employer/FindResume/";
+                        })
+                    }
+                }
+            });
+        });
+        $(".Hold").click(function () {
+            var Seekercode = $(this).attr("data-id");
+            $.ajax({
+                url: "/Employer/UpdateHold/",
+                data: { "Seekercode": Seekercode },
+                success: function (Status) {
+                    if (Status.data == "Hold") {
+                        Swal.fire({
+                            title: 'Your Resume is Hold!!!',
+                            icon: 'question',
+                            iconHtml: '?',
+                            timer: 2000,
+                            confirmButtonText: 'Ok',
+                            showConfirmButton: false,
+                        })
+                            .then(function () {
+                                window.location.href = "/Employer/FindResume/";
+                        })
+                    }
+                }
+            });
+        });
+        $(".Reject").click(function () {
+            var Seekercode = $(this).attr("data-id");
+            $.ajax({
+                url: "/Employer/UpdateRejected/",
+                data: { "Seekercode": Seekercode },
+                success: function (Status) {
+                    if (Status.data == "Reject") {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Your Resume is Rejected!!!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                            .then(function () {
+                                window.location.href = "/Employer/FindResume/";
+                        })
+                    }
+                }
+            });
+        });
+    });
+</script>
