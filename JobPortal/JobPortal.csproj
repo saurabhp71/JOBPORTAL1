@@ -2406,11 +2406,14 @@
     <Content Include="Views\Employer\JobRegister.cshtml" />
     <Content Include="Views\Employer\RepostJob.cshtml" />
     <Content Include="Views\Employer\viewphonedetails.cshtml" />
+    <Content Include="Views\Employer\FindResume.cshtml" />
+    <Content Include="Views\Employer\SeekerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\" />
     <Folder Include="Content\PDF Files\" />
+    <Folder Include="Content\Resume Pdf\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
