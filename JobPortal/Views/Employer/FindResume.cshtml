@@ -70,7 +70,7 @@
             }
 
             .form-horizontal {
-                margin-left: 25%;
+                margin-left: 5%;
             }
 
             .col-md-5 {
@@ -100,7 +100,7 @@
                     <input type="hidden" id="cityid" name="cityid" />
                     @Html.ValidationMessageFor(model => model.JobLocation, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>&nbsp;&nbsp;&nbsp;
             <div class="form-group" style="background-color: blueviolet">
                 <div class="col-md-offset-1 col-md-1">
                     <input style="color:white; text-align:center" type="submit" value="FindResume" class="btn btn-default" />
@@ -120,7 +120,7 @@
         foreach (var item in @Model.ListUser)
         {
 
-            <div class="card" style="width:50rem;height:10rem;background-color:violet;margin-left:25%;">
+            <div class="card" style="width:50rem;height:10rem;background-color:violet;margin-left:10%;">
                 <table id="tblGrid">
                     <thead>
                         <tr>
@@ -147,11 +147,11 @@
                             </td>
                             <td style="font-size:25px; font-style:oblique">
                                 <button type="button">
-                                <a class="SeekerDetails" href="javascript:;" style="background-color:transparent" data-id="@item.Seekercode">Details</a>
+                                    <a class="SeekerDetails" href="javascript:;" style="background-color:transparent" data-id="@item.Seekercode">Details</a>
                                 </button>
                             </td>
                             <td style="font-size:25px; font-style:oblique">
-                                    <a style="border:3px solid black" href="@item.ResumePDF" target="_blank">View</a>
+                                <a style="border:3px solid black" href="@item.ResumePDF" target="_blank">View</a>
                             </td>
                         </tr>
 
@@ -163,7 +163,6 @@
         }
     }
     @*//------------DetailsPopup-----------//*@
-
     <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color:wheat;font-size:20px">
@@ -192,7 +191,7 @@
                 /* var id = $(this).closest("tr").find("td").eq(0).html();*/
                 $.ajax({
                     type: "GET",
-                    url: "/Employer/SeekerDetails",
+                    url: "/Employer/JobSeekerDetails",
                     data: { Seekercode: id },
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
@@ -211,6 +210,84 @@
         });
     </script>
 
+    <!--<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".SeekerDetails").click(function (e) {
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id')
+                    e.preventDefault();
+                    $("#modal").remove();
+                    var url = $(this).attr("href");
+
+                    $.get(url, { Seekercode:id }, function (data) {
+                        $(data).modal('show');
+                    });
+
+                });
+            });
+
+        </script>-->
+    <!--<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color:wheat;font-size:20px">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="color:lightgreen; font-size:xx-large"></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>-->
+    @*<div class="modal-footer">
+            <button type="button"><a href="~/Employer/SeekerDetails">Close</a></button>
+        </div>*@
+    <!--</div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".SeekerDetails").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+
+                    type: "GET",
+                    url: "/Employer/SeekerDetails",
+                    data: { Seekercode: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (data) {
+                        //$("#partialModal").find(".modal-body").html(response);
+                        //$("#partialModal").modal('show');
+                        $.get("/Employer/SeekerDetails", { Seekercode: id }, function (data) {
+                            parent.html(data);
+                            $(data).modal('show');
+                        });
+
+                        }
+
+
+
+
+                    //failure: function (data) {
+                    //    alert(response.responseText);
+                    //},
+                    //error: function (response) {
+                    //    alert(response.data);
+                    //}
+                    });
+            });
+        });
+
+
+
+    </script>-->
     @*//--------------------------------ViewPopup-----------------//*@
 
     <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">

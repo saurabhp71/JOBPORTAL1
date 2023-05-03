@@ -57,17 +57,18 @@
         }
     </style>*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
-<style>
+@*<style>
     .container {
-        margin-left: 320px;
+        margin-left: 320;
     }
-</style>
-
-
+</style>*@
+<button>
+    @*<a href="@Url.Action("AllRoundsGrid","Employer")" PostJobCode="@Model.PostJobCode">Manage Rounds</a>*@
+    @Html.ActionLink("Manage Rounds", "AllRoundsGrid", new { postjobcode = Model.PostJobCode })
+</button>
+<br />
+<br />
 <div class="container">
     <div class="row" >
       
@@ -216,12 +217,14 @@
         });
     </script>*@
 
+<br />
 
-<table class="table table-bordered table-striped mCS-light-thick dt-responsive nowrap" style="margin-left:320px;" font="5px; border:solid black 5px;">
+
+<table class="table table-hover" style="margin-left:0px;">
 
 
-    <tr style="border:solid black 3px;">
-        <th style="width:100px;display:none">
+    <tr style="background-color:#435ebe;color:white">
+        <th style="width:50px;display:none">
             <label>Select</label>
         </th>
         <th style="display:none">
@@ -230,26 +233,26 @@
         <th style="display:none">
             @Html.DisplayNameFor(model => model.Seekercode)
         </th>
-        <th style="color:black">
+        <th>
             @Html.DisplayNameFor(model => model.AppliedJobId)
-        </th >
+        </th>
 
-        <th style="color:black">
+        <th>
             @Html.DisplayNameFor(model => model.SeekerName)
         </th>
-        <th style="color:black">
+        <th>
             @Html.DisplayNameFor(model => model.ViewResume)
         </th>
-        <th style="color:black">
+        <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th style="color:black">
+        <th>
             @Html.DisplayNameFor(model => model.ApplyDate)
         </th>
-        <th style="color:black">
+        <th  style="width:200px;">
             @Html.DisplayNameFor(model => model.Eligible)
         </th>
-        <th style="color:black">
+        <th  style="width:50px">
             @Html.DisplayNameFor(model => model.Actions)
         </th>
 
@@ -258,54 +261,60 @@
 
     @foreach (var item in Model.joblist)
     {
-        <tr class="application" style="border:solid black 2px;">
+        <tr class="application">
             <td style="display:none">
                 <input type="checkbox" name="myTextEditBox" value="checked"
                        style="margin-left:auto; margin-right:auto;">
             </td>
 
             @*<td>
-            <input type="checkbox" value="" name="select" id="chk" style="height:100px" />
-        </td>*@
+                    <input type="checkbox" value="" name="select" id="chk" style="height:100px" />
+                </td>*@
             <td class="pjccode" style="display:none" data-id="@item.PostJobCode">
                 @Html.DisplayFor(modelItem => item.PostJobCode)
             </td>
             <td class="seekercode" data-id="@item.Seekercode" id="scode" style="display:none">
                 @Html.DisplayFor(modelItem => item.Seekercode)
             </td>
-            <td id="mahesh" data-id="@item.AppliedJobId" class="mahesh">
+            <td id="mahesh" data-id="@item.AppliedJobId" class="mahesh" style="text-align:center">
                 @Html.DisplayFor(modelItem => item.AppliedJobId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SeekerName)
             </td>
             <td style="text-decoration: underline; color:blue">
-                
-                    <a href="~/Content/images/@item.ViewResume">
-                        View Resume</a>
-                      
 
-             
+                <a href="~/Content/images/@item.ViewResume">
+                    View Resume
+                </a>
+
+
+
             </td>
-           
+
             <!--<div id="tooltip">-->
             @*<a href="@Url.Action("ViewResume","Employer" ,new {AppliedJobId=item.AppliedJobId})">
-            <span>@Html.DisplayFor(modelItem => item.ViewResume)</span>
-            <label class="logOutToolTip">Click to see Resume</label>
-        </a>*@
+                    <span>@Html.DisplayFor(modelItem => item.ViewResume)</span>
+                    <label class="logOutToolTip">Click to see Resume</label>
+                </a>*@
             <!--</div>-->
 
             <td class="status">
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApplyDate)
+                @Html.DisplayFor(modelItem => item.ADate)
             </td>
             <td>
-               
+
+                @*<button type="button" class="btn btn-success responce border-success" style="background:white;">
+
+                    <a class="btn11" data-id="@item.AppliedJobId" postjobcode="@item.PostJobCode" style="color:green; font-size:20px; height:9px;">&#10004;</a>
+
+                    </button>*@
 
 
-                <input type="button" class="btn11" id="btn1" value="Approve" data-id="@item.AppliedJobId" postjobcode="@item.PostJobCode" />
+                <input type="button" class="btn11" id="btn1" value="Approve" data-id="@item.AppliedJobId" postjobcode="@item.PostJobCode">
 
                 <input type="button" class="btn12" id="btn2" value="Reject" data-id="@item.AppliedJobId" postjobcode="@item.PostJobCode" />
 
@@ -325,7 +334,7 @@
 
     }
 </table>
-<button type="button" style="margin-left:320px;">
+<button type="button" >
     @Html.ActionLink("Add Candidate", "Addcandidate", new { postjobcode=Model.PostJobCode})
     </button>
 

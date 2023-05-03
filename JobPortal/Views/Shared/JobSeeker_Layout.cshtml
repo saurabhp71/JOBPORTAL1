@@ -48,7 +48,7 @@
             left: -50px;
         }
     </style>
-
+</head>
     <body>
 
         <div class="container-xxl bg-white p-0">
@@ -75,7 +75,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="job-list.html" class="dropdown-item">Job List</a>
+                                <a href="@Url.Action("Search","JobSeeker")" class="dropdown-item">Job List</a>
                                 <a href="job-detail.html" class="dropdown-item">Job Detail</a>
                             </div>
                         </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,7 +111,7 @@
                             </a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="@Url.Action("SeekerDetails","JobSeeker")" class="dropdown-item">My Profile</a>
-                                <a href="" class="dropdown-item">Manage Application</a>
+                                <a href="" class="@Url.Action("ApplicationGrid","JobSeeker")">Manage Application</a>
                                 <a href="job-detail.html" class="dropdown-item">My Reviews</a>
                                 <a href="job-detail.html" class="dropdown-item">Account Setting</a>
                                 <a href="job-detail.html" class="dropdown-item">Sign Out</a>

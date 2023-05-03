@@ -98,7 +98,7 @@
 {
     @Html.AntiForgeryToken()
     <h2 style="margin-top:-56px">JobRegister</h2>
-    <div class="card" style="width:70rem;height:800px; margin-left:5px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey;background-color:lavender">
+    <div class="card" style="width:62rem;height:850px; margin-left:5px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey;background-color:lavender">
         <div style="margin-left: 25px;">
             <br />
             <div class="form-group">
@@ -226,7 +226,7 @@
 
             <!-----Left End-->
             <!-----Middle Start-->
-            <div style="margin-left:390px;margin-top:-440px">
+            <div style="margin-left:360px;margin-top:-440px">
                 <div class="form-group">
                     @Html.LabelFor(model => model.JobType, "Job Type", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-5">
@@ -268,9 +268,9 @@
 
             <!-----Middle End-->
             <!-----Right Start-->
-            <div style="margin-left:750px;margin-top:-385px;">
+            <div style="margin-left:720px;margin-top:-385px;">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NoOfOpenings, "No.Of Openings", htmlAttributes: new { @class = "control-label col-md-5 label-align required" })
+                    @Html.LabelFor(model => model.NoOfOpenings, "No.Of Openings", htmlAttributes: new { @class = "control-label col-md-7 label-align required" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.NoOfOpenings, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NoOfOpenings, "", new { @class = "text-danger" })
@@ -306,7 +306,7 @@
         </div>
         <!-----Right End-->
 
-        <div class="form-group" style="margin-left:800px;margin-top:60px">
+        <div class="form-group" style="margin-left:750px;margin-top:60px">
             <div class="col-md-offset-2 col-md-10">
                 <input style="width: 160px;" type="submit" value="Post" class="btn btn-primary" />
             </div>

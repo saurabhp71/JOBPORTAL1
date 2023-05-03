@@ -1,0 +1,140 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+@{
+    ViewBag.Title = "ShowRounds";
+    // Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+@*<style>
+    .modal {
+        
+    }
+</style>*@
+
+<link href="~/Content/css/style.css" rel="stylesheet" />
+<!-- Carousel Start -->
+<form>
+    <br />
+
+    <div>
+        <strong style="color:lightgreen; font-size:x-large">
+            Round
+        </strong>
+
+    </div>
+
+    <p style="font-size:15px">Select round and click on save button to add a new round.</p>
+
+
+
+    @*<table class="table table-bordered table-striped mt-4 dt-rerponsive nowrap" style="margin-left:300px">
+            <tr>
+
+                <th style="width:500px">
+                    @Html.DisplayNameFor(model => model.RoundName)
+
+                </th>
+
+
+            </tr>
+
+            @foreach (var item in Model.LstUser)
+            {
+                <tr>
+
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.RoundName)
+
+                    </td>
+                </tr>
+
+            }
+
+        </table>*@
+
+    <div>
+        <hr />
+
+        <div class="card" style="width: 30rem;height:1rem;">
+            <div class="card-header">
+                Select a Round
+            </div>
+        </div>
+        <br />
+
+        <div class="card" style="width:30rem;">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">  <a href="@Url.Action("CreateRoundwithDetails","Employer")">Quiz</a> </li>
+                
+                <li class="list-group-item">  <span>Quiz</span> </li>
+
+                <li class="list-group-item">  <a href="Group Discussion">Apptitude Test</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">Technical Round</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">Group Discussion</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">Code Contest</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">Personal Interview</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">HR Interview</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">Others/On Campus/Offline</a></li>
+                <li class="list-group-item">  <a href="Group Discussion">P2P Coding Interview</a></li>
+            </ul>
+        </div>
+        <hr />
+        @*<button type="button">Close</button>*@
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="design " style="margin-left:340px">Save</button>
+
+
+    </div>
+
+</form>
+
+<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" >
+                @*<h3 class="modal-title" style="color:lightgreen; font-size:xx-large">Round</h3>*@
+                <div class="design">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/js/jquery-3.4.1.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/bootstrap.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".list-group-item").click(function () {
+            var $buttonClicked = $(this);
+            /*  var id = $(this).closest("tr").find("td").eq(0).html();*/
+            $.ajax({
+                type: "GET",
+                url: "/Employer/CreateRoundwithDetails",
+
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $("#partialModal").find(".modal-body").html(response);
+                    $("#partialModal").modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        });
+    });</script>
+
+
+
+

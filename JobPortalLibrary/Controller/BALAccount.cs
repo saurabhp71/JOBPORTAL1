@@ -6,23 +6,34 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using JobPortalLibrary.Controller;
-
+using System.Configuration;
 
 namespace JobPortalLibrary.Controller
 {
     public class BALAccount
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
 
+
+
+        //  SqlConnection con = new SqlConnection("Data Source=DESKTOP-B3UBKFN;Initial Catalog=\"JobPortal\";Integrated Security=True");
+        static string CS = ConfigurationManager.ConnectionStrings["RSJP"].ConnectionString;
+        SqlConnection con = new SqlConnection(CS);
+        public void ManageConnection()
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            else
+            {
+                con.Close();
+            }
+        }
 
         //--------------------------------------Saurabh Start--------------------------------//
         public void SeekerRegister(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SeekerRegister");
@@ -34,15 +45,11 @@ namespace JobPortalLibrary.Controller
          //   cmd.Parameters.AddWithValue("@ResumePDF", objaccount.ResumePDF);
             cmd.Parameters.AddWithValue("@DateOfRegistration", objaccount.DateOfRegistration);
             cmd.ExecuteNonQuery();
-            con.Close();
+          
         }
         public void EmployeerRegister(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EmployeerRegister");
@@ -53,101 +60,73 @@ namespace JobPortalLibrary.Controller
             cmd.Parameters.AddWithValue("@ContactNo", objaccount.SeekerName);
            // cmd.Parameters.AddWithValue("@ContactNo", Dateofregistration);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public SqlDataReader SeekerCode()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SeekerCode");
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+           
         }
         public SqlDataReader EmployeerCode()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EmployeerCode");
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+           
         }
         public void EducationDetails(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EducationDetails");
             cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void EmploymentDetails(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EmploymentDetails");
             cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void ProjectDetails(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ProjectDetails");
             cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void JobAlertSave(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobAlertSave");
             cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public SqlDataReader Adminemail(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Adminemail");
@@ -155,7 +134,7 @@ namespace JobPortalLibrary.Controller
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         //--------------------------------------Saurabh End--------------------------------//
 
@@ -166,11 +145,7 @@ namespace JobPortalLibrary.Controller
         //--------------------seekerlogin-------------------------------------------------------
         public SqlDataReader Login(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "LoginSeeker");
@@ -180,17 +155,14 @@ namespace JobPortalLibrary.Controller
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
 
         //--------------------employerlogin---------------------------------------------------
         public SqlDataReader LoginEmp(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            con.Close();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "LoginEmployer");
@@ -199,16 +171,13 @@ namespace JobPortalLibrary.Controller
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         //--------------------Adminlogin---------------------------------------------------
         public SqlDataReader LoginAdmin(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            con.Close();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Loginadmin");
@@ -217,16 +186,12 @@ namespace JobPortalLibrary.Controller
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         //--------------------forgetpasswordseeker-------------------------------------------------
         public SqlDataReader forgetpasswords(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ForgetPasswordseek");
@@ -234,16 +199,12 @@ namespace JobPortalLibrary.Controller
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         //--------------------forgetpasswordemployer-------------------------------------------------
         public SqlDataReader forgetpasswordE(AccountUser objaccount)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ForgetPasswordemp");
@@ -251,7 +212,7 @@ namespace JobPortalLibrary.Controller
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
     }
 }

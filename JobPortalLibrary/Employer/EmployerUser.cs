@@ -215,6 +215,7 @@ namespace JobPortalLibrary.Employer
         public string ExpectedJoiningDate1 { get; set; }
 
         public string ApplicationEndDate1 { get; set; }
+        public string ADate { get; set; }
         //------------------------------------------Kartik Start-------------------------------------//
         [Required(ErrorMessage = "Company Email Required..!")]
         public string CompanyEmail { get; set; }
@@ -229,5 +230,29 @@ namespace JobPortalLibrary.Employer
         public string ResumePDF { get; set; }
         public int CityId1 { get; set; }
         //------------------------------------------sachin End---------------------------------------//
+        //------------------------------------------Ashish Start---------------------------------------//
+        public string JobSeekerName { get; set; }
+        public List<EmployerUser> LstUser { get; set; }
+        public string SeekerEmail { get; set; }
+
+        [DataType(DataType.Time)]
+        [Display(Name = "Start Time")]
+        public TimeSpan StartTime { get; set; }
+
+        [DataType(DataType.Time)]
+        [Display(Name = "End Time")]
+        public TimeSpan EndTime { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Interview Date")]
+        public DateTime InterviewDate { get; set; }
+
+        public string InterviewAddress { get; set; }
+
+        public string Applycodelist { get; set; }
+        public string InterviewType { get; set; }
+        //------------------------------------------sachin End---------------------------------------//
+
+
     }
 }

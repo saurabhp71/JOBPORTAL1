@@ -1,0 +1,583 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+@{
+    ViewBag.Title = "AllRoundsGrid";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+     
+        $("#selectall").click(function () {
+            if (this.checked) {
+                $('.checkbox').each(function () {
+                    $(".checkbox").prop('checked', true);
+                })
+            } else {
+                $('.checkbox').each(function () {
+                    $(".checkbox").prop('checked', false);
+                })
+            }
+        });
+
+    });
+
+
+
+</script>
+
+<style>
+    /*.sidebar-popup {
+        left: 20% !important;*/
+    /* height: 100% !important;*/
+    /*transition: transform .2s ease-in-out !important;
+        transform: translateX(100%);
+    }*/
+    .modal {
+        margin-left: 420px
+    }
+</style>
+<style>
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: green;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 15px;
+        padding: 20px;
+        width: 130px;
+        height: 60px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+</style>
+<style>
+    .button1 {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: red;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 15px;
+        padding: 20px;
+        width: 130px;
+        height: 60px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+        .button1 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button1 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button1:hover span {
+            padding-right: 25px;
+        }
+
+            .button1:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+    /*.navbar {
+        margin: 5%;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        padding: 25px 0;
+        border-radius: 25PX;
+        border: 0.1px solid #001414;
+        background-color: #4947bf;
+        box-shadow: 0 4px 8px 0 #001414, 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    .navbar-brand{
+        margin: auto;
+        color:white;
+        font-size:20px;
+        cursor:pointer;
+    }
+    .navbar-brand:after{
+        display:block;
+    }
+    .navbar-brand:hover:after{
+        transform:scaleX(1);
+    }*/
+        .navbar-brand:hover {
+            /*  margin: auto;*/
+            /*font-size: 20px;
+        cursor: pointer;*/
+            color: #00004d;
+            background-color: #ecf2f9;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            /*border-radius: 10px;*/
+            display: block;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            /*   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;*/
+            margin-bottom: -1px;
+            text-decoration-color: #0000e6;
+            border-bottom-style: solid;
+        }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Mazer Admin Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/Content/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/Content/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/Content/css/app.css">
+    <link rel="shortcut icon" href="~/Content/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div style="width:900px;">
+        <nav class="navbar">
+
+            <a class="navbar-brand" href="@Url.Action("AllRoundsGrid","Employer")" style="color: #435ebe ">All Registered</a>
+            <a class="navbar-brand" href="@Url.Action("RoundsGrid","Employer")" style="color: #435ebe ">Round 1</a>
+            <a class="navbar-brand" href="@Url.Action("RoundsGridR2","Employer")" style="color: #435ebe ">Round2</a>
+            <a class="navbar-brand" href="@Url.Action("RoundsGridR3","Employer")" style="color: #435ebe ">Round 3</a>
+            <a class="navbar-brand" href="@Url.Action("RoundsGridR4","Employer")" style="color: #435ebe ">Round 4</a>
+            <a class="navbar-brand" href="@Url.Action("RoundsGridR5","Employer")" style="color: #435ebe">Round 5</a>
+        </nav>
+    </div>
+
+    @*<div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home"
+                       role="tab" aria-controls="home" aria-selected="true">Home</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile"
+                       role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact"
+                       role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                     aria-labelledby="home-tab">
+                    <p class='my-2'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nulla ut nulla
+                        neque. Ut hendrerit nulla a euismod pretium.
+                        Fusce venenatis sagittis ex efficitur suscipit. In tempor mattis
+                        fringilla. Sed id
+                        tincidunt orci, et volutpat ligula.
+                        Aliquam sollicitudin sagittis ex, a rhoncus nisl feugiat quis. Lorem
+                        ipsum dolor sit
+                        amet, consectetur adipiscing elit.
+                        Nunc ultricies ligula a tempor vulputate. Suspendisse pretium mollis
+                        ultrices.
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel"
+                     aria-labelledby="profile-tab">
+                    Integer interdum diam eleifend metus lacinia, quis gravida eros mollis.
+                    Fusce non sapien
+                    sit amet magna dapibus
+                    ultrices. Morbi tincidunt magna ex, eget faucibus sapien bibendum non. Duis
+                    a mauris ex.
+                    Ut finibus risus sed massa
+                    mattis porta. Aliquam sagittis massa et purus efficitur ultricies. Integer
+                    pretium dolor
+                    at sapien laoreet ultricies.
+                    Fusce congue et lorem id convallis. Nulla volutpat tellus nec molestie
+                    finibus. In nec
+                    odio tincidunt eros finibus
+                    ullamcorper. Ut sodales, dui nec posuere finibus, nisl sem aliquam metus, eu
+                    accumsan
+                    lacus felis at odio. Sed lacus
+                    quam, convallis quis condimentum ut, accumsan congue massa. Pellentesque et
+                    quam vel
+                    massa pretium ullamcorper vitae eu
+                    tortor.
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel"
+                     aria-labelledby="contact-tab">
+                    <p class="mt-2">
+                        Duis ultrices purus non eros fermentum hendrerit. Aenean
+                        ornare interdum
+                        viverra. Sed ut odio velit. Aenean eu diam
+                        dictum nibh rhoncus mattis quis ac risus. Vivamus eu congue ipsum.
+                        Maecenas id
+                        sollicitudin ex. Cras in ex vestibulum,
+                        posuere orci at, sollicitudin purus. Morbi mollis elementum enim, in
+                        cursus sem
+                        placerat ut.
+                    </p>
+                </div>
+            </div>
+        </div>*@
+
+
+    @*<div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="~/Content/images/logo/logo.png" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+
+
+
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <li class="sidebar-item active ">
+                            <a href="index.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-title">Forms &amp; Tables</li>
+
+
+
+                        <li class="sidebar-item  ">
+
+                            <a href="@Url.Action("AllRoundsGrid","Employer")" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>All Register candidates</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("RoundsGrid","Employer")" class='sidebar-link'>
+                                <i class="bi bi-grid-1x2-fill"></i>
+                                <span>Round 1</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("RoundsGridR2","Employer")" class='sidebar-link'>
+                                <i class="bi bi-image-fill"></i>
+                                <span>Round 2</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("RoundsGridR3","Employer")" class='sidebar-link'>
+                                <i class="bi bi-basket-fill"></i>
+                                <span>Round 3</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("RoundsGridR4","Employer")" class='sidebar-link'>
+                                <i class="bi bi-basket-fill"></i>
+                                <span>Round 4</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("RoundsGridR5","Employer")" class='sidebar-link'>
+                                <i class="bi bi-basket-fill"></i>
+                                <span>Round 5</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>*@
+    <div id="main" style="margin-right:100px">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+    </div>
+    @*<div style="margin-left:300px;">
+            <div class="page-heading">
+                <h3>Profile Statistics</h3>
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-9">
+                        <div class="row">
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon purple">
+                                                    <i class="iconly-boldShow"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">All Registered</h6>
+                                                <a href="@Url.Action("AllRoundsGrid","Employer")" class='sidebar-link'>
+                                                    <i class="bi bi-grid-1x2-fill"></i>
+                                                    <span>All Registered</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon blue">
+                                                    <i class="iconly-boldProfile"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Round 1</h6>
+                                                <a href="@Url.Action("RoundsGrid","Employer")" class='sidebar-link'>
+                                                    <i class="bi bi-image-fill"></i>
+                                                    <span>Round 2</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon blue">
+                                                    <i class="iconly-boldProfile"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Round 2</h6>
+                                                <a href="@Url.Action("RoundsGridR2","Employer")" class='sidebar-link'>
+                                                    <i class="bi bi-image-fill"></i>
+                                                    <span>Round 2</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon green">
+                                                    <i class="iconly-boldAdd-User"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Round 3</h6>
+                                                <a href="@Url.Action("RoundsGridR3","Employer")" class='sidebar-link'>
+                                                    <i class="bi bi-image-fill"></i>
+                                                    <span>Round 3</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="iconly-boldBookmark"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Round 4</h6>
+                                                <a href="@Url.Action("RoundsGridR4","Employer")" class='sidebar-link'>
+                                                    <i class="bi bi-basket-fill"></i>
+                                                    <span>Round 4</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="iconly-boldBookmark"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Round 5</h6>
+                                                <a href="@Url.Action("RoundsGridR5","Employer")" class='sidebar-link'>
+                                                    <i class="bi bi-basket-fill"></i>
+                                                    <span>Round 5</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        </div>*@
+
+    <script src="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Content/vendors/apexcharts/apexcharts.js"></script>
+    <script src="~/Content/js/pages/dashboard.js"></script>
+
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>
+
+
+
+<table class="table table-hover" style="width:90%;" id="search">
+    
+    <tr style="background-color: #435ebe; border-radius: 0.5rem;color:white;">
+        <td>
+            Selectall<br />
+            <input type="checkbox" id="selectall" class="css-checkbox " name="selectall" />
+
+        </td>
+        @*<th style="width:100px">
+            <label for="Select">
+                Select
+            </label>
+        </th>*@
+
+        <th>
+            @Html.HiddenFor(model => model.AppliedJobId)
+        </th>
+        <th>
+            @Html.HiddenFor(model => model.PostJobCode)
+        </th>
+        <th style="width:500px">
+            @Html.DisplayNameFor(model => model.JobSeekerName)
+
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+
+    </tr>
+
+        @foreach (var item in Model.LstUser)
+        {
+            <tr>
+                <th>
+                    @Html.CheckBox("multiSelect", new { id = "multiselect", @class = "checkbox", Value = item.AppliedJobId })
+                </th>
+                <td>
+
+                    @Html.HiddenFor(modelItem => item.AppliedJobId)
+
+                </td>
+                <td>
+
+                    @Html.HiddenFor(modelItem => item.PostJobCode)
+
+                </td>
+
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.JobSeekerName)</strong>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.SeekerEmail)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                    <br />
+                    @*<button type="button">
+                @Html.ActionLink("Approve", "UpdateRound1", new { AppliedJobId = item.AppliedJobId })
+
+            </button>
+            <button type="button">
+                @Html.ActionLink("Reject", "RejectatRound1", new { AppliedJobId = item.AppliedJobId })
+
+            </button>
+            <button type="button" style="margin-left:15px">&#x2717;</button>
+            <button type="button">&#x2717;</button>
+            <button class="btn" style="margin-left:10px"><i class="bi bi-download"></i></button>*@
+                </td>
+            </tr>
+        }
+</table>
+
+
+
