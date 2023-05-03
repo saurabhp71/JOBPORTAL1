@@ -7,24 +7,34 @@ using System.Data.SqlClient;
 using System.Data;
 using JobPortalLibrary.JobSeeker;
 using System.Runtime.Remoting.Messaging;
+using System.Configuration;
 
 namespace JobPortalLibrary.JobSeeker
 {
     public class BALSeeker
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
+      //  SqlConnection con = new SqlConnection("Data Source=DESKTOP-B3UBKFN;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        static string CS = ConfigurationManager.ConnectionStrings["RSJP"].ConnectionString;
+        SqlConnection con = new SqlConnection(CS);
+        public void ManageConnection()
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
 
+            }
+            else
+            {
+                con.Close();
+            }
+        }
 
         //--------------------------------------Saurabh Start--------------------------------//
 
         //-------------------------Personal Details-------------------------//
         public void PersonalDetails(SeekerUser objsekUser)
         {
-            if(con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-                
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "PersonalDetails");
@@ -43,31 +53,23 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@MaritalStatus", objsekUser.MaritalStatus);
             cmd.Parameters.AddWithValue("@ProfileSummary", objsekUser.ProfileSummary);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
 
         }
         public void updateIMG(SeekerUser objsekUser)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "updateIMG");
             cmd.Parameters.AddWithValue("@Seekercode", objsekUser.Seekercode);
             cmd.Parameters.AddWithValue("@ProfileIMG", objsekUser.ProfileIMG);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public SqlDataReader SeekerDetails(SeekerUser objsekUser)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SeekerDetails");
@@ -75,15 +77,11 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+         
         }
         public DataSet CityBind()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "City");
@@ -92,15 +90,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataSet Language()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Language");
@@ -109,15 +103,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataTable LanguageShow(int languageid)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "LanguageShow");
@@ -127,16 +117,12 @@ namespace JobPortalLibrary.JobSeeker
             DataTable ds = new DataTable();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         //-----------------------------------------Education--------------------------//
         public DataSet Qualification()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Qualification");
@@ -145,15 +131,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataSet Degree(int QualificationID)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Degree");
@@ -163,15 +145,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataSet Specialization(int DegreeId)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Specialization");
@@ -181,15 +159,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public SqlDataReader GetEducationDetails(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ShowEducationDetails");
@@ -197,16 +171,12 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
 
         public void AddSSC(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "AddSSC");
@@ -216,15 +186,11 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@PassingYear", objseeker.PassingYear);
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public void AddHSC(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "AddHSC");
@@ -234,15 +200,11 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@PassingYear", objseeker.PassingYear);
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public void AddUG(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "AddUG");
@@ -255,15 +217,11 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.Parameters.AddWithValue("@CourseType", objseeker.CourseType);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void AddGraduation(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "AddGraduation");
@@ -276,15 +234,11 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.Parameters.AddWithValue("@CourseType", objseeker.CourseType);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void AddPG(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "AddPG");
@@ -297,16 +251,12 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.Parameters.AddWithValue("@CourseType", objseeker.CourseType);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         //---------------------------Employment details----------------------------//
         public SqlDataReader GetEmploymentDetails(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "GetEmploymentDetails");
@@ -314,15 +264,11 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+           
         }
         public void UpdateEmploymentDetails(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "UpdateEmploymentDetails");
@@ -337,15 +283,11 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@JobProfile", objseeker.JobProfile);
             cmd.Parameters.AddWithValue("@NoticePeriod", objseeker.NoticePeriod);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public DataSet Skill()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Skill");
@@ -354,16 +296,12 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+           
         }
         //---------------------------Project Details-----------------------//
         public SqlDataReader GetProjectDetails(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "GetProjectDetails");
@@ -371,15 +309,11 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+           
         }
         public void UpdateProjectDetails(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "UpdateProjectDetails");
@@ -390,16 +324,12 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@TotalExperience", objseeker.TotalExperience);
             cmd.Parameters.AddWithValue("@ProjectDetails", objseeker.ProjectDetails);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         //---------------------------Career Profile-----------------------//
         public SqlDataReader CareerProfile(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "CareerProfile");
@@ -407,15 +337,11 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         public DataSet Industry()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Industry");
@@ -424,15 +350,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+        
         }
         public DataSet JobCategory(int IndustryId)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobCategory");
@@ -442,15 +364,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataTable PreferredLocation(int CityId)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "PreferredLocation");
@@ -460,15 +378,11 @@ namespace JobPortalLibrary.JobSeeker
             DataTable ds = new DataTable();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public void UpdateCareerProfile(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "UpdateCareerProfile");
@@ -480,16 +394,12 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@EmailId", objseeker.EmailId);
             cmd.Parameters.AddWithValue("@ContactNo", objseeker.ContactNo);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         //---------------------------Complete Profile-----------------------//
         public SqlDataReader CompleteProfile(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "CompleteProfile");
@@ -497,16 +407,12 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         //---------------------------Preferred Job-----------------------//
         public DataSet PreferredJob(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "PreferredJob");
@@ -516,16 +422,12 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         //---------------------------All Companys-----------------------//
         public DataSet AllCompanys()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "AllCompanys");
@@ -534,15 +436,11 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public SqlDataReader CompanysDetails(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "CompanysDetails");
@@ -550,16 +448,12 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         //----------------------------company Follow & company Feedback----------------------//
         public SqlDataReader CompanyFeedback(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "CompanyFeedback");
@@ -568,15 +462,11 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+           
         }
         public void SaveCompanyFeedback(SeekerUser objseeker)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "CompanyFeedback");
@@ -587,7 +477,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@Review", objseeker.Review);
             cmd.Parameters.AddWithValue("@Follow", objseeker.Follow);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
 
             SqlDataReader dr1;
             dr1 = cmd.ExecuteReader();
@@ -604,7 +494,7 @@ namespace JobPortalLibrary.JobSeeker
                 cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
                 cmd.Parameters.AddWithValue("@Review", objseeker.Review);
                 cmd2.ExecuteNonQuery();
-                con.Close();
+                
 
             }
 
@@ -622,17 +512,13 @@ namespace JobPortalLibrary.JobSeeker
                 cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
                 cmd.Parameters.AddWithValue("@Review", objseeker.Review);
                 cmd1.ExecuteNonQuery();
-                con.Close();
+                
             }
         }
         public void FollowCompany(SeekerUser objseeker)
         {
 
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "CompanyFeedback");
@@ -658,7 +544,7 @@ namespace JobPortalLibrary.JobSeeker
                 cmd2.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
                 cmd2.Parameters.AddWithValue("@Follow", objseeker.Follow1);
                 cmd2.ExecuteNonQuery();
-                con.Close();
+               
             }
 
             else
@@ -672,7 +558,7 @@ namespace JobPortalLibrary.JobSeeker
                 cmd1.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
                 cmd1.Parameters.AddWithValue("@Follow", objseeker.Follow1);
                 cmd1.ExecuteNonQuery();
-                con.Close();
+                
             }
          
         }
@@ -682,10 +568,7 @@ namespace JobPortalLibrary.JobSeeker
 
         public DataSet FindJobs(SeekerUser objsekUser /*string postjobcode*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "FindJobs");
@@ -698,16 +581,13 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
 
         //------------------Search Jobs-------------------------------------------------//
         public DataSet FindJobs1(SeekerUser objsekUser /*string jobtitle,string joblocation,string salary*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "FindJobs1");
@@ -720,16 +600,13 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+           
         }
 
         //--------ApplyButton Jobs Popup---------------------------------//
         public SqlDataReader ApplyJobView(SeekerUser objsekUser /*string PostJobCode*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "ApplyJobView");
@@ -737,7 +614,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
 
 
@@ -745,10 +622,7 @@ namespace JobPortalLibrary.JobSeeker
 
         public void SubmitPDF(SeekerUser objsekUser /*string seekercode, string postjobcode, int statusid, DateTime applieddate, string resumepdf*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SubmitPDF");
@@ -758,16 +632,13 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@AppliedDate", objsekUser.AppliedDate);
             cmd.Parameters.AddWithValue("@ResumePDF", objsekUser.ResumePDF);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
 
         //----------ApplicationGriview--------------------------//
         public DataSet ApplicationGrid(SeekerUser objsekUser /*string seekercode*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ApplicationGrid");
@@ -777,32 +648,26 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
 
         //------------DeleteButtononGrid----------------//
         public void IsDelete(SeekerUser objsekUser /*int jobappliedid*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "IsDelete");
             cmd.Parameters.AddWithValue("@AppliedJobId", objsekUser.AppliedJobID);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
 
         //-----------StatusUpdateonJobSubmit-----------//
 
         public SqlDataReader SubmitApplication(SeekerUser objsekUser /*int  jobappliedid,int statusid*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SubmitApplication");
@@ -811,16 +676,13 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
 
         //------------------DownloadPDF------------------------//
         public SqlDataReader DownloadPDF(SeekerUser objsekUser  /*int seekerid*/)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "DownloadPDF");
@@ -828,7 +690,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
 
         //----------------------------Sanket End--------------------------------//

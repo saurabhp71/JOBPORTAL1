@@ -5,18 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace JobPortalLibrary.Employer
 {
     public class BALEmployer
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-RU5490M;Initial Catalog=\"Job Portal\";Integrated Security=True");
-       
+
+        //SqlConnection con = new SqlConnection("Data Source=DESKTOP-B3UBKFN;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        static string CS = ConfigurationManager.ConnectionStrings["RSJP"].ConnectionString;
+        SqlConnection con = new SqlConnection(CS);
+        public void ManageConnection()
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            else
+            {
+                con.Close();
+            }
+        }
 
         //---------------------------------Mahesh Start-----------------------------//
         public DataSet getjobgrid()
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getjobgrid");
@@ -25,12 +39,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getapplyjobstud(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "applyjobstud");
@@ -40,24 +54,24 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
 
         }
         public void getaprove(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getstatusaprove");
             cmd.Parameters.AddWithValue("@StatusId", obj.StatusId);
             cmd.Parameters.AddWithValue("@AppliedJobId", obj.AppliedJobId);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public DataSet getstatus(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getstatus");
@@ -68,11 +82,11 @@ namespace JobPortalLibrary.Employer
             adpt.SelectCommand = cmd;
             adpt.Fill(dt);
             return dt;
-            con.Close();
+            
         }
         public DataSet getactivecount(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getactivecount");
@@ -82,13 +96,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getawaitingreveiwcount(EmployerUser obj)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getawaitingreviewcount");
@@ -98,13 +111,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getreviewcount(EmployerUser obj)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getreviewcount");
@@ -114,13 +126,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getcontactingcount(EmployerUser obj)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getcontactingcount");
@@ -130,13 +141,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet gethirecount(EmployerUser obj)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "gethirecount");
@@ -146,13 +156,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getrejectedcount(EmployerUser obj)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "getrejectcount");
@@ -162,12 +171,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public SqlDataReader JobDetails(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobDetails");
@@ -175,11 +184,11 @@ namespace JobPortalLibrary.Employer
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         public DataSet getphonedetails(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Getphonedetails");
@@ -189,23 +198,23 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public void deletecandidates(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Deletecandidate");
             cmd.Parameters.AddWithValue("@Seekercode", obj.Seekercode);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
 
         }
         public DataSet geteducation()
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "GetEducation");
@@ -214,12 +223,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getdegree(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "GetDegree");
@@ -229,12 +238,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public DataSet getspecialization(EmployerUser obj)
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "GetSpecialization");
@@ -244,12 +253,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+           
 
         }
         public DataSet getseekercode()
         {
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Getseekercode");
@@ -258,13 +267,13 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
         public void Editjob(EmployerUser obj)
         {
 
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EditJob");
@@ -290,12 +299,12 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@ApplicationStartDate", obj.ApplicationStartDate);
             cmd.Parameters.AddWithValue("@ApplicationEndDate", obj.ApplicationEndDate);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void saveseekerdetail(EmployerUser obj, string seekercode, string Resume)
         {
-            con.Close();
-            con.Open();
+           
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Saveseekerdetail");
@@ -305,15 +314,15 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@Password", obj.Password);
             cmd.Parameters.AddWithValue("@DOB", obj.DOB);
             cmd.Parameters.AddWithValue("@Address", obj.Address);
-            cmd.Parameters.AddWithValue("@ResumePDF", Resume);
+            cmd.Parameters.AddWithValue("@ResumePDF", Resume); 
             cmd.ExecuteNonQuery();
-            con.Close();
+
+         
 
         }
         public void applyjob(EmployerUser obj, string seekercode, int statusid, string Resume)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ApplyJob");
@@ -324,13 +333,12 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@ResumePDF", Resume);
             // cmd.Parameters.AddWithValue("@isDelete", obj.isDelete);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
 
         }
         public void savesscdetail(EmployerUser obj, string seekercode)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SaveSSCdetail");
@@ -338,12 +346,11 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@SSC", obj.SSC);
             cmd.Parameters.AddWithValue("@SSCBoard", obj.SSCBoard);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public void savehscdetail(EmployerUser obj, string seekercode)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SaveHSCdetail");
@@ -351,12 +358,11 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@HSC", obj.HSC);
             cmd.Parameters.AddWithValue("@HSCBoard", obj.HSCBoard);
             cmd.ExecuteNonQuery();
-            con.Close();
+           
         }
         public void saveundergraduation(EmployerUser obj, string seekercode)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SaveUGDetail");
@@ -366,12 +372,11 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@UGSpecialization", obj.SpecializationId);
             cmd.Parameters.AddWithValue("@UGUnivercity", obj.Univercity);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void savegraduationdetail(EmployerUser obj, string seekercode)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SaveGraduationDetail");
@@ -381,12 +386,11 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@GraduationSpecialization", obj.SpecializationId);
             cmd.Parameters.AddWithValue("@GraduationUnivercity", obj.Univercity);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         public void savepgdetail(EmployerUser obj, string seekercode)
         {
-            con.Close();
-            con.Open();
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SavePGDetail");
@@ -396,18 +400,14 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@PGSpecialization", obj.SpecializationId);
             cmd.Parameters.AddWithValue("@PGUnivercity", obj.Univercity);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
         //---------------------------------Mahesh end-----------------------------//
         //----------------------------------Mitali Start-----------------------------------------//
 
         public void JobRegister(EmployerUser ObjEmployerUser)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobRegister");
@@ -433,27 +433,24 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@ApplicationStartDate", ObjEmployerUser.ApplicationStartDate);
             cmd.Parameters.AddWithValue("@ApplicationEndDate", ObjEmployerUser.ApplicationEndDate);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
 
         }
         public SqlDataReader PostJobCode()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "PostJobCode");
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+           
 
         }
         public DataSet GetCompany(EmployerUser obj)                                 // regular dropdown
         {
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Company");
@@ -466,6 +463,7 @@ namespace JobPortalLibrary.Employer
         }
         public DataSet GetJobBenifits()                           // multiselect dropdown
         {
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobBenefits");
@@ -477,6 +475,7 @@ namespace JobPortalLibrary.Employer
         }
         public DataSet GetJobCategory(int companyid)                                 // regular dropdown
         {
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobCategory");
@@ -489,6 +488,7 @@ namespace JobPortalLibrary.Employer
         }
         public DataSet GetLocation()
         {
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobLocation");
@@ -500,6 +500,7 @@ namespace JobPortalLibrary.Employer
         }
         public DataSet QualificationRequired()                           // multiselect dropdown
         {
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "QualificationRequired");
@@ -514,11 +515,7 @@ namespace JobPortalLibrary.Employer
         //---------------------------------Kartik Start--------------------------//
         public void KTCompanyRegisteration(EmployerUser ObjEmployerUser)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "KTCompanyRegisteration");
@@ -547,18 +544,14 @@ namespace JobPortalLibrary.Employer
             cmd.Parameters.AddWithValue("@Source", ObjEmployerUser.Source);
             cmd.Parameters.AddWithValue("@RegistrationDate", ObjEmployerUser.RegistrationDate);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
         }
 
 
         public DataSet KTCompanyCategoryBind()
         {
 
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "KTCompanyCategoryBind");
@@ -567,16 +560,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
 
         public DataSet Locationbind()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "Locationbind");
@@ -585,7 +574,7 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
 
         }
 
@@ -594,43 +583,47 @@ namespace JobPortalLibrary.Employer
         //---------------------------------sachin start----------------------------//
         public DataSet GetJobCategory()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("Employeer", con);
             cmb.CommandType = CommandType.StoredProcedure;
-            cmb.Parameters.AddWithValue("@Flag", "GetJobCategory");
+            cmb.Parameters.AddWithValue("@flag", "GetJobCategory");
             SqlDataAdapter adpt = new SqlDataAdapter();
             adpt.SelectCommand = cmb;
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
-        public DataSet GetJobTitle(int JobCategoryId)
-        {
-            if (con.State == System.Data.ConnectionState.Closed)
+            public DataSet JobCategory()
             {
-                con.Open();
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@flag", "JobCategory");
+                SqlDataAdapter adpt = new SqlDataAdapter();
+                adpt.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                adpt.Fill(ds);
+                return ds;
+
             }
+            public DataSet GetJobTitle(int JobCategoryId)
+        {
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("Employeer", con);
             cmb.CommandType = CommandType.StoredProcedure;
             cmb.Parameters.AddWithValue("@Flag", "GetJobTitle");
-            cmb.Parameters.AddWithValue("@JobCatagoryId", +JobCategoryId);
+            cmb.Parameters.AddWithValue("@JobCatagoryId", JobCategoryId);
             SqlDataAdapter adpt = new SqlDataAdapter();
             adpt.SelectCommand = cmb;
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataSet GetJobLocation()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("Employeer", con);
             cmb.CommandType = CommandType.StoredProcedure;
             cmb.Parameters.AddWithValue("@Flag", "GetJobLocation");
@@ -639,14 +632,11 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
         public DataSet GetFindResume(int CityId, string JobTitle)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "GetFindResume");
@@ -657,15 +647,12 @@ namespace JobPortalLibrary.Employer
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            con.Close();
+            
         }
 
         public SqlDataReader SeekerDetails(EmployerUser obj)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SeekerDetails");
@@ -673,26 +660,191 @@ namespace JobPortalLibrary.Employer
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            con.Close();
+            
         }
         public void Update(EmployerUser obj)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("Employeer", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "Update");
             cmd.Parameters.AddWithValue("@StatusId", obj.StatusId);
             cmd.Parameters.AddWithValue("@Seekercode", obj.Seekercode);
             cmd.ExecuteNonQuery();
-            con.Close();
+            
+        }
+        //---------------------------------sachin End----------------------------//
+        //---------------------------------Ashish start----------------------------//
+        public DataSet AllRoundsGrid(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AllRoundsGrid");
+            cmd.Parameters.AddWithValue("@PostJobCode", objuser.PostJobCode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+            
+
+        }
+        public DataSet RoundsGrid(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AORoundsGrid1");
+            cmd.Parameters.AddWithValue("@PostJobCode", objuser.PostJobCode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+
+        }
+        public void AddNewRounds(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AOAddNewRounds");
+            cmd.Parameters.AddWithValue("@EmployeerCode", objuser.Employercode);
+            cmd.Parameters.AddWithValue("@RoundName", objuser.RoundName);
+            cmd.ExecuteNonQuery();
+
         }
 
+        public DataSet ShowRounds()
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AOShowRounds");
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+
+        }
+
+        public void CreateRoundwithDetails(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "CreateRoundwithDetails");
+            cmd.Parameters.AddWithValue("@RoundName", objuser.RoundName);
+            cmd.Parameters.AddWithValue("@applyjoblist", objuser.Applycodelist);
+            cmd.Parameters.AddWithValue("@StartTime", objuser.StartTime);
+            cmd.Parameters.AddWithValue("@EndTime", objuser.EndTime);
+            cmd.Parameters.AddWithValue("@InterviewAddress", objuser.InterviewAddress);
+            cmd.Parameters.AddWithValue("@Date", objuser.InterviewDate);
+            cmd.Parameters.AddWithValue("@Comment", objuser.Comment);
+            cmd.Parameters.AddWithValue("@InterviewType", objuser.InterviewType);
+            cmd.Parameters.AddWithValue("@StatusId", objuser.StatusId);
+            cmd.ExecuteNonQuery();
+
+        }
+
+        public void UpdateRound1(int AppliedJobId, EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "UpdateStatusR1Clear");
+            cmd.Parameters.AddWithValue("@StatusId", objuser.StatusId);
+            cmd.Parameters.AddWithValue("@AppliedJobId", AppliedJobId);
+
+            cmd.ExecuteNonQuery();
+
+        }
+        public DataSet RoundsGridR2(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AORoundsGridR2");
+            cmd.Parameters.AddWithValue("@PostJobCode", objuser.PostJobCode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+
+        }
+        public DataSet RoundsGridR3(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AORoundsGridR3");
+            cmd.Parameters.AddWithValue("@PostJobCode", objuser.PostJobCode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+
+        }
+        public DataSet RoundsGridR4(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AORoundsGridR4");
+            cmd.Parameters.AddWithValue("@PostJobCode", objuser.PostJobCode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+
+        }
+        public DataSet RoundsGridR5(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "AORoundsGridR5");
+            cmd.Parameters.AddWithValue("@PostJobCode", objuser.PostJobCode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
+
+        }
+        public SqlDataReader GetEmail(int AppliedJobId)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "GetEmail");
+            cmd.Parameters.AddWithValue("@AppliedJobId", AppliedJobId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+
+        }
+        public SqlDataReader GetCompanyName(int AppliedJobId)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "GetCompanyName");
+            cmd.Parameters.AddWithValue("@AppliedJobId", AppliedJobId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+
+        }
+        //---------------------------------Ashish End----------------------------//
     }
 }
-//---------------------------------sachin start----------------------------//
+
 
 
 

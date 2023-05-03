@@ -4,228 +4,270 @@
     ViewBag.Title = "jobgrid";
     Layout = "~/Views/Shared/Employer_Layout.cshtml";
 }
-<div style="margin-left:320px">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @*<link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
-        <link rel="stylesheet" src="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" />
-        <link rel="stylesheet" src="https://cdn.datatables.net/buttons/2.3.2/css/buttons.bootstrap5.min.css" />*@
-    <link href="~/Content/datatable/buttons.dataTables.min.css" rel="stylesheet" />
-    <link href="~/Content/datatable/jquery.dataTables.min.css" rel="stylesheet" />
-    <style>
-        #tooltip {
+
+<!--@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")-->
+@*<link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" src="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" src="https://cdn.datatables.net/buttons/2.3.2/css/buttons.bootstrap5.min.css" />*@
+<!--<link href="~/Content/datatable/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/datatable/jquery.dataTables.min.css" rel="stylesheet" />-->
+<style>
+    #tooltip {
+        position: absolute;
+        width: 200px;
+    }
+
+        #tooltip .logOutToolTip {
+            visibility: hidden;
+            width: 100%;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
             position: absolute;
-            width: 200px;
+            z-index: 1;
+            bottom: 65%;
+            left: 50%;
+            margin-left: -81px;
+            opacity: 1;
+            transition: opacity 1s;
         }
 
-            #tooltip .logOutToolTip {
-                visibility: hidden;
-                width: 100%;
-                background-color: #555;
-                color: #fff;
-                text-align: center;
-                border-radius: 6px;
-                padding: 5px 0;
-                position: absolute;
-                z-index: 1;
-                bottom: 65%;
+            #tooltip .logOutToolTip::after {
+                content: "";
+                /* position: absolute;*/
+                top: 100%;
                 left: 50%;
-                margin-left: -81px;
-                opacity: 1;
-                transition: opacity 1s;
+                margin-left: -5px;
+                border-width: 8px;
+                border-style: solid;
+                border-color: #555 transparent transparent transparent;
             }
 
-                #tooltip .logOutToolTip::after {
-                    content: "";
-                    /* position: absolute;*/
-                    top: 100%;
-                    left: 50%;
-                    margin-left: -5px;
-                    border-width: 8px;
-                    border-style: solid;
-                    border-color: #555 transparent transparent transparent;
-                }
+        #tooltip:hover .logOutToolTip {
+            visibility: visible;
+            opacity: 1;
+        }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Mazer Admin Dashboard</title>
 
-            #tooltip:hover .logOutToolTip {
-                visibility: visible;
-                opacity: 1;
-            }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
 
-    <table class="table table-bordered table-striped" id="Vitthal" style="font:5px;border:solid 5px;width:1000px; height:500px;margin-left:10px">
-        <thead>
-            <tr style="background-color: #ffcccc">
+    <link rel="stylesheet" href="~/Content/vendors/iconly/bold.css">
 
-
-                <th style="width:100px">
-                    @Html.DisplayNameFor(model => model.PostJobCode)
-                </th>
-                <th style="width:150px">
-                    @Html.DisplayNameFor(model => model.JobTitle)
-                </th>
-                <th style="width:150px">
-                    @Html.DisplayNameFor(model => model.ApplicationReceived)
-                </th>
-                <th style="width:100px">
-                    @Html.DisplayNameFor(model => model.Address)
-                </th>
-                <th style="width:150px">
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                <th style="width:100px">
-                    @Html.DisplayNameFor(model => model.Actions)
-                </th>
+    <link rel="stylesheet" href="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/Content/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/Content/css/app.css">
+    <link rel="shortcut icon" href="~/Content/images/favicon.svg" type="image/x-icon">
 
 
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />s
 
+        <link href="~/Content/DataTable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+        <link href="~/Content/DataTable/buttons.bootstrap4.min.css" rel="stylesheet" />*@
+</head>
+<body>
+
+    <script src="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Content/vendors/apexcharts/apexcharts.js"></script>
+    <script src="~/Content/js/pages/dashboard.js"></script>
+
+    <script src="~/Content/js/main.js"></script>
+
+   
+</body>
+</html>
+
+<table class="table table-hover" id="Vitthal" style="width:120%;margin-left:10px">
+    <thead>
+        <tr style="background-color: #435ebe; color: white;">
+
+
+            <th style="width:9px">
+                @Html.DisplayNameFor(model => model.PostJobCode)
+            </th>
+            <th style="width:140px">
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th style="width:70px">
+                @Html.DisplayNameFor(model => model.ApplicationReceived)
+            </th>
+            <th style="width:130px">
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th style="width:130px">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.Actions)
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.joblist)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostJobCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobTitle)
+                </td>
+                <td>
+                    <div id="tooltip" style="text-decoration: underline;color:blue;text-align:center;">
+                        <a href="@Url.Action("Jobapplystud","Employer" ,new {postjobcode=item.PostJobCode})">
+                            <span>@Html.DisplayFor(modelItem => item.ApplicationReceived)</span>
+                            <label class="logOutToolTip">Click to see Aplication Details</label>
+                        </a>
+                    </div>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Sponcer This Job", "Actions", new { postjobcode = item.PostJobCode }, htmlAttributes: new { @class = "btn btn-info" }) |
+        @Html.ActionLink("View Job Details", "JobDetails", new { postjobcode = item.PostJobCode }, htmlAttributes: new { @class = "btn btn-info popup" }) |*@
+                    <button type="button">
+                        <a class="sponcerjob" href="" data-id="@item.PostJobCode">Sponcer This Job</a>
+                    </button>
+                    &nbsp;&nbsp;
+                    <button type="button">
+                        <a class="Viewdetails " href="javascripts:;" data-id="@item.PostJobCode">View Job Detail</a>
+                    </button>
+                    <br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button">
+                        <a class="sharejob" href="" data-id="@item.PostJobCode">Share Job</a>
+                    </button>
+                    &nbsp;&nbsp;
+                    @*<button type="button">
+            <a  href="@Url.Action("RepostJob","Employer")"data-id="@item.PostJobCode"></a>
+        </button>*@
+                    <button type="button">
+                        @Html.ActionLink("RepostJob", "RepostJob", new { PostJobCode = item.PostJobCode })
+                    </button>
+
+
+                </td>
             </tr>
-        </thead>
-        <tbody>
-
-            @foreach (var item in Model.joblist)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PostJobCode)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.JobTitle)
-                    </td>
-                    <td>
-                        <div id="tooltip" style="text-decoration: underline;color:blue">
-                            <a href="@Url.Action("Jobapplystud","Employer" ,new {postjobcode=item.PostJobCode})">
-                                <span>@Html.DisplayFor(modelItem => item.ApplicationReceived)</span>
-                                <label class="logOutToolTip">Click to see Aplication Details</label>
-                            </a>
-                        </div>
-
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @*@Html.ActionLink("Sponcer This Job", "Actions", new { postjobcode = item.PostJobCode }, htmlAttributes: new { @class = "btn btn-info" }) |
-                            @Html.ActionLink("View Job Details", "JobDetails", new { postjobcode = item.PostJobCode }, htmlAttributes: new { @class = "btn btn-info popup" }) |*@
-                        <button type="button">
-                            <a class="sponcerjob" href="" data-id="@item.PostJobCode">Sponcer This Job</a>
-                        </button>
-                        <button type="button">
-                            <a class="Viewdetails " href="javascripts:;" data-id="@item.PostJobCode">View Job Detail</a>
-                        </button>
-                        <button type="button">
-                            <a class="sharejob" href="" data-id="@item.PostJobCode">Share Job</a>
-                        </button>
-                        @*<button type="button">
-                                <a  href="@Url.Action("RepostJob","Employer")"data-id="@item.PostJobCode"></a>
-                            </button>*@
-                        <button type="button" >
-                            @Html.ActionLink("RepostJob", "RepostJob", new { PostJobCode = item.PostJobCode })
-                        </button>
-
-
-                    </td>
-                </tr>
 
 
 
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 
-    @*<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.bootstrap5.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>*@
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/datatable js/jquery-3.5.1.js"></script>
-    <script src="~/Scripts/datatable js/jquery.dataTables.min.js"></script>
-    <script src="~/Scripts/datatable js/dataTables.buttons.min.js"></script>
-    <script src="~/Scripts/datatable js/jszip.min.js"></script>
-    <script src="~/Scripts/datatable js/pdfmake.min.js"></script>
-    <script src="~/Scripts/datatable js/vfs_fonts.js"></script>
-    <script src="~/Scripts/datatable js/buttons.html5.min.js"></script>
-    <script src="~/Scripts/datatable js/buttons.print.min.js"></script>
-    <script>
+@*<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>*@
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/datatable js/jquery-3.5.1.js"></script>
+<script src="~/Scripts/datatable js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/datatable js/dataTables.buttons.min.js"></script>
+<script src="~/Scripts/datatable js/jszip.min.js"></script>
+<script src="~/Scripts/datatable js/pdfmake.min.js"></script>
+@*<script src="~/Scripts/datatable js/vfs_fonts.js"></script>*@
+<script src="~/Scripts/datatable js/buttons.html5.min.js"></script>
+<script src="~/Scripts/datatable js/buttons.print.min.js"></script>
+<script>
 
-        $(document).ready(function () {
-            $('#Vitthal').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            });
+    $(document).ready(function () {
+        $('#Vitthal').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
         });
-    </script>
-    <div id="myModal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div id="myModalContent">
-                    <div class="modal-header">
-                        <h5 class="modal-title"> Details</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" data-dismiss="modal">
-                            <a href="@Url.Action("jobgrid","Employer")"></a>Close
-                        </button>
-                    </div>
+    });
+</script>
+<div id="myModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Details</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">
+                        <a href="@Url.Action("jobgrid","Employer")"></a>Close
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        //var TeamDetailPostBackURL = '/Admin/Details';
-        $(function () {
-            $(".Viewdetails").click(function () {
-                var $buttonClicked = $(this);
-                var Id = $buttonClicked.attr('data-id')
-                var options = { "backdrop": "static", keyboard: true };
-                $.ajax({
-                    type: "GET",
-                    url: "/Employer/JobDetails",
-                    data: { PostJobCode: Id },
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "html",
-                    success: function (data) {
-                        $('#myModalContent').html(data);
-                        $('#myModal').modal(options);
-                        $('#myModal').find(".modal-body").html(data);
-                        $('#myModal').modal('show');
-                    },
-                    failure: function (data) {
-                        alert("data.dataText");
-                    },
-                    error: function (data) {
-                        alert("data.dataText");
-                    }
-                });
-            });
-            $(".btn").click(function () {
-                $('#myModal').modal('hide');
-            });
-        });</script>
-
 </div>
+
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    //var TeamDetailPostBackURL = '/Admin/Details';
+    $(function () {
+        $(".Viewdetails").click(function () {
+            var $buttonClicked = $(this);
+            var Id = $buttonClicked.attr('data-id')
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                type: "GET",
+                url: "/Employer/JobDetails",
+                data: { PostJobCode: Id },
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (data) {
+                    $('#myModalContent').html(data);
+                    $('#myModal').modal(options);
+                    $('#myModal').find(".modal-body").html(data);
+                    $('#myModal').modal('show');
+                },
+                failure: function (data) {
+                    alert("data.dataText");
+                },
+                error: function (data) {
+                    alert("data.dataText");
+                }
+            });
+        });
+        $(".btn").click(function () {
+            $('#myModal').modal('hide');
+        });
+    });</script>
+
+
 
 

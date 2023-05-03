@@ -2346,6 +2346,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Sweet.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2407,7 +2408,17 @@
     <Content Include="Views\Employer\RepostJob.cshtml" />
     <Content Include="Views\Employer\viewphonedetails.cshtml" />
     <Content Include="Views\Employer\FindResume.cshtml" />
-    <Content Include="Views\Employer\SeekerDetails.cshtml" />
+    <Content Include="Views\Employer\JobSeekerDetails.cshtml" />
+    <Content Include="Views\Employer\AllRoundsGrid.cshtml" />
+    <Content Include="Views\Employer\CreateRoundwithDetails.cshtml" />
+    <Content Include="Views\Employer\RoundsGrid.cshtml" />
+    <Content Include="Views\Employer\RoundsGridR2.cshtml" />
+    <Content Include="Views\Employer\RoundsGridR3.cshtml" />
+    <Content Include="Views\Employer\RoundsGridR4.cshtml" />
+    <Content Include="Views\Employer\RoundsGridR5.cshtml" />
+    <Content Include="Views\Employer\ShowRounds.cshtml" />
+    <Content Include="Views\Employer\UpdateRound1.cshtml" />
+    <Content Include="Views\Employer\view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

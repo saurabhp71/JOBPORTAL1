@@ -12,6 +12,9 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using static System.Net.WebRequestMethods;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Text;
+using System.Web.UI.WebControls;
 
 namespace JobPortal.Controllers
 {
@@ -22,6 +25,10 @@ namespace JobPortal.Controllers
         public string fileName;
         string Code;
         public string jobseekercode;
+        string Applylists;
+        string applyList;
+        string emailList;
+        string postjobcode;
         // GET: Employer
         public ActionResult Index()
         {
@@ -75,7 +82,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
         }
@@ -95,7 +102,12 @@ namespace JobPortal.Controllers
                 objuser1.ViewResume = ds.Tables[0].Rows[i]["ResumePDF"].ToString();
                 objuser1.AppliedJobId = Convert.ToInt32(ds.Tables[0].Rows[i]["AppliedJobID"].ToString());
                 objuser1.SeekerName = ds.Tables[0].Rows[i]["SeekerName"].ToString();
-                objuser1.ApplyDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["AppliedDate"].ToString());
+                //objuser1.ApplyDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["AppliedDate"].ToString());
+
+                DateTime ApplyDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["AppliedDate"].ToString());
+                objuser1.ADate = ApplyDate.ToShortDateString();
+
+
                 objuser1.Status = ds.Tables[0].Rows[i]["Status"].ToString();
                 jobgridlst.Add(objuser1);
             }
@@ -149,7 +161,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
         }
@@ -219,11 +231,13 @@ namespace JobPortal.Controllers
                     obj.ApplicationEndDate1 = dr["ApplicationEndDate"].ToString();
                 }
                 dr.Close();
+                obj.PostJobCode = PostJobCode;
+                Session["url"] = HttpContext.Request.Url.AbsoluteUri;
                 return await Task.Run(() => PartialView(obj));
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
 
@@ -245,7 +259,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
 
@@ -264,7 +278,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
         }
@@ -279,7 +293,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
 
@@ -305,8 +319,9 @@ namespace JobPortal.Controllers
 
 
         }
-        public JsonResult getdegree(EmployerUser obj)
+        public JsonResult getdegree(int Educationid,EmployerUser obj)
         {
+            obj.QualificationId = Educationid;
             BALEmployer objbal = new BALEmployer();
             DataSet ds2 = new DataSet();
             ds2 = objbal.getdegree(obj);
@@ -327,8 +342,9 @@ namespace JobPortal.Controllers
 
 
         }
-        public JsonResult getspecialization(EmployerUser obj)
+        public JsonResult getspecialization(int DegreeId,EmployerUser obj)
         {
+            obj.DegreeId = DegreeId;
             BALEmployer objbal = new BALEmployer();
             DataSet ds = new DataSet();
             ds = objbal.getspecialization(obj);
@@ -417,7 +433,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpGet]
@@ -463,7 +479,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
 
@@ -508,7 +524,7 @@ namespace JobPortal.Controllers
                 return await Task.Run(() => RedirectToAction("RepostJob"));
 
             }
-            return await Task.Run(() => View("Register", "Account"));
+            return await Task.Run(() => View("Login", "Account"));
         }
 
         //---------------------------mahesh end-------------------------//
@@ -532,7 +548,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
 
@@ -576,7 +592,7 @@ namespace JobPortal.Controllers
                 return await Task.Run(() => RedirectToAction("JobRegister"));
 
             }
-            return await Task.Run(() => View("Register", "Account"));
+            return await Task.Run(() => View("Login", "Account"));
         }
         public async Task<ActionResult> PostJob_Code()
         {
@@ -626,7 +642,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         public async Task<ActionResult> JobBenefits()                        //multiselect dropdown
@@ -733,7 +749,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
         }
@@ -760,14 +776,11 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
 
         }
-
-
-
 
         [HttpPost]
         public JsonResult CompanyCategory()
@@ -808,29 +821,25 @@ namespace JobPortal.Controllers
 
         //-----------------------------------------Kartik End----------------------------------//
         //-----------------------------------------sachin start----------------------------------//
-
+        
         [HttpGet]
         public JsonResult GetJobCategory()
         {
 
             BALEmployer objBal = new BALEmployer();
             DataSet ds = new DataSet();
-            ds = objBal.GetJobCategory();
+            ds = objBal.JobCategory();
             List<SelectListItem> CategoryList = new List<SelectListItem>();
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            foreach (DataRow dr in ds.Tables[2].Rows)
             {
                 CategoryList.Add(new SelectListItem
                 {
                     Text = dr["JobCategory"].ToString(),
-
                     Value = dr["JobCategoryId"].ToString()
                 });
             }
             ViewBag.Category = CategoryList;
             return Json(CategoryList, JsonRequestBehavior.AllowGet);
-
-
-
         }
 
         public JsonResult GetJobTitle(int JobCatId)
@@ -839,7 +848,7 @@ namespace JobPortal.Controllers
             DataSet ds = new DataSet();
             ds = objBal.GetJobTitle(JobCatId);
             List<SelectListItem> JobtitleList = new List<SelectListItem>();
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            foreach (DataRow dr in ds.Tables[1].Rows)
             {
                 JobtitleList.Add(new SelectListItem
                 {
@@ -856,7 +865,7 @@ namespace JobPortal.Controllers
             DataSet ds = new DataSet();
             ds = objUser.GetJobLocation();
             List<SelectListItem> CityList = new List<SelectListItem>();
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            foreach (DataRow dr in ds.Tables[1].Rows)
 
             {
                 CityList.Add(new SelectListItem
@@ -869,6 +878,7 @@ namespace JobPortal.Controllers
             ViewBag.City = CityList;
             return Json(CityList, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         public async Task<ActionResult> FindResume()
         {
             if (Session["Employercode"] != null)
@@ -890,15 +900,15 @@ namespace JobPortal.Controllers
                     EmployerUser obj = new EmployerUser();
                     EmployerUser objuser = new EmployerUser();
                     List<EmployerUser> ListUser = new List<EmployerUser>();
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
                     {
                         EmployerUser obju = new EmployerUser();
-                        obju.Seekercode = ds.Tables[0].Rows[i]["Seekercode"].ToString();
-                        obju.SeekerName = ds.Tables[0].Rows[i]["SeekerName"].ToString();
-                        obju.TotalExperience = ds.Tables[0].Rows[i]["TotalExperience"].ToString();
-                        obju.RequireQualification = ds.Tables[0].Rows[i]["RequireQualification"].ToString();
-                        obju.JobType = ds.Tables[0].Rows[i]["JobType"].ToString();
-                        obju.ResumePDF = ds.Tables[0].Rows[i]["ResumePDF"].ToString();
+                        obju.Seekercode = ds.Tables[1].Rows[i]["JobSeekerCode"].ToString();
+                        obju.SeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                        obju.TotalExperience = ds.Tables[1].Rows[i]["TotalExperience"].ToString();
+                        obju.RequireQualification = ds.Tables[1].Rows[i]["RequireQualification"].ToString();
+                        obju.JobType = ds.Tables[1].Rows[i]["JobType"].ToString();
+                        obju.ResumePDF = ds.Tables[1].Rows[i]["ResumePDF"].ToString();
 
                         ListUser.Add(obju);
 
@@ -918,37 +928,37 @@ namespace JobPortal.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> FindResume(FormCollection objcoll)
+        public async Task<ActionResult> FindResume(FormCollection objcoll,EmployerUser obj1)
         {
             if (Session["Employercode"] != null)
             {
                 JobLocationSM();
                 GetJobCategory();
-                EmployerUser obj = new EmployerUser();
-                obj.CityId1= Convert.ToInt32(objcoll["cityid"].ToString());
-                obj.JobTitle = objcoll["jobtitle"].ToString();
-                Session["city"] = obj.CityId;
-                Session["jobtitle"] = obj.JobTitle;
+                
+                obj1.CityId1= Convert.ToInt32(objcoll["cityid"].ToString());
+                obj1.JobTitle = objcoll["jobtitle"].ToString();
+                Session["city"] = obj1.CityId;
+                Session["jobtitle"] = obj1.JobTitle;
                 BALEmployer objE = new BALEmployer();
                 DataSet ds = new DataSet();
-                ds = objE.GetFindResume(obj.CityId1, obj.JobTitle);
+                ds = objE.GetFindResume(obj1.CityId1, obj1.JobTitle);
 
                 EmployerUser objuser = new EmployerUser();
                 List<EmployerUser> ListUser = new List<EmployerUser>();
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
                 {
                     EmployerUser obju = new EmployerUser();
-                    obju.Seekercode = ds.Tables[0].Rows[i]["Seekercode"].ToString();
-                    obju.SeekerName = ds.Tables[0].Rows[i]["SeekerName"].ToString();
-                    obju.TotalExperience = ds.Tables[0].Rows[i]["TotalExperience"].ToString();
-                    obju.RequireQualification = ds.Tables[0].Rows[i]["RequireQualification"].ToString();
-                    obju.JobType = ds.Tables[0].Rows[i]["JobType"].ToString();
-                    obju.ResumePDF = ds.Tables[0].Rows[i]["ResumePDF"].ToString();
+                    obju.Seekercode = ds.Tables[1].Rows[i]["JobSeekerCode"].ToString();
+                    obju.SeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                    obju.TotalExperience = ds.Tables[1].Rows[i]["TotalExperience"].ToString();
+                    obju.RequireQualification = ds.Tables[1].Rows[i]["RequireQualification"].ToString();
+                    obju.JobType = ds.Tables[1].Rows[i]["JobType"].ToString();
+                    obju.ResumePDF = ds.Tables[1].Rows[i]["ResumePDF"].ToString();
 
                     ListUser.Add(obju);
 
                 }
-                ViewBag.ResumePDF = obj.ResumePDF;
+                ViewBag.ResumePDF = obj1.ResumePDF;
 
 
                 objuser.ListUser = ListUser;
@@ -961,35 +971,37 @@ namespace JobPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> SeekerDetails(string seekercode)
+        public async Task<ActionResult> JobSeekerDetails(string Seekercode)
         {
-            if (Session["Employercode"] != null)
-            {
+            //if (Session["Employercode"] != null)
+            //{
                 EmployerUser obju = new EmployerUser();
-                obju.Seekercode = seekercode;
+                obju.Seekercode = Seekercode;
                 BALEmployer obj1 = new BALEmployer();
                 SqlDataReader dr;
                 dr = obj1.SeekerDetails(obju);
-                while (dr.Read())
+            EmployerUser obj = new EmployerUser();
+            while (dr.Read())
                 {
-                    //EmployerUser obju = new EmployerUser();
-                    //   obj.Seekercode =dr["Seekercode"].ToString();
-
-                    obju.SeekerName = dr["SeekerName"].ToString();
-                    obju.EmailId = dr["EmailId"].ToString();
-                    obju.ContactNo = Convert.ToInt64(dr["ContactNo"].ToString());
-                    obju.City = dr["CityName"].ToString();
-                    obju.ResumePDF = dr["ResumePDF"].ToString();
-
-                }
+               
+                //   obj.Seekercode =dr["Seekercode"].ToString();
+                obj.Seekercode = dr["JobSeekerCode"].ToString();
+                obj.SeekerName = dr["SeekerName"].ToString();
+                    obj.EmailId = dr["EmailId"].ToString();
+                    obj.ContactNo = Convert.ToInt64(dr["ContactNo"].ToString());
+                    obj.City = dr["CityName"].ToString();
+                    obj.ResumePDF = dr["ResumePDF"].ToString();
+                
+               
+            }
                 dr.Close();
-                ViewBag.ResumePDF = obju.ResumePDF;
-                return await Task.Run(() => PartialView(obju));
-            }
-            else
-            {
-                return await Task.Run(() => View());
-            }
+            ViewBag.ResumePDF = obj.ResumePDF;
+            return await Task.Run(() => PartialView(obj));
+            //}
+            //else
+            //{
+            //    return await Task.Run(() => View());
+            //}
 
         }
         public ActionResult UpdateApporval(EmployerUser obj)
@@ -1023,8 +1035,798 @@ namespace JobPortal.Controllers
             // return RedirectToAction("FindResume");
         }
 
-        //-----------------------------------------sachin start----------------------------------//
+        //-----------------------------------------Ashish start----------------------------------//
+
+        public ActionResult AllRoundsGrid(string postjobcode)
+        {
+            if (Session["Employercode"] != null)
+            {
+                if (TempData.ContainsKey("postjobcode"))
+                    postjobcode = TempData["postjobcode"].ToString(); // returns "Applylist" 
+                ViewBag.postjobcode = postjobcode;
+                TempData["postjobcode"] = postjobcode;
+               
+                EmployerUser obj = new EmployerUser();
+            
+            obj.PostJobCode = postjobcode;
+            BALEmployer ObjBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = ObjBal.AllRoundsGrid(obj);
+            EmployerUser objDetails = new EmployerUser();
+            List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+            for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+            {
+                EmployerUser obju = new EmployerUser();
+                    obju.PostJobCode = ds.Tables[1].Rows[i]["PostJobCode"].ToString();
+                    obju.JobSeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                obju.Status = ds.Tables[1].Rows[i]["Status"].ToString();
+                obju.SeekerEmail = ds.Tables[1].Rows[i]["EmailId"].ToString();
+                obju.AppliedJobId = Convert.ToInt32(ds.Tables[1].Rows[i]["AppliedJobID"].ToString());
+
+                lstUserDt1.Add(obju);
+            }
+            objDetails.LstUser = lstUserDt1;
+            return View(objDetails);
+            }
+            else
+            {
+                return View("Login", "Account");
+            }
+
+        }
+        public async Task<ActionResult> RoundsGrid()
+        {
+            if (Session["Employercode"] != null)
+            {
+                if (TempData.ContainsKey("postjobcode"))
+                    postjobcode = TempData["postjobcode"].ToString(); // returns "Applylist" 
+                ViewBag.postjobcode = postjobcode;
+                TempData["postjobcode"] = postjobcode;
+                EmployerUser obj = new EmployerUser();
+
+                obj.PostJobCode = postjobcode;
+                BALEmployer ObjBal = new BALEmployer();
+                DataSet ds = new DataSet();
+                ds = ObjBal.RoundsGrid(obj);
+                EmployerUser objDetails = new EmployerUser();
+                List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+                for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+                {
+                    EmployerUser obju = new EmployerUser();
+
+                    obju.JobSeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                    obju.Status = ds.Tables[1].Rows[i]["Status"].ToString();
+                    obju.SeekerEmail = ds.Tables[1].Rows[i]["EmailId"].ToString();
+                    obju.AppliedJobId = Convert.ToInt32(ds.Tables[1].Rows[i]["AppliedJobId"].ToString());
+
+                    lstUserDt1.Add(obju);
+                }
+                objDetails.LstUser = lstUserDt1;
+                return await Task.Run(() => View(objDetails));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ShowRounds()
+        {
+            if (Session["Employercode"] != null)
+            {
+                BALEmployer ObjBal = new BALEmployer();
+                DataSet ds = new DataSet();
+                ds = ObjBal.ShowRounds();
+                EmployerUser objDetails = new EmployerUser();
+                List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    EmployerUser obju = new EmployerUser();
+
+                    obju.RoundName = ds.Tables[0].Rows[i]["RoundName"].ToString();
+
+                    lstUserDt1.Add(obju);
+                }
+                objDetails.LstUser = lstUserDt1;
+                return await Task.Run(() => View(objDetails));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+
+        }
+        [HttpGet]
+        public async Task<ActionResult> CreateRoundwithDetails(string Applylist, string Email)
+        {
+            if (Session["Employercode"] != null)
+            {
+                var list = new List<string>() { "Online Interview ", "Walk In", "Phone Interview" };
+                ViewBag.list = list;
+                EmployerUser obj = new EmployerUser();
+                //     ViewBag.applyList = Applylist;
+                TempData["applyList"] = Applylist;
+                TempData["emailList"] = Email;
+                return await Task.Run(() => PartialView("CreateRoundwithDetails", obj));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreateRoundwithDetails(EmployerUser obj)
+        {
+            if (Session["Employercode"] != null)
+            {
+
+                if (TempData.ContainsKey("applyList"))
+                applyList = TempData["applyList"].ToString(); // returns "Applylist" 
+            obj.Applycodelist = applyList;
+            int StatusId = 6;
+            obj.StatusId = StatusId;
+
+            BALEmployer objB = new BALEmployer();
+            objB.CreateRoundwithDetails(obj);
+
+            //if (TempData.ContainsKey("emailList"))
+            //    emailList = TempData["emailList"].ToString(); // returns "Applylist" 
+            //var emailid = emailList;
+            ////  char[] seperator = { ',' };
+            ////  string[] email = null;
+            ////   email = emailid.Split(seperator);
+            //string[] email = emailid.Split(',');
+            // obj.SeekerEmail = email.ToString();
+            //for (int i = 0; i < email.Length; i++)
+            //{ 
+            //if (ModelState.IsValid)
+            //{
+            // string Employercode = Session["EmployerCode"].ToString();
+            var applylist = applyList;
+            string[] aplst = applylist.Split(',');
+            EmployerUser objE = new EmployerUser();
+            BALEmployer obj1 = new BALEmployer();
+            SqlDataReader dr;
+
+            List<string> lstUserDt1 = new List<string>();
+            for (int i = 0; i < aplst.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(aplst[i]);
+                dr = obj1.GetEmail(AppliedJID);
+
+
+                while (dr.Read())
+                {
+
+                    objE.SeekerEmail = dr["EmailId"].ToString();
+                    lstUserDt1.Add(objE.SeekerEmail);
+                }
+                dr.Close();
+
+            }
+            BALEmployer obj2 = new BALEmployer();
+            SqlDataReader dr1;
+
+            for (int i = 0; i < aplst.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(aplst[i]);
+                dr1 = obj2.GetCompanyName(AppliedJID);
+                while (dr1.Read())
+                {
+                    objE.CompanyName = dr1["CompanyName"].ToString();
+                    objE.HRName = dr1["HRName"].ToString();
+                    objE.HRNumber = dr1["HRNumber"].ToString();
+                    //  lstUserDt1.Add(objE.CompanyName);
+                }
+                dr1.Close();
+            }
+
+            MailMessage mail = new MailMessage();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<b>Dear Candidate,</b>");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<b>Greetings From</b>" + " " + objE.CompanyName + ",");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("This has reference to your job application applied, We are pleased to inform you that your profile has been shortlisted.");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Round Name:</b> " + obj.RoundName);
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Interview Date:</b> " + obj.InterviewDate);
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Interview Timing From:</b> " + obj.StartTime);
+            sb.AppendLine("<b>To:</b> " + obj.EndTime);
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Instructions:</b> " + obj.Comment);
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>InteviewType:</b> " + obj.InterviewType);
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Interview Address:</b> " + obj.InterviewAddress);
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("Thanks and Regards, ");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Hr Name :</b>" + objE.HRName);
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Hr Number:</b> " + objE.HRNumber);
+            //  mail.Body = sb.ToString();
+
+            mail.From = new MailAddress("8624077183a@gmail.com");
+            mail.Subject = "Interview Invitation";
+            //  string Address = obj.InterviewAddress;
+            // string Time = obj.StartTime.ToString();
+            mail.Body = sb.ToString();
+            foreach (string n in lstUserDt1)
+            {
+                //     string EmailId = email[i];
+                mail.To.Add(new MailAddress(n));
+            }
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("8624077183a@gmail.com", "mamuijmxmeiiybje"); // Enter seders User name and password  
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+            // return View("RoundsGridR5", obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR5"));
+        }
+         else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+
+}
+        public async Task<ActionResult> UpdateRound1list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+                string temp = Applylist;
+                obj.StatusId = 11;
+                string[] AppliedJobID = temp.Split(',');
+                BALEmployer objB = new BALEmployer();
+                for (int i = 0; i < AppliedJobID.Length; i++)
+                {
+                    int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                    objB.UpdateRound1(AppliedJID,obj);
+                }
+
+                return await Task.Run(() => RedirectToAction("RoundsGrid"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RejectatRound1list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            string temp = Applylist;
+            obj.StatusId = 17;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGrid"));
+        }
+        else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> UpdateRound1(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+                obj.AppliedJobId = AppliedJobId;
+                obj.StatusId = 12;
+                BALEmployer objB = new BALEmployer();
+                objB.UpdateRound1(obj.AppliedJobId,obj);
+
+                return await Task.Run(() => RedirectToAction("RoundsGrid"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RejectatRound1(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 17;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGrid"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> RoundsGridR2()
+        {
+            if (Session["Employercode"] != null)
+            {
+                if (TempData.ContainsKey("postjobcode"))
+                    postjobcode = TempData["postjobcode"].ToString(); // returns "Applylist" 
+                ViewBag.postjobcode = postjobcode;
+                TempData["postjobcode"] = postjobcode;
+                EmployerUser obj = new EmployerUser();
+            
+            obj.PostJobCode = postjobcode;
+            BALEmployer ObjBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = ObjBal.RoundsGridR2(obj);
+            EmployerUser objDetails = new EmployerUser();
+            List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+            for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+            {
+                EmployerUser obju = new EmployerUser();
+
+                obju.JobSeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                obju.Status = ds.Tables[1].Rows[i]["Status"].ToString();
+                obju.SeekerEmail = ds.Tables[1].Rows[i]["EmailId"].ToString();
+                obju.AppliedJobId = Convert.ToInt32(ds.Tables[1].Rows[i]["AppliedJobId"].ToString());
+
+                lstUserDt1.Add(obju);
+            }
+            objDetails.LstUser = lstUserDt1;
+            return await Task.Run(() => View(objDetails));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+
+        }
+        public async Task<ActionResult> UpdateRound2list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 11;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR2"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> RejectatRound2list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 18;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR2"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> UpdateRound2(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 13;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR2"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> RejectatRound2(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 18;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR2"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RoundsGridR3()
+
+        {
+            if (Session["Employercode"] != null)
+            {
+                if (TempData.ContainsKey("postjobcode"))
+                    postjobcode = TempData["postjobcode"].ToString(); // returns "Applylist" 
+                ViewBag.postjobcode = postjobcode;
+                TempData["postjobcode"] = postjobcode;
+                EmployerUser obj = new EmployerUser();
+            
+            obj.PostJobCode = postjobcode;
+            BALEmployer ObjBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = ObjBal.RoundsGridR3(obj);
+            EmployerUser objDetails = new EmployerUser();
+            List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+            for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+            {
+                EmployerUser obju = new EmployerUser();
+
+                obju.JobSeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                obju.Status = ds.Tables[1].Rows[i]["Status"].ToString();
+                obju.SeekerEmail = ds.Tables[1].Rows[i]["EmailId"].ToString();
+                obju.AppliedJobId = Convert.ToInt32(ds.Tables[1].Rows[i]["AppliedJobId"].ToString());
+
+                lstUserDt1.Add(obju);
+            }
+            objDetails.LstUser = lstUserDt1;
+            return await Task.Run(() => View(objDetails));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+
+}
+        public async Task<ActionResult> UpdateRound3list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 11;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR3"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RejectatRound3list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 19;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR3"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> UpdateRound3(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 14;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR3"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RejectatRound3(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 19;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR3"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> RoundsGridR4()
+        {
+            if (Session["Employercode"] != null)
+            {
+                if (TempData.ContainsKey("postjobcode"))
+                    postjobcode = TempData["postjobcode"].ToString(); // returns "Applylist" 
+                ViewBag.postjobcode = postjobcode;
+                TempData["postjobcode"] = postjobcode;
+                EmployerUser obj = new EmployerUser();
+            
+            obj.PostJobCode = postjobcode;
+            BALEmployer ObjBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = ObjBal.RoundsGridR4(obj);
+            EmployerUser objDetails = new EmployerUser();
+            List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+            for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+            {
+                EmployerUser obju = new EmployerUser();
+
+                obju.JobSeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                obju.Status = ds.Tables[1].Rows[i]["Status"].ToString();
+                obju.SeekerEmail = ds.Tables[1].Rows[i]["EmailId"].ToString();
+                obju.AppliedJobId = Convert.ToInt32(ds.Tables[1].Rows[i]["AppliedJobId"].ToString());
+
+                lstUserDt1.Add(obju);
+            }
+            objDetails.LstUser = lstUserDt1;
+            return await Task.Run(() => View(objDetails));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+
+        }
+        public async Task<ActionResult> UpdateRound4list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 11;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR4"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> RejectatRound4list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 20;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR4"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> UpdateRound4(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 15;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR4"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> RejectatRound4(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 20;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR4"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        [HttpGet]
+        public async Task<ActionResult> RoundsGridR5()
+        {
+            if (Session["Employercode"] != null)
+            {
+                if (TempData.ContainsKey("postjobcode"))
+                    postjobcode = TempData["postjobcode"].ToString(); // returns "Applylist" 
+                ViewBag.postjobcode = postjobcode;
+                TempData["postjobcode"] = postjobcode;
+                EmployerUser obj = new EmployerUser();
+         
+            obj.PostJobCode = postjobcode;
+            BALEmployer ObjBal = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = ObjBal.RoundsGridR5(obj);
+            EmployerUser objDetails = new EmployerUser();
+            List<EmployerUser> lstUserDt1 = new List<EmployerUser>();
+            for (int i = 0; i < ds.Tables[1].Rows.Count; i++)
+            {
+                EmployerUser obju = new EmployerUser();
+
+                obju.JobSeekerName = ds.Tables[1].Rows[i]["SeekerName"].ToString();
+                obju.Status = ds.Tables[1].Rows[i]["Status"].ToString();
+                obju.SeekerEmail = ds.Tables[1].Rows[i]["EmailId"].ToString();
+                obju.AppliedJobId = Convert.ToInt32(ds.Tables[1].Rows[i]["AppliedJobId"].ToString());
+
+                lstUserDt1.Add(obju);
+            }
+            ViewBag.AppliedJobId = new SelectList(lstUserDt1, "Value", "Text");
+            objDetails.LstUser = lstUserDt1;
+            return await Task.Run(() => View(objDetails));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        [HttpGet]
+        public async Task<ActionResult> UpdateRound5list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 11;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR5"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RejectatRound5list(string Applylist)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.StatusId = 21;
+            string temp = Applylist;
+            string[] AppliedJobID = temp.Split(',');
+            BALEmployer objB = new BALEmployer();
+            for (int i = 0; i < AppliedJobID.Length; i++)
+            {
+                int AppliedJID = Convert.ToInt32(AppliedJobID[i]);
+                objB.UpdateRound1(AppliedJID,obj);
+            }
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR5"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        public async Task<ActionResult> UpdateRound5(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 11;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR5"));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+        public async Task<ActionResult> RejectatRound5(int AppliedJobId)
+        {
+            if (Session["Employercode"] != null)
+            {
+                EmployerUser obj = new EmployerUser();
+            obj.AppliedJobId = AppliedJobId;
+            obj.StatusId = 21;
+            BALEmployer objB = new BALEmployer();
+            objB.UpdateRound1(obj.AppliedJobId, obj);
+
+            return await Task.Run(() => RedirectToAction("RoundsGridR5"));
+        }
+          else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+}
+        //-----------------------------------------Ashish End----------------------------------//
     }
+
 }
 
 

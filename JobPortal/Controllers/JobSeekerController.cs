@@ -104,7 +104,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -130,7 +130,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
                 
             }
         }
@@ -152,7 +152,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         public async Task<ActionResult> SeekerDetails()
@@ -229,7 +229,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpGet]
@@ -271,7 +271,7 @@ namespace JobPortal.Controllers
             }
             else 
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         //------------------------EducationDetails--------------------//
@@ -377,7 +377,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
       
@@ -411,7 +411,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -435,7 +435,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -460,7 +460,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -485,7 +485,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -510,7 +510,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -549,7 +549,7 @@ namespace JobPortal.Controllers
 
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -649,7 +649,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpGet]
@@ -682,7 +682,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
 
@@ -706,7 +706,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         //------Project Details-----//
@@ -739,7 +739,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpGet]
@@ -769,7 +769,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -804,7 +804,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         // -------------------------Career Profile--------------------------//
@@ -908,7 +908,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpGet]
@@ -944,7 +944,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         [HttpPost]
@@ -965,7 +965,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         public async Task<ActionResult> PreferredJob(string seekercode)
@@ -1033,7 +1033,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
 
         }
@@ -1127,7 +1127,7 @@ namespace JobPortal.Controllers
             }                
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         public async Task<ActionResult> CompleteProfile()
@@ -1200,7 +1200,7 @@ namespace JobPortal.Controllers
             }
             else
             {
-                return await Task.Run(() => View("Register", "Account"));
+                return await Task.Run(() => View("Login", "Account"));
             }
         }
         //------------------------------------Saurabh End---------------------------------//
@@ -1232,7 +1232,6 @@ namespace JobPortal.Controllers
         }
         [HttpPost]
         public async Task<ActionResult> Search(SeekerUser obj, string jobTitle, string jobLocation, string salary)
-
         {
             SeekerUser obj1 = new SeekerUser();
 
@@ -1290,6 +1289,8 @@ namespace JobPortal.Controllers
                 obj.JobDescription = dr["JobDescription"].ToString();
             }
             dr.Close();
+            obj.PostJobCode = postJobCode;
+            Session["url"] = HttpContext.Request.Url.AbsoluteUri;
             return await Task.Run(() => PartialView(obj));
 
         }

@@ -5,24 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Configuration;
 
 namespace JobPortalLibrary.Admin
 {
     public class BALAdmin
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-NAL9D7T;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        // SqlConnection con = new SqlConnection("Data Source=DESKTOP-B3UBKFN;Initial Catalog=\"Job Portal\";Integrated Security=True");
+        static string CS = ConfigurationManager.ConnectionStrings["RSJP"].ConnectionString;
+        SqlConnection con = new SqlConnection(CS);
+        public void ManageConnection()
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
 
+            }
+            else
+            {
+                con.Close();
+            }
+        }
         //------------------Rita Start-----------------------------------------//
 
         //--------------------Admin Jov Application---------------------------------------------------------/
 
         public DataSet RPJobStatusApprovle()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("SPAdmin", con);
             cmb.CommandType = CommandType.StoredProcedure;
             cmb.Parameters.AddWithValue("@Flag", "RPJobStatusApprovle");
@@ -34,10 +44,7 @@ namespace JobPortalLibrary.Admin
         }
         public void RPUpdateJobStatusApprovle(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPUpdateJobStatusApprovle");
@@ -48,10 +55,7 @@ namespace JobPortalLibrary.Admin
         }
         public void RPUpdatejobRejectionReason(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPUpdatejobRejectionReason");
@@ -64,10 +68,7 @@ namespace JobPortalLibrary.Admin
 
         public SqlDataReader RPJobDetails(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPJobDetails");
@@ -80,10 +81,7 @@ namespace JobPortalLibrary.Admin
 
         public DataSet RPCompanyGridview()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("SPAdmin", con);
             cmb.CommandType = CommandType.StoredProcedure;
             cmb.Parameters.AddWithValue("@Flag", "RPCompanyGridview");
@@ -97,10 +95,7 @@ namespace JobPortalLibrary.Admin
         }
         public void RPCompanyIsDelete(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPCompanyIsDelete");
@@ -111,10 +106,7 @@ namespace JobPortalLibrary.Admin
         }
         public void RPCompanyReviewStatusUpdate(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPCompanyReviewStatusUpdate");
@@ -125,10 +117,7 @@ namespace JobPortalLibrary.Admin
         }
         public SqlDataReader RPCompanyGridviewDetails(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPCompanyGridviewDetails");
@@ -141,10 +130,7 @@ namespace JobPortalLibrary.Admin
         // --------------------Admin--Employers-----------//
         public DataSet RPAdminEmployeGrid()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("SPAdmin", con);
             cmb.CommandType = CommandType.StoredProcedure;
             cmb.Parameters.AddWithValue("@Flag", "RPAdminEmployeGrid");
@@ -158,10 +144,7 @@ namespace JobPortalLibrary.Admin
 
         public void RPPaymentStatusUpdate(AdminUser objAdmin)
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPPaymentStatusUpdate");
@@ -176,10 +159,7 @@ namespace JobPortalLibrary.Admin
         //---------------------- Admin DashBord Count------------///
         public SqlDataReader RPTotalJobsPosted()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPTotalJobsPosted");
@@ -189,10 +169,7 @@ namespace JobPortalLibrary.Admin
         }
         public SqlDataReader RPTotalSeekerRegister()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPTotalSeekerRegister");
@@ -202,10 +179,7 @@ namespace JobPortalLibrary.Admin
         }
         public SqlDataReader RPTotalEmployerRegister()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPTotalEmployerRegister");
@@ -215,10 +189,7 @@ namespace JobPortalLibrary.Admin
         }
         public SqlDataReader RPTotalApplicationAppvalAndReject()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmd = new SqlCommand("SPAdmin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Flag", "RPTotalApplicationAppvalAndReject");
@@ -228,10 +199,7 @@ namespace JobPortalLibrary.Admin
         }
         public DataSet RPGetStatus()
         {
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
+            ManageConnection();
             SqlCommand cmb = new SqlCommand("SPAdmin", con);
             cmb.CommandType = CommandType.StoredProcedure;
             cmb.Parameters.AddWithValue("@Flag", "RPGetStatus");
