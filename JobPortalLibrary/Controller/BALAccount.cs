@@ -37,12 +37,12 @@ namespace JobPortalLibrary.Controller
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "SeekerRegister");
-            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
+            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Seekercode);
             cmd.Parameters.AddWithValue("@SeekerName", objaccount.SeekerName);
             cmd.Parameters.AddWithValue("@EmailId", objaccount.EmailId);
             cmd.Parameters.AddWithValue("@Password", objaccount.Password);
             cmd.Parameters.AddWithValue("@ContactNo", objaccount.ContactNo);
-         //   cmd.Parameters.AddWithValue("@ResumePDF", objaccount.ResumePDF);
+            cmd.Parameters.AddWithValue("@ResumePDF", objaccount.ResumePDF);
             cmd.Parameters.AddWithValue("@DateOfRegistration", objaccount.DateOfRegistration);
             cmd.ExecuteNonQuery();
           
@@ -53,7 +53,7 @@ namespace JobPortalLibrary.Controller
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EmployeerRegister");
-            cmd.Parameters.AddWithValue("@EmployerCode", objaccount.Code);
+            cmd.Parameters.AddWithValue("@EmployerCode", objaccount.Employercode);
             cmd.Parameters.AddWithValue("@EmployerName", objaccount.SeekerName);
             cmd.Parameters.AddWithValue("@EmailId", objaccount.SeekerName);
             cmd.Parameters.AddWithValue("@Password", objaccount.SeekerName);
@@ -86,41 +86,45 @@ namespace JobPortalLibrary.Controller
         }
         public void EducationDetails(AccountUser objaccount)
         {
+            con.Close();
             ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EducationDetails");
-            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
+            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Seekercode);
             cmd.ExecuteNonQuery();
             
         }
         public void EmploymentDetails(AccountUser objaccount)
         {
+            con.Close();
             ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "EmploymentDetails");
-            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
+            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Seekercode);
             cmd.ExecuteNonQuery();
             
         }
         public void ProjectDetails(AccountUser objaccount)
         {
+            con.Close();
             ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "ProjectDetails");
-            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
+            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Seekercode);
             cmd.ExecuteNonQuery();
             
         }
         public void JobAlertSave(AccountUser objaccount)
         {
+            con.Close();
             ManageConnection();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "JobAlertSave");
-            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Code);
+            cmd.Parameters.AddWithValue("@Seekercode", objaccount.Seekercode);
             cmd.ExecuteNonQuery();
            
         }

@@ -5,30 +5,31 @@
     Layout = "~/Views/Shared/Employer_Layout.cshtml";
 }
 <script src="~/Scripts/Sweet.js"></script>
-<script src="~/Content/js/jquery-3.4.1.min.js"></script>
-<script src="~/Content/js/bootstrap.min.js"></script>
-<script src="~/Content/js/bootstrap.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
 
 <script>
-    $(document).ready(function () {
-    $(".sweetApprove").click(function () {
-        var AppliedJobId = $(this).attr("data-id");
-        $.ajax({
-            url: "/Employer/UpdateRound1/",
-            data: { "AppliedJobId": AppliedJobId },
-            success: function (Status) {              
+
+        $(document).ready(function () {
+        $(".sweetApprove").click(function () {
+            var AppliedJobId = $(this).attr("data-id");
+            $.ajax({
+                url: "/Employer/UpdateRound1/",
+                data: { "AppliedJobId": AppliedJobId },
+                success: function (Status) {
                     swal({
                         title: "Your Candidate is Approved..",
                         button: "ok",
                         // dangerMode: true,
 
-                    })             
-                 .then(function () {
-                     window.location.href = "/Employer/RoundsGrid";
-                 })
-            }
+                    })
+                        .then(function () {
+                            window.location.href = "/Employer/RoundsGrid";
+                        })
+                }
+            });
         });
-    });
         $(".sweetReject").click(function () {
             var AppliedJobId = $(this).attr("data-id");
             $.ajax({
@@ -44,11 +45,11 @@
                         .then(function () {
                             window.location.href = "/Employer/RoundsGrid";
                         })
-                  
+
                 }
             });
         });
-   /* $(document).ready(function () {*/
+        /* $(document).ready(function () {*/
         var Applylist = new Array();
         $('#btnApprove').click(function () {
             var selectedApplylist = new Array();
@@ -126,21 +127,21 @@
                 })
             }
         });
-        
-        $('#multiselect').click(function () {
-                if ($('#multiselect').is(':checked')) {
-                    $('#btnApprove').show();
-                    $('#btnReject').show();
-                }
-                ///* else if ($('#Disclosed').is(':checked')) {*/
-                // //    $('#flexible').hide();
-                // //    $('#fixed').hide();
-                // }
-                else {
-                    $('#btnApprove').hide();
-                    $('#btnReject').hide();
-                }
-            });
+
+        $('.checkbox').click(function () {
+            if ($('.checkbox').is(':checked')) {
+                $('#btnApprove').show();
+                $('#btnReject').show();
+            }
+            ///* else if ($('#Disclosed').is(':checked')) {*/
+            // //    $('#flexible').hide();
+            // //    $('#fixed').hide();
+            // }
+            else {
+                $('#btnApprove').hide();
+                $('#btnReject').hide();
+            }
+        });
         $('#selectall').click(function () {
             if ($('#multiselect').is(':checked')) {
                 $('#btnApprove').show();
@@ -155,8 +156,8 @@
                 $('#btnReject').hide();
             }
         });
-        });
-    
+    });
+
 </script>
 <style>
 
@@ -175,23 +176,23 @@
         margin: 5px;
     }
 
-        .button  {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
+    .button {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .button :after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
             transition: 0.5s;
         }
 
-            .button :after {
-                content: '\00bb';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-            }
-
-        .button:hover  {
+        .button:hover {
             padding-right: 25px;
         }
 
@@ -208,7 +209,6 @@
         color: #FFFFFF;
         text-align: center;
         font-size: 15px;
-
         width: 150px;
         height: 50px;
         transition: all 0.5s;
@@ -216,23 +216,23 @@
         margin: 5px;
     }
 
-        .button2  {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
+    .button2 {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .button2 :after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
             transition: 0.5s;
         }
 
-            .button2 :after {
-                content: '\00bb';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-            }
-
-        .button2:hover  {
+        .button2:hover {
             padding-right: 25px;
         }
 
@@ -257,23 +257,23 @@
         margin: 5px;
     }
 
-        .button1  {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
+    .button1 {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .button1 :after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
             transition: 0.5s;
         }
 
-            .button1 :after {
-                content: '\00bb';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-            }
-
-        .button1:hover  {
+        .button1:hover {
             padding-right: 25px;
         }
 
@@ -300,17 +300,18 @@
         cursor: pointer;*/
         color: #00004d;
         background-color: #ecf2f9;
-        border-top-left-radius:10px;
-        border-top-right-radius:10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         /*border-radius: 10px;*/
         display: block;
         padding: 0.5rem 1rem;
         text-decoration: none;
-     /*   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;*/
+        /*   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;*/
         margin-bottom: -1px;
         text-decoration-color: #0000e6;
-        border-bottom-style:solid;
+        border-bottom-style: solid;
     }
+
     .navbar-brand1:hover {
         /*  margin: auto;*/
         /*font-size: 20px;
@@ -328,6 +329,7 @@
         text-decoration-color: #0000e6;
         border-bottom-style: solid;
     }
+
     .navbar-brand2:hover {
         /*  margin: auto;*/
         /*font-size: 20px;
@@ -345,6 +347,7 @@
         text-decoration-color: #0000e6;
         border-bottom-style: solid;
     }
+
     .navbar-brand3:hover {
         /*  margin: auto;*/
         /*font-size: 20px;
@@ -362,6 +365,7 @@
         text-decoration-color: #0000e6;
         border-bottom-style: solid;
     }
+
     .navbar-brand4:hover {
         /*  margin: auto;*/
         /*font-size: 20px;
@@ -379,6 +383,7 @@
         text-decoration-color: #0000e6;
         border-bottom-style: solid;
     }
+
     .navbar-brand5:hover {
         /*  margin: auto;*/
         /*font-size: 20px;
@@ -396,7 +401,7 @@
         text-decoration-color: #0000e6;
         border-bottom-style: solid;
     }
- 
+
 
     /*.navbar-brand:after {
             display: block;
@@ -434,14 +439,14 @@
 
 
     @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />s
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />s
 
-    <link href="~/Content/DataTable/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <link href="~/Content/DataTable/buttons.bootstrap4.min.css" rel="stylesheet" />*@
+        <link href="~/Content/DataTable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+        <link href="~/Content/DataTable/buttons.bootstrap4.min.css" rel="stylesheet" />*@
 </head>
 <body>
-    
+
     <div style="width:900px;">
         <nav class="navbar">
             <a class="navbar-brand" href="@Url.Action("AllRoundsGrid","Employer")" style="color: #435ebe ">All Registered</a>
@@ -787,7 +792,7 @@
                 @foreach (var item in Model.LstUser)
                 {
                     <tr>
-                        <td>
+                        <td class="checkbox">
                             @Html.CheckBox("multiSelect", new { id = "multiselect", @class = "checkbox", Value = item.AppliedJobId })
                         </td>
 
@@ -838,9 +843,9 @@
             </tbody>
         }
     </table>
-    
+
     <br />
-  
+
     <div class="form-group" style="margin-left:662px">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Hire" style="vertical-align:middle;display:none;" class="button" id="btnApprove" />
@@ -857,24 +862,24 @@
 </div>
 
 
-    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
-        });
-});
-</script>*@
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+    });
+    </script>*@
 
 
 
@@ -928,7 +933,7 @@
                 }
             });
         });
-});</script>
+    });</script>
 <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

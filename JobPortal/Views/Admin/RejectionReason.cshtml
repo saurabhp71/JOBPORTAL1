@@ -3,6 +3,38 @@
 @{
     ViewBag.Title = "RejectionReason";
 }
+//----------------RejectSweetAlert--------///
+
+<script src="~/Scripts/Sweet.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".RejectionReason").click(function () {
+            var PostJobCode = $(this).attr("data-id");
+            $.ajax({
+             
+                url: "/Admin/UpdateReject/",
+                data: { "PostjobCode": PostJobCode },
+                success: function (Status) {
+                    swal({
+                        title: "This Job has been Rejected",
+                        button: "ok",
+                        // dangerMode: true,
+
+                    })
+                        .then(function () {
+                            window.location.href = "/Admin/ApplicationApprovel";
+                        })
+
+                }
+            })
+        });
+    });
+</script>
+
+
 
 @using (Html.BeginForm())
 {
@@ -77,24 +109,30 @@
         </div>*@
 
 
-    <p class="form-group">
-        <div class="form-group">
+<p class="form-group">
+    <!--<div class="form-group">
 
-            <input type="submit" formaction="@Url.Action("RejectionReason1","Admin",new  { PostjobCode = Model.PostJobCode })" value="Create" formmethod="post" class="btn btn-default" />
-            @*<button  onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1" class="btn btn-primary"  for>
-                    Save
-                </button>*@
-        </div>
+        <input  type="submit" data-id="@Model.PostJobCode" value="Create" formmethod="post" class="UpdateReject" />-->
+    @*<button  onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1" class="btn btn-primary"  for>
+            Save
+        </button>*@
+    <!--</div>-->
+
+    <button type="button" id="Reject" class="btn btn-danger response" style="margin-left:15px">
+
+        @*<i class="fa fa-times"></i>*@
+        @*@Html.ActionLink("Reject", "UpdateReject", new { PostjobCode = item.PostJobCode })*@
+        <a class="RejectionReason" href="#" data-id="@Model.PostJobCode"> &#10060</a>
+    </button>
 
 
 
-
-        @*<button>
-                @Html.ActionLink("Save", onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1", new { PostjobCode = Model.PostJobCode })
-            </button>*@
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    @*<button>
+            @Html.ActionLink("Save", onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1", new { PostjobCode = Model.PostJobCode })
+        </button>*@
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

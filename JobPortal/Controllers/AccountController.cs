@@ -63,18 +63,17 @@ namespace JobPortal.Controllers
                     obj.DateOfRegistration = DateTime.Now;
                     if (obj.Category == "I am Seeker")
                     {
+                        obj.ResumePDF = "NULL";
                         obj.Seekercode = seekerCode;
-                        obj.ResumePDF = "null";
-
                         BALAccount objsave = new BALAccount();
                         objsave.SeekerRegister(obj);
                         objsave.EducationDetails(obj);
                         objsave.EmploymentDetails(obj);
                         objsave.ProjectDetails(obj);
                         objsave.JobAlertSave(obj);
-                        Session["SeekerCode"] = obj.Code;
+                        Session["SeekerCode"] = obj.Seekercode;
                         Session["SeekerName"] = obj.SeekerName;
-                        Session["ProfileIMG"] = IMG;
+                        Session["ProfileIMG"] = "profile icon.jpg";
                         return RedirectToAction("SeekerDetails", "JobSeeker");
                     }
                     if (obj.Category == "I am Employeer")
@@ -83,7 +82,7 @@ namespace JobPortal.Controllers
 
                         BALAccount objsave = new BALAccount();
                         objsave.EmployeerRegister(obj);
-                        Session["Employercode"] = obj.Code;
+                        Session["Employercode"] = obj.Employercode;
                         Session["EmployerName"] = obj.SeekerName;
                         return RedirectToAction("EmployeerIndex", "Employer");
                     }
@@ -91,7 +90,7 @@ namespace JobPortal.Controllers
             }
             return await Task.Run(() => View("Register"));
         }
-        public async Task<ActionResult> Code()
+        public void Code()
         {
             AccountUser obj = new AccountUser();
             BALAccount obj1 = new BALAccount();
@@ -100,7 +99,6 @@ namespace JobPortal.Controllers
             while (dr.Read())
             {
                 int seekercode = Convert.ToInt32(dr["SeekerId"].ToString());
-                IMG = dr["ProfileIMG"].ToString();
                 seekercode = seekercode + 1;
                 string ID = "JSC00";
                 seekerCode = ID + seekercode;
@@ -120,7 +118,7 @@ namespace JobPortal.Controllers
             }
             dt.Close();
 
-            return await Task.Run(() => View(obj));
+          
         }
         //--------------------------------------Saurabh End--------------------------------//
 
