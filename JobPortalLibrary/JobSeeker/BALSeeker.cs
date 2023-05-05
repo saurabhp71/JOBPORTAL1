@@ -591,7 +591,6 @@ namespace JobPortalLibrary.JobSeeker
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "FindJobs1");
-
             cmd.Parameters.AddWithValue("@JobTitle", objsekUser.JobTitle);
             cmd.Parameters.AddWithValue("@JobLocation", objsekUser.JobLocation);
             cmd.Parameters.AddWithValue("@Salary", objsekUser.Salary);
@@ -694,5 +693,46 @@ namespace JobPortalLibrary.JobSeeker
         }
 
         //----------------------------Sanket End--------------------------------//
+        public void Updateseeker(string seekercode, string EmailId, Int64 ContactNo, string Password)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "UpdateSeeker");
+            cmd.Parameters.AddWithValue("@Seekercode", seekercode);
+            cmd.Parameters.AddWithValue("@EmailId", EmailId);
+            cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        //--------------------FetchSeeker-------------------------------------------------
+        public SqlDataReader Fetchseeker(string seekercode)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "fetchseeker");
+            cmd.Parameters.AddWithValue("@Seekercode", seekercode);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
+        //--------------------deleteemployer-------------------------------------------------
+
+        public void IsDeleteSeeker(int isDelete, string seekercode)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.Parameters.AddWithValue("@flag", "Deleteseeker");
+            cmd.Parameters.AddWithValue("@isDelete", isDelete);
+            cmd.Parameters.AddWithValue("@Seekercode", seekercode);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        //--------------------------------------Muskan End-----------------------------------------------------------------------//
+
     }
 }

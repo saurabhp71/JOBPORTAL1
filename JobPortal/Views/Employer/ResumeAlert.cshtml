@@ -1,0 +1,45 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+@{
+    ViewBag.Title = "ResumeAlert";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+
+<h2>ResumeAlert</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover">
+    <tr  style="background-color: #435ebe; color: white;">
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Seekercode)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.SeekerName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model.ListUser) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seekercode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeekerName)
+        </td>
+        <td>
+            <a href="@ViewBag.ResumePDF" target="_blank">Download</a>
+        </td>
+       
+    </tr>
+}
+
+</table>

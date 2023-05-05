@@ -17,7 +17,7 @@ namespace JobPortalLibrary.Controller
 
         [Required(ErrorMessage = "Name is required")]
         [StringLength(100, MinimumLength = 3)]
-        [RegularExpression(@"^[a - zA - Z] * $", ErrorMessage = "Please enter correct Name")]
+        //[RegularExpression(@"^[a - zA - Z] * $", ErrorMessage = "Please enter correct Name")]
         public string SeekerName { get; set; }      
         public string Employercode { get; set; } 
         public string EmployerName { get; set; }

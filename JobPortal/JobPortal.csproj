@@ -2332,10 +2332,19 @@
     <Content Include="fonts\angularicons.woff" />
     <Content Include="Content\bootstrap-chosen.scss" />
     <Content Include="Content\bootstrap-chosen.less" />
+    <Content Include="Content\Resume Pdf\Rita Sanjay Patil resume.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\chosen.min.css" />
+    <Content Include="Scripts\datatable js\buttons.html5.min.js" />
+    <Content Include="Scripts\datatable js\buttons.print.min.js" />
+    <Content Include="Scripts\datatable js\dataTables.buttons.min.js" />
+    <Content Include="Scripts\datatable js\jquery-3.5.1.js" />
+    <Content Include="Scripts\datatable js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\datatable js\jszip.min.js" />
+    <Content Include="Scripts\datatable js\pdfmake.min.js" />
+    <Content Include="Scripts\datatable js\vfs_fonts.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -2419,12 +2428,16 @@
     <Content Include="Views\Employer\ShowRounds.cshtml" />
     <Content Include="Views\Employer\UpdateRound1.cshtml" />
     <Content Include="Views\Employer\view.cshtml" />
+    <Content Include="Views\Employer\ResumeAlert.cshtml" />
+    <Content Include="Views\Employer\AccountEmployer.cshtml" />
+    <Content Include="Views\Employer\DeleteEmployer.cshtml" />
+    <Content Include="Views\JobSeeker\DeleteSeeker.cshtml" />
+    <Content Include="Views\JobSeeker\SeekerAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\" />
     <Folder Include="Content\PDF Files\" />
-    <Folder Include="Content\Resume Pdf\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

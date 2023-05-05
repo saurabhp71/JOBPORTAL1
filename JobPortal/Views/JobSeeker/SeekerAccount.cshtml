@@ -1,0 +1,87 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "SeekerAccount";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+<html>
+<head>
+    <style type="text/css">
+        .ProfilePanel {
+            /*background-color: lightblue !important;*/
+            height: 200px;
+            width: 50rem;
+            margin:auto;
+           
+          
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- ProfilePanel End -->
+    <br /><br />
+          <form style="margin-left:35px;">
+              <div class="ProfilePanel">
+                  <div class="card" style="border-radius:20px;box-shadow: 5px 20px 20px lightgrey;border:groove;">
+
+                      <div class="form-group">
+                          @Html.HiddenFor(model => model.Seekercode, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-10">
+                              @Html.HiddenFor(model => model.Seekercode, new { htmlAttributes = new { @class = "form-control" } })
+                              @Html.ValidationMessageFor(model => model.Seekercode, "", new { @class = "text-danger" })
+                          </div>
+
+                      </div>
+                      <br />
+                      
+                          <div class="form-group">
+
+                              @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+                                  @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                              </div>
+
+                          </div>
+
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+
+                                  @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+                                  @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "New Password" } })<br />
+                                  @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                              </div>
+
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-md-offset-2 col-md-10">
+                                  @*<input type="submit" value="Save" id="Seekercode" class="btn btn-default" />*@
+                                  <input type="submit" formaction="@Url.Action("SeekerAccount","JobSeeker",new  { Seekercode = Model.Seekercode })" value="Edit" formmethod="post" class="btn btn-default" />
+                              </div>
+                          </div>
+                  </div>
+              </div>
+             
+          </form>
+    
+    </div>
+
+    <!-- ProfilePanel End -->
+</body>
+</html>
+
+
+
