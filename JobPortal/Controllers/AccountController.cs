@@ -55,7 +55,7 @@ namespace JobPortal.Controllers
                 if (drs.HasRows || dre.HasRows || drA.HasRows)
                 {
                     ViewBag.Message = "Account already created..!";
-                    return await Task.Run(() => View("Register"));
+                    return await Task.Run(() => View("Login"));
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace JobPortal.Controllers
                     obj.DateOfRegistration = DateTime.Now;
                     if (obj.Category == "I am Seeker")
                     {
-                        obj.ResumePDF = "NULL";
+                        obj.ResumePDF = null;
                         obj.Seekercode = seekerCode;
                         BALAccount objsave = new BALAccount();
                         objsave.SeekerRegister(obj);
@@ -88,7 +88,7 @@ namespace JobPortal.Controllers
                     }
                 }
             }
-            return await Task.Run(() => View("Register"));
+            return await Task.Run(() => View("Login"));
         }
         public void Code()
         {

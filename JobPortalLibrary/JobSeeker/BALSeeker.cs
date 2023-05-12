@@ -23,10 +23,10 @@ namespace JobPortalLibrary.JobSeeker
                 con.Open();
 
             }
-            else
-            {
-                con.Close();
-            }
+            //else
+            //{
+            //    con.Close();
+            //}
         }
 
         //--------------------------------------Saurabh Start--------------------------------//
@@ -53,7 +53,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@MaritalStatus", objsekUser.MaritalStatus);
             cmd.Parameters.AddWithValue("@ProfileSummary", objsekUser.ProfileSummary);
             cmd.ExecuteNonQuery();
-            
+
 
         }
         public void updateIMG(SeekerUser objsekUser)
@@ -65,7 +65,17 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@Seekercode", objsekUser.Seekercode);
             cmd.Parameters.AddWithValue("@ProfileIMG", objsekUser.ProfileIMG);
             cmd.ExecuteNonQuery();
-           
+
+        }
+        public void updateResume(SeekerUser objsekUser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "updateResume");
+            cmd.Parameters.AddWithValue("@Seekercode", objsekUser.Seekercode);
+            cmd.Parameters.AddWithValue("@ResumePDF", objsekUser.ResumePDF);
+            cmd.ExecuteNonQuery();
         }
         public SqlDataReader SeekerDetails(SeekerUser objsekUser)
         {
@@ -77,7 +87,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-         
+
         }
         public DataSet CityBind()
         {
@@ -90,7 +100,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public DataSet Language()
         {
@@ -103,7 +113,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public DataTable LanguageShow(int languageid)
         {
@@ -117,7 +127,7 @@ namespace JobPortalLibrary.JobSeeker
             DataTable ds = new DataTable();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         //-----------------------------------------Education--------------------------//
         public DataSet Qualification()
@@ -131,7 +141,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public DataSet Degree(int QualificationID)
         {
@@ -145,7 +155,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public DataSet Specialization(int DegreeId)
         {
@@ -159,7 +169,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public SqlDataReader GetEducationDetails(SeekerUser objseeker)
         {
@@ -171,7 +181,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            
+
         }
 
         public void AddSSC(SeekerUser objseeker)
@@ -182,11 +192,11 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@flag", "AddSSC");
             cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
             cmd.Parameters.AddWithValue("@QualificationID", objseeker.QualificationId);
-            cmd.Parameters.AddWithValue("@DegreeId", objseeker. DegreeId);
+            cmd.Parameters.AddWithValue("@DegreeId", objseeker.DegreeId);
             cmd.Parameters.AddWithValue("@PassingYear", objseeker.PassingYear);
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.ExecuteNonQuery();
-           
+
         }
         public void AddHSC(SeekerUser objseeker)
         {
@@ -200,7 +210,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@PassingYear", objseeker.PassingYear);
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.ExecuteNonQuery();
-           
+
         }
         public void AddUG(SeekerUser objseeker)
         {
@@ -217,7 +227,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.Parameters.AddWithValue("@CourseType", objseeker.CourseType);
             cmd.ExecuteNonQuery();
-            
+
         }
         public void AddGraduation(SeekerUser objseeker)
         {
@@ -234,7 +244,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.Parameters.AddWithValue("@CourseType", objseeker.CourseType);
             cmd.ExecuteNonQuery();
-            
+
         }
         public void AddPG(SeekerUser objseeker)
         {
@@ -251,7 +261,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@marks", objseeker.Marks);
             cmd.Parameters.AddWithValue("@CourseType", objseeker.CourseType);
             cmd.ExecuteNonQuery();
-            
+
         }
         //---------------------------Employment details----------------------------//
         public SqlDataReader GetEmploymentDetails(SeekerUser objseeker)
@@ -264,7 +274,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-           
+
         }
         public void UpdateEmploymentDetails(SeekerUser objseeker)
         {
@@ -283,7 +293,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@JobProfile", objseeker.JobProfile);
             cmd.Parameters.AddWithValue("@NoticePeriod", objseeker.NoticePeriod);
             cmd.ExecuteNonQuery();
-           
+
         }
         public DataSet Skill()
         {
@@ -296,7 +306,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-           
+
         }
         //---------------------------Project Details-----------------------//
         public SqlDataReader GetProjectDetails(SeekerUser objseeker)
@@ -309,7 +319,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-           
+
         }
         public void UpdateProjectDetails(SeekerUser objseeker)
         {
@@ -324,7 +334,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@TotalExperience", objseeker.TotalExperience);
             cmd.Parameters.AddWithValue("@ProjectDetails", objseeker.ProjectDetails);
             cmd.ExecuteNonQuery();
-            
+
         }
         //---------------------------Career Profile-----------------------//
         public SqlDataReader CareerProfile(SeekerUser objseeker)
@@ -337,7 +347,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            
+
         }
         public DataSet Industry()
         {
@@ -350,7 +360,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-        
+
         }
         public DataSet JobCategory(int IndustryId)
         {
@@ -364,7 +374,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public DataTable PreferredLocation(int CityId)
         {
@@ -378,7 +388,7 @@ namespace JobPortalLibrary.JobSeeker
             DataTable ds = new DataTable();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public void UpdateCareerProfile(SeekerUser objseeker)
         {
@@ -394,7 +404,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.Parameters.AddWithValue("@EmailId", objseeker.EmailId);
             cmd.Parameters.AddWithValue("@ContactNo", objseeker.ContactNo);
             cmd.ExecuteNonQuery();
-            
+
         }
         //---------------------------Complete Profile-----------------------//
         public SqlDataReader CompleteProfile(SeekerUser objseeker)
@@ -407,7 +417,7 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
-            
+
         }
         //---------------------------Preferred Job-----------------------//
         public DataSet PreferredJob(SeekerUser objseeker)
@@ -422,7 +432,7 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         //---------------------------All Companys-----------------------//
         public DataSet AllCompanys()
@@ -436,19 +446,27 @@ namespace JobPortalLibrary.JobSeeker
             DataSet ds = new DataSet();
             adpt.Fill(ds);
             return ds;
-            
+
         }
         public SqlDataReader CompanysDetails(SeekerUser objseeker)
         {
-            ManageConnection();
-            SqlCommand cmd = new SqlCommand("SPSeeker", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@flag", "CompanysDetails");
-            cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-            SqlDataReader dr;
-            dr = cmd.ExecuteReader();
-            return dr;
-            
+            try
+            {
+                ManageConnection();
+                SqlCommand cmd = new SqlCommand("SPSeeker", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@flag", "CompanysDetails");
+                cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
+                SqlDataReader dr;
+                dr = cmd.ExecuteReader();
+                return dr;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
         //----------------------------company Follow & company Feedback----------------------//
         public SqlDataReader CompanyFeedback(SeekerUser objseeker)
@@ -462,106 +480,96 @@ namespace JobPortalLibrary.JobSeeker
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             return dr;
+
+        }
+        public void FollowCompany(SeekerUser objseeker)
+        {
+            try
+            {
+                ManageConnection();
+                SqlCommand cmd2 = new SqlCommand("SPSeeker", con);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.AddWithValue("@flag", "FollowCompany");
+                cmd2.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
+                cmd2.Parameters.AddWithValue("@EmployerCode", objseeker.EmployerCode);
+                cmd2.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
+                cmd2.Parameters.AddWithValue("@Follow", objseeker.Follow1);
+                cmd2.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
            
         }
         public void SaveCompanyFeedback(SeekerUser objseeker)
         {
             ManageConnection();
-            SqlCommand cmd = new SqlCommand("SPSeeker", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@flag", "CompanyFeedback");
-            cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-            cmd.Parameters.AddWithValue("@EmployerCode", objseeker.Employercode);
-            cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
-            cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
-            cmd.Parameters.AddWithValue("@Review", objseeker.Review);
-            cmd.Parameters.AddWithValue("@Follow", objseeker.Follow);
-            cmd.ExecuteNonQuery();
-           
-
-            SqlDataReader dr1;
-            dr1 = cmd.ExecuteReader();
-            if (dr1.HasRows == true)
-            {
-                dr1.Close();
-
-                SqlCommand cmd2 = new SqlCommand("SPTMClient", con);
-                cmd2.CommandType = CommandType.StoredProcedure;
-                cmd2.Parameters.AddWithValue("@Flag", "UpdateCompanyFeedback");
-                cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-                cmd.Parameters.AddWithValue("@EmployerCode", objseeker.Employercode);
-                cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
-                cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
-                cmd.Parameters.AddWithValue("@Review", objseeker.Review);
-                cmd2.ExecuteNonQuery();
-                
-
-            }
-
-            else
-            {
-
-                dr1.Close();
-
-                SqlCommand cmd1 = new SqlCommand("SPTMClient", con);
-                cmd1.CommandType = CommandType.StoredProcedure;
-                cmd1.Parameters.AddWithValue("@Flag", "SaveCompanyFeedback");
-                cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-                cmd.Parameters.AddWithValue("@EmployerCode", objseeker.Employercode);
-                cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
-                cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
-                cmd.Parameters.AddWithValue("@Review", objseeker.Review);
-                cmd1.ExecuteNonQuery();
-                
-            }
+            SqlCommand cmd1 = new SqlCommand("SPSeeker", con);
+            cmd1.CommandType = CommandType.StoredProcedure;
+            cmd1.Parameters.AddWithValue("@flag", "SaveCompanyFeedback");
+            cmd1.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
+            cmd1.Parameters.AddWithValue("@EmployerCode", objseeker.EmployerCode);
+            cmd1.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
+            cmd1.Parameters.AddWithValue("@Follow", objseeker.Follow1);
+            cmd1.Parameters.AddWithValue("@Rating", objseeker.Rating);
+            cmd1.Parameters.AddWithValue("@Review", objseeker.Review);
+            cmd1.ExecuteNonQuery();
         }
-        public void FollowCompany(SeekerUser objseeker)
-        {
 
-            ManageConnection();
-            SqlCommand cmd = new SqlCommand("SPSeeker", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@flag", "CompanyFeedback");
-            cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-            cmd.Parameters.AddWithValue("@EmployerCode", objseeker.Employercode);
-            cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
-            cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
-            cmd.Parameters.AddWithValue("@Review", objseeker.Review);
-            cmd.Parameters.AddWithValue("@Follow", objseeker.Follow1);
-            //   cmd.ExecuteNonQuery();
-            //con.Close();
+        //public void CompanyReview(SeekerUser objseeker)
+        //{
+        //    ManageConnection();
+        //    SqlCommand cmd = new SqlCommand("SPSeeker", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.AddWithValue("@flag", "CompanyFeedback");
+        //    cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
+        //    cmd.Parameters.AddWithValue("@EmployerCode", objseeker.EmployerCode);
+        //    cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
+        //    cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
+        //    cmd.Parameters.AddWithValue("@Review", objseeker.Review);
+        //    cmd.Parameters.AddWithValue("@Follow", objseeker.Follow);
+        //    cmd.ExecuteNonQuery();
 
-            SqlDataReader dr1;
-            dr1 = cmd.ExecuteReader();
-            if (dr1.HasRows)
-            {
-                dr1.Close();
-                SqlCommand cmd2 = new SqlCommand("SPSeeker", con);
-                cmd2.CommandType = CommandType.StoredProcedure;
-                cmd2.Parameters.AddWithValue("@flag", "FollowCompany");
-                cmd2.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-                cmd2.Parameters.AddWithValue("@EmployerCode", objseeker.Employercode);
-                cmd2.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
-                cmd2.Parameters.AddWithValue("@Follow", objseeker.Follow1);
-                cmd2.ExecuteNonQuery();
-               
-            }
 
-            else
-            {
-                dr1.Close();
-                SqlCommand cmd1 = new SqlCommand("SPSeeker", con);
-                cmd1.CommandType = CommandType.StoredProcedure;
-                cmd1.Parameters.AddWithValue("@flag", "SaveCompanyFeedback");
-                cmd1.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
-                cmd1.Parameters.AddWithValue("@EmployerCode", objseeker.Employercode);
-                cmd1.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
-                cmd1.Parameters.AddWithValue("@Follow", objseeker.Follow1);
-                cmd1.ExecuteNonQuery();
-                
-            }
-         
-        }
+        //    SqlDataReader dr1;
+        //    dr1 = cmd.ExecuteReader();
+        //    if (dr1.HasRows == true)
+        //    {
+        //        dr1.Close();
+
+        //        SqlCommand cmd2 = new SqlCommand("SPSeeker", con);
+        //        cmd2.CommandType = CommandType.StoredProcedure;
+        //        cmd2.Parameters.AddWithValue("@Flag", "UpdateCompanyFeedback");
+        //        cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
+        //        cmd.Parameters.AddWithValue("@EmployerCode", objseeker.EmployerCode);
+        //        cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
+        //        cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
+        //        cmd.Parameters.AddWithValue("@Review", objseeker.Review);
+        //        cmd2.ExecuteNonQuery();
+
+
+        //    }
+
+        //    else
+        //    {
+
+        //        dr1.Close();
+
+        //        SqlCommand cmd1 = new SqlCommand("SPSeeker", con);
+        //        cmd1.CommandType = CommandType.StoredProcedure;
+        //        cmd1.Parameters.AddWithValue("@Flag", "SaveCompanyFeedback");
+        //        cmd.Parameters.AddWithValue("@CompanyId", objseeker.CompanyId);
+        //        cmd.Parameters.AddWithValue("@EmployerCode", objseeker.EmployerCode);
+        //        cmd.Parameters.AddWithValue("@Seekercode", objseeker.Seekercode);
+        //        cmd.Parameters.AddWithValue("@Rating", objseeker.Rating);
+        //        cmd.Parameters.AddWithValue("@Review", objseeker.Review);
+        //        cmd1.ExecuteNonQuery();
+
+        //    }
+        //}
+
 
         //--------------------------------------Saurabh End--------------------------------//
         //--------------------------------------Sanket Start------------------------------//

@@ -7,8 +7,13 @@
 <head>
     <style>
         .tabprofile {
-            height: 160px;
+            height: 190px;
             padding: 20px;
+        }
+
+        .shear {
+            height: 25px;
+            width: 32px;
         }
     </style>
 </head>
@@ -20,36 +25,56 @@
 {
 
     <div class="tabprofile">
-        <div class="card" style="width:67rem;height:140px; margin-left:30px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+        <div class="card" style="width:67rem;height:160px; margin-left:30px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
             @using (Html.BeginForm("ADDEducationDetails", "JobSeeker", FormMethod.Post))
             {
                 <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
                     <dd style="font-size:20px;color:black">
                         @Html.HiddenFor(modelItem => item.PostJobCode)
                     </dd>
-                    <dd style="font-size:20px;color:black">
+                    <dd style="font-size:25px;color:black">
                         @Html.DisplayFor(modelItem => item.JobTitle)
+                    </dd>
+                    <dd style="margin-top: -37px; margin-left: 895px;">
+                        <a href="https://facebook.com/sharer.php?url=@Session["url"]">
+                            <img class="shear" src="~/Content/images/Facebook.png" />
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]">
+                            <img class="shear" src="~/Content/images/linkedin.png" />
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=@Session["url"]">
+                            <img class="shear" src="~/Content/images/Twiter.png" />
+                        </a>
                     </dd>
                     <dd style="font-size: 17px; color: darkslategray;margin-top:-14px;">
                         @Html.DisplayFor(modelItem => item.CompanyName)
                     </dd>
                     <dd style="font-size: 12px; color: darkslategray;margin-top:-10px;">
-                        <i class='fas fa-briefcase'> @Html.DisplayFor(modelItem => item.TotalExperience)</i>
-                        || <i class="fa fa-inr"> ₹@Html.DisplayFor(modelItem => item.CurrentSalary)</i>
-                        || <i class="fa fa-map-marker"> @Html.DisplayFor(modelItem => item.Location)</i>
+                        <i class='fas fa-briefcase text-primary me-2'> @Html.DisplayFor(modelItem => item.TotalExperience)</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-inr text-primary me-2"> ₹@Html.DisplayFor(modelItem => item.CurrentSalary)</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-map-marker-alt text-primary me-2"> @Html.DisplayFor(modelItem => item.Location)</i>
                     </dd>
                     <dd style="font-size: 14px; color: darkslategray;margin-top:-8px;">
                         @Html.DisplayFor(modelItem => item.JobType)
                     </dd>
-                    <div class="form-group" style="margin-left:900px;margin-top:-10px">
+                    <hr style="margin-top:8px;" />
+                    <dd style="font-size: 14px; color: darkslategray;margin-top:-8px;">
+                        <i class="far fa-calendar-alt text-primary me-2">
+                            <label>Posted:</label>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>Openings:</label>
+                            @Html.DisplayFor(modelItem => item.NoOfEmployees)
+                        </i>
+                    </dd>
+                    <div class="form-group" style="margin-left:900px;margin-top:-30px;">
                         <div class="col-md-offset-2 col-md-10">
-                            @*<button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>*@
                             <input type="submit" value="APPLY" class="btn btn-primary" />
                         </div>
                     </div>
                 </dl>
             }
-         </div>
+        </div>
     </div>
 }
 

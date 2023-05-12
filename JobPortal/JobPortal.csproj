@@ -332,6 +332,7 @@
     <Content Include="Content\images\Camera.png" />
     <Content Include="Content\images\companyLogo.png" />
     <Content Include="Content\images\companylogo1.jpg" />
+    <Content Include="Content\images\Facebook.png" />
     <Content Include="Content\images\faces\1.jpg" />
     <Content Include="Content\images\faces\2.jpg" />
     <Content Include="Content\images\faces\3.jpg" />
@@ -341,6 +342,7 @@
     <Content Include="Content\images\faces\7.jpg" />
     <Content Include="Content\images\faces\8.jpg" />
     <Content Include="Content\images\faces\face23.jpg" />
+    <Content Include="Content\images\linkedin.png" />
     <Content Include="Content\images\logo\logo.png" />
     <Content Include="Content\images\profile icon.jpg" />
     <Content Include="Content\images\profile icon2.png" />
@@ -360,6 +362,7 @@
     <Content Include="Content\images\samples\motorcycle.jpg" />
     <Content Include="Content\images\samples\origami.jpg" />
     <Content Include="Content\images\samples\water.jpg" />
+    <Content Include="Content\images\Twiter.png" />
     <Content Include="Content\img\about-1 - Copy.jpg" />
     <Content Include="Content\img\about-1.jpg" />
     <Content Include="Content\img\about-2 - Copy.jpg" />
@@ -2375,7 +2378,6 @@
     <Content Include="Views\Shared\Employer_Layout.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\Shared\Account_Layout.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\JobSeeker\SeekerIndex.cshtml" />
     <Content Include="Views\JobSeeker\ProjectDetails.cshtml" />
     <Content Include="Views\JobSeeker\ProjectDetailsPop.cshtml" />
@@ -2433,6 +2435,8 @@
     <Content Include="Views\Employer\DeleteEmployer.cshtml" />
     <Content Include="Views\JobSeeker\DeleteSeeker.cshtml" />
     <Content Include="Views\JobSeeker\SeekerAccount.cshtml" />
+    <Content Include="Views\JobSeeker\SeekerResume.cshtml" />
+    <Content Include="Views\JobSeeker\SeekerResumeUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
