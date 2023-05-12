@@ -24,6 +24,9 @@
                         // dangerMode: true,
 
                     })
+                        //.then(function () {
+                        //    window.location.href = "/Employer/ApprovalEmail?AppliedJobId=" + AppliedJobId;
+                        //})
                         .then(function () {
                             window.location.href = "/Employer/RoundsGrid";
                         })
@@ -43,6 +46,9 @@
 
                     })
                         .then(function () {
+                            window.location.href = "/Employer/RejectionEmail?AppliedJobId=" + AppliedJobId;
+                        })
+                        .then(function () {
                             window.location.href = "/Employer/RoundsGrid";
                         })
 
@@ -61,7 +67,10 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/UpdateRound1list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGrid";
+                })
         });
 
         $('#btnReject').click(function () {
@@ -74,7 +83,10 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/RejectatRound1list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGrid";
+                })
         });
 
         $('#btnOpen').click(function () {

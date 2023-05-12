@@ -23,23 +23,23 @@
 <body>
     <!-- ProfilePanel End -->
     <br /><br />
-          <form style="margin-left:35px;">
+          <form style="margin-left:340px;">
               <div class="ProfilePanel">
-                  <div class="card" style="border-radius:20px;box-shadow: 5px 20px 20px lightgrey;border:groove;">
+                  <div class="card" style="border-radius:2px;box-shadow: 5px 20px 20px lightgrey;border:groove;height:300px;width:550px;">
+                      <div style="padding-left:50px;">
+                          <div class="form-group">
+                              @Html.HiddenFor(model => model.Seekercode, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <div class="col-md-10">
+                                  @Html.HiddenFor(model => model.Seekercode, new { htmlAttributes = new { @class = "form-control" } })
+                                  @Html.ValidationMessageFor(model => model.Seekercode, "", new { @class = "text-danger" })
+                              </div>
 
-                      <div class="form-group">
-                          @Html.HiddenFor(model => model.Seekercode, htmlAttributes: new { @class = "control-label col-md-2" })
-                          <div class="col-md-10">
-                              @Html.HiddenFor(model => model.Seekercode, new { htmlAttributes = new { @class = "form-control" } })
-                              @Html.ValidationMessageFor(model => model.Seekercode, "", new { @class = "text-danger" })
                           </div>
+                          <br />
 
-                      </div>
-                      <br />
-                      
                           <div class="form-group">
 
-                              @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <b>   @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })</b>
                               <div class="col-md-10">
                                   @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control" } })
                                   @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
@@ -48,7 +48,7 @@
                           </div>
 
                           <div class="form-group">
-                              @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <b> @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })</b>
                               <div class="col-md-10">
 
                                   @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,7 +58,7 @@
                           </div>
 
                           <div class="form-group">
-                              @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                              <b>@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })</b>
                               <div class="col-md-10">
                                   @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "New Password" } })<br />
                                   @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
@@ -66,12 +66,15 @@
 
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" style="margin-left:360px;">
                               <div class="col-md-offset-2 col-md-10">
                                   @*<input type="submit" value="Save" id="Seekercode" class="btn btn-default" />*@
-                                  <input type="submit" formaction="@Url.Action("SeekerAccount","JobSeeker",new  { Seekercode = Model.Seekercode })" value="Edit" formmethod="post" class="btn btn-default" />
+                                  <button class="btn btn-default">
+                                      <input type="submit" formaction="@Url.Action("SeekerAccount","JobSeeker",new  { Seekercode = Model.Seekercode })" value="Edit" formmethod="post"  />
+                                  </button>
                               </div>
                           </div>
+                      </div>
                   </div>
               </div>
              

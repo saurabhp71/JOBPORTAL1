@@ -6,126 +6,197 @@
 }
 
 <h2 style="margin-left:300px"> CompanyGridview </h2>
+<html>
+<head style="margin-left:200px">
 
-@*<style>
-    .table {
-        border: groove;
-        padding: 10px;
-        border-color: aqua;
-    }
-</style>*@
-<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" style="margin-left: 260px; width: 400%;">
-    <tr @*style="background-color: brown; color:lime"*@>
-        <th style="width:80px; text-align: center;font-size:15px">
-            View
-        </th>
+    @*<link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/style.css" rel="stylesheet" />*@
+</head>
+<body>
+    @*Approvel SweetAlert*@
+    <script src="~/Scripts/Sweet.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".sweetApprove").click(function () {
+                var ReviewId = $(this).attr("data-id");
+                $.ajax({
+                    url: "/Admin/RPCompanyReviewStatusApprove/",
+                    data: { "ReviewId": ReviewId },
+                    success: function (Status) {
+                        swal({
+                            title: "This Company Review has been Approved..",
+                            button: "ok",
+                            // dangerMode: true,
 
-        <th style="width:0px; text-align: center;font-size:15px">
-            @Html.HiddenFor(model => model.ReviewId)
-        </th>
-        <th style="width:70px; text-align: center;font-size:15px">
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-        <th style="width:70px; text-align: center;font-size:15px">
-            @Html.DisplayNameFor(model => model.RegistrationDate)
-        </th>
-        <th style="width:200px; text-align: center;font-size:15px">
-            @Html.DisplayNameFor(model => model.AboutCompany)
-        </th>
-        <th style="width:40px; text-align: center;font-size:15px">
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th style="width:90px; text-align: center;font-size:15px">
-            @Html.DisplayNameFor(model => model.Review)
-        </th>
-        <th style="width:70px; text-align: center;font-size:15px">
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th style="width:160px; text-align: center;font-size:15px">
-            Status
-        </th>
+                        })
+                            .then(function () {
+                                window.location.href = "/Admin/RPCompanyGridview";
+                            })
 
+                    }
+                })
+            });
+        });
+    </script>
 
-        <th></th>
-    </tr>
+    @*Reject SweetAlert*@
+    <script src="~/Scripts/Sweet.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".seewtreject").click(function () {
+                var ReviewId = $(this).attr("data-id");
+                $.ajax({
+                    url: "/Admin/RPCompanyReviewStatusReject/",
+                    data: { "ReviewId": ReviewId },
+                    success: function (Status) {
+                        swal({
+                            title: "This Company Review has been Approved..",
+                            button: "ok",
+                            // dangerMode: true,
 
-    @foreach (var item in Model.Users)
-    {
-        <tr style=" color: black">
-            <td>
+                        })
+                            .then(function () {
+                                window.location.href = "/Admin/RPCompanyGridview";
+                            })
 
-               
-               <br />
-                <br />
-                <button type="button" class="fa fa-eye">
-                    <a class="btnfetch" href="javascript:;" data-id="@item.ReviewId" >View</a>
-                </button>
-            </td>
-
-            <td>
-                @Html.HiddenFor(modelItem => item.ReviewId)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AboutCompany)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Review)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+                    }
+                })
+            });
+        });
+    </script>
 
 
-            <td style="width:100px">
-               
-           <br />
 
-           <button type="button" class="btn btn-success response">
-              
-               @*<i class="fa fa-check"></i>*@
-               @*@Html.ActionLink(".", "RPCompanyReviewStatusApprove", new { ReviewId = item.ReviewId })*@
-               <a href="@Url.Action("RPCompanyReviewStatusApprove","Admin",new { ReviewId = @item.ReviewId })"> &#10003 </a>
-           </button>
+    <style>
+        .fa fa-eye {
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            resize: block;
+        }
+    </style>
+    <table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" id="example" style="margin-left: 250px; width:1180px;">
+        <thead>
+            <tr @*style="background-color: brown; color:lime"*@>
+                <th style=" text-align: center;">
+                    View
+                </th>
 
-           <button type="button" id="Reject" class="btn btn-danger response" style="margin-left:15px">
-              
-               @*<i class="fa fa-times"></i>*@
-               @*@Html.ActionLink(".", "RPCompanyReviewStatusReject", new { ReviewId = item.ReviewId })*@
-               <a href="@Url.Action("RPCompanyReviewStatusReject","Admin",new { ReviewId = @item.ReviewId })"> &#10060 </a>
-           </button>
+                <th style="text-align: center;font-size:15px;">
+                    @Html.HiddenFor(model => model.ReviewId)
+                </th>
+                <th style=" text-align: center;font-size:15px">
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+                <th style=" text-align: center;font-size:15px;">
+                    @Html.DisplayNameFor(model => model.RegistrationDate)
+                </th>
+                <th style=" text-align: center;font-size:15px">
+                    @Html.DisplayNameFor(model => model.AboutCompany)
+                </th>
+                <th style=" text-align: center;font-size:15px">
+                    @Html.DisplayNameFor(model => model.Rating)
+                </th>
+                <th style=" text-align: center;font-size:15px">
+                    @Html.DisplayNameFor(model => model.Review)
+                </th>
+                <th style=" text-align: center;font-size:15px">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th style="width:200px; text-align: center;font-size:15px">
+                    Status
+                </th>
 
-            </td>
-            
-        <td>
-            <br />
-            <button type="button" id="Delete" >
-                @Html.ActionLink("Delete", "RPCompanyIsDelete", new { ReviewId = item.ReviewId })
-            </button>
-        </td>
 
-        </tr>
-    }
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 
-</table>
+            @foreach (var item in Model.Users)
+            {
+                <tr style=" color: black">
+                    <td>
 
-<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+
+                        <a class="btnfetch fa fa-eye" title="View" style="font-size:25px;color:black;padding:10px 10px 10px 45px;" href="javascript:;" data-id="@item.ReviewId"></a>
+                    </td>
+
+                    <td>
+                        @Html.HiddenFor(modelItem => item.ReviewId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AboutCompany)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Review)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+
+
+                    <td>
+
+                        <br />
+
+                        <button type="button" class="btn btn-success response border-success " style="background:white;">
+
+                            @*<i class="fa fa-check"></i>*@
+                            @*@Html.ActionLink(".", "RPCompanyReviewStatusApprove", new { ReviewId = item.ReviewId })*@
+                            <p style="font-size:20px;height:9px">
+                                <a class="sweetApprove" href="#" data-id=" @item.ReviewId">&#10004; </a>
+                            </p>
+                        </button>
+
+                        <button type="button" id="Reject" class="btn btn-success response border-danger" style="background:white">
+                            <p style="font-size:18px;height:9px;width:20px;">
+                                @*<i class="fa fa-times"></i>*@
+                                @*@Html.ActionLink(".", "RPCompanyReviewStatusReject", new { ReviewId = item.ReviewId })*@
+                                <a class="seewtreject" href="@Url.Action("RPCompanyReviewStatusReject","Admin",new { ReviewId = @item.ReviewId })"> &#10060; </a>
+
+                            </p>
+                        </button>
+
+                    </td>
+
+                    <td>
+                        <br />
+
+                        <a class="fa fa-trash" title="Delete" style="font-size:25px;color:black;padding:10px 10px 10px 10px;" href="@Url.Action("RPCompanyIsDelete","Admin",new { ReviewId = @item.ReviewId })"> </a>
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" style="color:lightgreen; font-size:xx-large">AdminUser</h3>
+                    <h3 class="modal-title" style="color:black; font-size:xx-large">AdminUser</h3>
                     @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>*@
+                            <span aria-hidden="true">&times;</span>
+                        </button>*@
                 </div>
                 <div class="modal-body">
                 </div>
@@ -134,11 +205,11 @@
                 </div>
             </div>
         </div>
-</div>
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/bootstrap.js"></script>
-<script type="text/javascript">
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
         $(function () {
             $(".btnfetch").click(function () {
                 var $buttonClicked = $(this);
@@ -147,7 +218,7 @@
                 $.ajax({
                     type: "GET",
                     url: "/Admin/RPCompanyGridviewDetails",
-                    data: {ReviewId:id},
+                    data: { ReviewId: id },
                     contentType: "application/json; charset=utf-8",
                     dataType: "html",
                     success: function (response) {
@@ -163,4 +234,23 @@
                 });
             });
         });
-</script>
+    </script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).tooltip({
+                track: true
+            });
+        });
+    </script>
+
+
+    @*<script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>*@
+
+</body>
+
+</html>

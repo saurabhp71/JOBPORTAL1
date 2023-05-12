@@ -24,7 +24,7 @@ namespace JobPortalLibrary.Controller
 
         [Required(ErrorMessage = "Please enter your email address")]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email address")]
+        [Display(Name = "Email")]
         [MaxLength(50)]
         [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Please enter correct email")]
         public string EmailId { get; set; }

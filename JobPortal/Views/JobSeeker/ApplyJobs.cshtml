@@ -2,7 +2,7 @@
 @using (Html.BeginForm("SubmitPDF", "JobSeeker", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     <div>
-        <h4>SeekerUser</h4>
+        <h4 style="background-color:seagreen;height:45px;width:450px;padding:15px 0px 15px 15px ;border-radius:5px">Job Details</h4>
         <hr />
         <dl class="dl-horizontal">
 
@@ -58,13 +58,15 @@
 
         <input type="file" id="myFile" name="myFile">
 
-        <button type="submit" class="btn btn-primary" id="Save">Upload</button>
+        <button type="submit" class="btn btn-primary" postjobcode="@Model.PostJobCode" id="Save">Upload</button>
+        <br />
 
-        <a href="https://facebook.com/sharer.php?url=@Session["url"]">Facebook</a>
+        <a style="color:blue" href="https://facebook.com/sharer.php?url=@Session["url"]"> <i class="bi bi-facebook"></i></a>
+       
         <br />
-        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]">LinkedIn</a>
+        <a style="color:blue" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]"> <i class="bi bi-linkedin"></i></a>
         <br />
-        <a href="https://twitter.com/intent/tweet?url=@Session["url"]">Twitter</a>
+        <a style="color:deepskyblue" href="https://twitter.com/intent/tweet?url=@Session["url"]"> <i class="bi bi-twitter"></i></a>
 
     </div>
 }
@@ -126,6 +128,7 @@
 <style type="text/css">
     body {
         font: 10px Times New Roman;
+        color: black;
     }
 
     #partialModal {
@@ -136,10 +139,9 @@
         font-family: 'Times New Roman', Times, serif;
         font-size: 20px;
         transform: translate(-50%, 50%);
-        background-color: lightgreen;
     }
 
-   
+
     .modal-content {
-        background-color: lightseagreen;
     }
+</style>

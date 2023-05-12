@@ -1229,11 +1229,13 @@ namespace JobPortal.Controllers
             //}
 
             //objDetails.user = lstUserDt1;
+            KTJobLocation();
             return await Task.Run(() => View());
         }
         [HttpPost]
         public async Task<ActionResult> Search(SeekerUser obj, string jobTitle, string jobLocation, string salary)
         {
+            KTJobLocation();
             if (Session["SeekerCode"] != null)
             {
                 seekercode = Session["SeekerCode"].ToString();
@@ -1314,14 +1316,14 @@ namespace JobPortal.Controllers
 
         //---------------SubmitPDF---------------------------------------//
         [HttpPost]
-        public async Task<ActionResult> SubmitPDF(HttpPostedFileBase myFile)
+        public async Task<ActionResult> SubmitPDF(HttpPostedFileBase myFile ,string postjobcode)
         {
             if (Session["SeekerCode"] != null)
             {
                 seekercode = Session["SeekerCode"].ToString();
 
                 SeekerUser obj = new SeekerUser();
-
+                obj.PostJobCode = postjobcode;
             obj.StatusId = 9;
             obj.Seekercode = seekercode;
             obj.AppliedDate = DateTime.Now;
@@ -1458,6 +1460,23 @@ namespace JobPortal.Controllers
             return File(FileById.UploadFile, "application/pdf", FileById.ResumePDF);
 
         }
+        public async Task<ActionResult> KTJobLocation()
+        {
+            BALEmployer objUser = new BALEmployer();
+            DataSet ds = new DataSet();
+            ds = objUser.Locationbind();
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = dr["Location"].ToString(),
+                    Value = dr["CityId"].ToString()
+                });
+            }
+            ViewBag.City = new SelectList(list, "Value", "Text");
+            return await Task.Run(() => View());
+        }
 
         //------------------------------------Sanket End--------------------------------//
         //------------------------------------Muskan start--------------------------------//
@@ -1512,24 +1531,26 @@ namespace JobPortal.Controllers
             }
 
         }
-        public async Task<ActionResult> DeleteSeeker(SeekerUser obj)
+     
+        public ActionResult Logout()
         {
-            if (Session["SeekerCode"] != null)
-            {
-                seekercode = Session["SeekerCode"].ToString();
-                SeekerUser obju = new SeekerUser();
-                obj.Seekercode = seekercode;
-                obj.isDelete = 1;
-                BALSeeker Obj = new BALSeeker();
-                Obj.IsDeleteSeeker(obj.isDelete, obj.Seekercode);
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
-                return await Task.Run(() => View("Login", "Account"));
-            }
+            Session.Abandon();
+            return RedirectToAction("Login", "Account");
         }
 
-       // ----------------------------------------Muskan End--------------------------------//
+        public ActionResult DeleteSeeker()
+        {
+            string seekercode = Session["SeekerCode"].ToString();
+            SeekerUser obju = new SeekerUser();
+            obju.Seekercode = seekercode;
+            BALSeeker Obj = new BALSeeker();
+            DataSet ds = new DataSet();
+            ds = Obj.fetchseekerId(obju);
+            obju.SeekerId = Convert.ToInt32(ds.Tables[0].Rows[0]["SeekerId"].ToString());
+            //obju.isDelete = 1;
+            Obj.IsDeleteSeeker(obju.SeekerId);
+            return RedirectToAction("Login", "Account");
+        }
+        // ----------------------------------------Muskan End--------------------------------//
     }
 }

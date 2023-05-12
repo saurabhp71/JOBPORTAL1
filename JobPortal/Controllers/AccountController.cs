@@ -7,7 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using JobPortalLibrary.Controller;
+using System.Net.Mail;
+using System.Text;
+
+using GoogleAuthentication.Services;
+
 
 
 namespace JobPortal.Controllers
@@ -130,6 +136,12 @@ namespace JobPortal.Controllers
         public async Task<ActionResult> Login()
         {
             Category();
+            var clientId = "501741889827-ii7134kvr58e69q69cc2g6uqf867ttqc.apps.googleusercontent.com";
+            var url = "http://localhost:56291/Account/Googlelogin";
+            var clientsecret = "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";
+            var response = GoogleAuth.GetAuthUrl(clientId, url);
+            ViewBag.response = response;
+            return View();
             return await Task.Run(() => View());
 
         }
@@ -216,7 +228,164 @@ namespace JobPortal.Controllers
 
 
         }
-        //------------------------------------ Muskan End----------------------------------//
 
+        
+        public async Task<ActionResult> Googlelogin(string code, string emailid)
+        {
+            AccountUser accountuser = new AccountUser();
+            BALAccount obj = new BALAccount();
+            var clientId = "501741889827-ii7134kvr58e69q69cc2g6uqf867ttqc.apps.googleusercontent.com";
+            var url = "http://localhost:56291/Account/Googlelogin";
+            var clientsecret = "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";
+            var token = await GoogleAuth.GetAuthAccessToken(code, clientId, clientsecret, url);
+            var seekerprofile = await GoogleAuth.GetProfileResponseAsync(token.AccessToken.ToString());
+
+
+            string[] profile = seekerprofile.Split(':', ',');
+
+
+            for (int i = 0; i < profile.Length; i++)
+            {
+                string id = profile[1].ToString();
+                accountuser.Seekercode = id.Replace("\"", "").TrimStart();
+
+                string email = profile[3].ToString();
+                accountuser.EmailId = email.Replace("\"", "").TrimStart();
+
+                string name = profile[7].ToString();
+                accountuser.SeekerName = name.Replace("\"", "").TrimStart();
+            }
+            SqlDataReader dr;
+            dr = obj.ExternalLogin(accountuser.EmailId);
+
+
+
+            if (dr.Read())
+            {
+                FormsAuthentication.SetAuthCookie(emailid, true);
+                accountuser.Seekercode = dr["SeekerCode"].ToString();
+                accountuser.EmailId = dr["EmailId"].ToString();
+                accountuser.SeekerName = dr["SeekerName"].ToString();
+
+                Session["SeekerCode"] = accountuser.Seekercode.ToString();
+                Session["SeekerName"] = accountuser.SeekerName.ToString();
+
+                return RedirectToAction("SeekerIndex", "JobSeeker");
+            }
+
+
+            dr.Close();
+
+            AccountUser accountUseru = new AccountUser();
+            accountuser.DateOfRegistration = DateTime.Now;
+            obj.ExternalRegister(accountuser.Seekercode, accountuser.SeekerName, accountuser.EmailId, accountuser.DateOfRegistration);
+
+
+            Session["SeekerCode"] = accountuser.Seekercode.ToString();
+            Session["SeekerName"] = accountuser.SeekerName.ToString();
+            return RedirectToAction("SeekerIndex", "JobSeeker");
+
+        }
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ForgotPassword(string EmailId)
+        {
+            BALAccount obj = new BALAccount();
+            SqlDataReader dr;
+            dr = obj.forgetpasswords(EmailId);
+
+            BALAccount objE = new BALAccount();
+            SqlDataReader drE;
+            drE = objE.forgetpasswordE(EmailId);
+
+            if (dr.Read() == true)
+            {
+                string Email = dr["EmailId"].ToString();
+                string Password = dr["Password"].ToString();
+                if (Email == EmailId)
+                {
+                    string from = "8624077183a@gmail.com";
+                    string to = EmailId;
+                    MailMessage msg = new MailMessage(from, to);
+                    string mailbody = "your recovery password is" + Password;
+                    msg.Subject = "JobPortal Password";
+                    msg.Body = mailbody;
+                    msg.BodyEncoding = Encoding.UTF8;
+                    msg.IsBodyHtml = true;
+                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                    System.Net.NetworkCredential a = new System.Net.NetworkCredential("8624077183a@gmail.com", "mamuijmxmeiiybje");
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = true;
+                    client.Credentials = a;
+
+                    try
+                    {
+                        client.Send(msg);
+                        TempData["passwordMessage"] = "Password send to your register email...!!";
+                        TempData["Message"] = "Password send to your register mail..!!";
+                    }
+                    catch (Exception)
+                    {
+                        TempData["InternetMessage"] = "Check Internet Connection..!!";
+                        TempData["Message"] = "Check Internet Connection..!!";
+                    }
+                }
+            }
+            else if (drE.Read() == true)
+            {
+                string EmailE = drE["EmailId"].ToString();
+                string PasswordE = drE["Password"].ToString();
+                if (EmailE == EmailId)
+                {
+                    string from = "8624077183a@gmail.com";
+                    string to = EmailE;
+                    MailMessage msg = new MailMessage(from, to);
+                    string mailbody = "your recovery password is" + PasswordE;
+                    msg.Subject = "JobPortal Password";
+                    msg.Body = mailbody;
+                    msg.BodyEncoding = Encoding.UTF8;
+                    msg.IsBodyHtml = true;
+                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                    System.Net.NetworkCredential a = new System.Net.NetworkCredential("8624077183a@gmail.com", "mamuijmxmeiiybje");
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = true;
+                    client.Credentials = a;
+
+                    try
+                    {
+                        client.Send(msg);
+                        TempData["passwordMessage"] = "Password send to your register email...!!";
+                        TempData["Message"] = "Password send to your register mail..!!";
+                    }
+                    catch (Exception)
+                    {
+                        TempData["InternetMessage"] = "Check Internet Connection..!!";
+                        TempData["Message"] = "Check Internet Connection..!!";
+                    }
+                    try
+                    {
+
+                        TempData["InternetMessage"] = "Check Internet Connection..!!";
+                        TempData["Message"] = "Check Internet Connection..!!";
+                    }
+                    catch
+                    {
+                        TempData["CheckMessage"] = "Check Internet Connection";
+                        TempData["Message"] = "Check Internet Connection";
+                    }
+                }
+
+                return RedirectToAction("Login");
+
+            }
+
+            return View();
+        }
+        //------------------------------------ Muskan End----------------------------------//
     }
+
 }

@@ -174,12 +174,12 @@
                                 @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                            <div class="form-group">
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.list), "--Select--", htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-                                </div>
-                            </div>      
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.list), "--Select--", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-10">
@@ -200,15 +200,20 @@
 
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
-        <div class="modal" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-            <div class="modal-dialog">
-                <div class="modal-content">
+        @*<div class="modal" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg'); ">
+        *@
 
+        <div class="modal" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg'); ">
+            <div class="modal-dialog" style="width: 400px; background-color: rgba(255,255,255,0.13); border-radius: 10px; backdrop-filter: blur(5px); border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 0 40px rgba(8,7,16,0.6); padding: 50px 35px; ">
+
+                <div class="modal-content" style="background-color:transparent; ">
+                    <div class="modal-header" style="border:none;">
+                        <h2 class="model-title"> Login Here</h2>
+                    </div>
 
                     <form class="form-signin" role="form" action="index.html">
                         <div class="form-group">
-                            @*<div class="col-sm-12">*@
                             <div class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                             </div>
@@ -216,65 +221,42 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", placeholder = "EmailId" } })
+                                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Id" } })
                                     @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
                                 </div>
-                                @*</div>*@
                             </div>
                         </div>
+
                         <div class="form-group">
-                            @*<div class="col-sm-12">*@
                             <div class="input-group-addon">
                                 <i class=" glyphicon glyphicon-lock "></i>
                             </div>
                             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
+
                             </div>
-                            @*</div>*@
+
                         </div>
-                        @*<div class="col-sm-12">
-                            <label class="checkbox">
-                                <input type="checkbox" value="remember-me"> &nbsp; Remember me
-                            </label>*@
 
                         <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <div class="col-form-label-sm" style="margin-right:90px;width:270px;">
+                        <div class="modal-footer" style="border:none;">
+                            <div class="col-form-label-sm" style="margin-right: 90px; width: 200px;">
 
                                 <button class="btn btn-lg btn-primary btn-block" id="submit" style="align-content: center; background-color: #04AA6D; width:300px; ">Login</button>
                                 <br />
-                                @*<a href="#" style="margin-left:200px;">Forgotpassword?</a>*@
-                                <a href="forgotpassword" target="_blank" style="margin-left:150px;">Forgot password</a>
-
+                                <a href="forgotpassword" target="_blank" style="margin-left: 100px;text-decoration: underline; ">Forgot password</a>
                             </div>
-
                         </div>
 
-
-                        @*<input type="password" placeholder="Password" />*@
-
-
-                        @*</div>*@
-
-                        @*--------------------------------Login with facebook Google----------------------*@
-
-
-                        @*<div class="hr">*@
-                        @*<div></div>*@
-
-                        @*<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR </div>*@
-                        @*<div></div>*@
-                        @*</div>*@
-
-                        <div class=col-lg-4>
-
-                            @*<button class="loginBtn loginBtn--facebook">Login with facebook</button>*@
-
-                            <button class="loginBtn loginBtn--google">Login with Google</button>
-
+                        @*--------------------------------Login with Google----------------------*@
+                        <div style="margin-left:100px;">
+                            <a href="@ViewBag.response">
+                                <button type="button" class="loginBtn loginBtn--google">Sign in with Google</button>
+                            </a>
                         </div>
                     </form>
                 </div>

@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleAuthentication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\GoogleAuthentication.1.0.0\lib\net46\GoogleAuthentication.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNetCore.Authentication.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
     </Reference>
@@ -139,6 +142,9 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -222,9 +228,6 @@
       <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -254,6 +257,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Code2Night.jpeg" />
     <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -2373,7 +2377,6 @@
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
     <Content Include="Views\Shared\JobSeeker_Layout.cshtml" />
     <Content Include="Views\Shared\Employer_Layout.cshtml" />
-    <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\Shared\Account_Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\JobSeeker\SeekerIndex.cshtml" />
@@ -2397,13 +2400,6 @@
     <Content Include="Views\JobSeeker\Search.cshtml" />
     <Content Include="Views\JobSeeker\SubmitPDF.cshtml" />
     <Content Include="Views\JobSeeker\SubmitApplication.cshtml" />
-    <Content Include="Views\Admin\ApplicationApprovel.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\RejectionReason.cshtml" />
-    <Content Include="Views\Admin\RPAdminEmployeGrid.cshtml" />
-    <Content Include="Views\Admin\RPCompanyGridview.cshtml" />
-    <Content Include="Views\Admin\RPCompanyGridviewDetails.cshtml" />
-    <Content Include="Views\Admin\view.cshtml" />
     <Content Include="Views\Employer\Addcandidate.cshtml" />
     <Content Include="Views\Employer\Approve.cshtml" />
     <Content Include="Views\Employer\Approved.cshtml" />
@@ -2416,8 +2412,6 @@
     <Content Include="Views\Employer\JobRegister.cshtml" />
     <Content Include="Views\Employer\RepostJob.cshtml" />
     <Content Include="Views\Employer\viewphonedetails.cshtml" />
-    <Content Include="Views\Employer\FindResume.cshtml" />
-    <Content Include="Views\Employer\JobSeekerDetails.cshtml" />
     <Content Include="Views\Employer\AllRoundsGrid.cshtml" />
     <Content Include="Views\Employer\CreateRoundwithDetails.cshtml" />
     <Content Include="Views\Employer\RoundsGrid.cshtml" />
@@ -2428,11 +2422,23 @@
     <Content Include="Views\Employer\ShowRounds.cshtml" />
     <Content Include="Views\Employer\UpdateRound1.cshtml" />
     <Content Include="Views\Employer\view.cshtml" />
-    <Content Include="Views\Employer\ResumeAlert.cshtml" />
     <Content Include="Views\Employer\AccountEmployer.cshtml" />
     <Content Include="Views\Employer\DeleteEmployer.cshtml" />
     <Content Include="Views\JobSeeker\DeleteSeeker.cshtml" />
     <Content Include="Views\JobSeeker\SeekerAccount.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Employer\FindResume.cshtml" />
+    <Content Include="Views\Employer\JobSeekerDetails.cshtml" />
+    <Content Include="Views\Employer\ResumeAlert.cshtml" />
+    <Content Include="Views\Employer\KTCompanyDeatilsGV.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <Content Include="Views\Admin\ApplicationApprovel.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\RejectionReason.cshtml" />
+    <Content Include="Views\Admin\RPAdminEmployeGrid.cshtml" />
+    <Content Include="Views\Admin\RPCompanyGridview.cshtml" />
+    <Content Include="Views\Admin\RPCompanyGridviewDetails.cshtml" />
+    <Content Include="Views\Admin\view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

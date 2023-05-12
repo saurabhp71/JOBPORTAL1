@@ -12,6 +12,10 @@
     <link rel="stylesheet" src="https://cdn.datatables.net/buttons/2.3.2/css/buttons.bootstrap5.min.css" />*@
 <!--<link href="~/Content/datatable/buttons.dataTables.min.css" rel="stylesheet" />
 <link href="~/Content/datatable/jquery.dataTables.min.css" rel="stylesheet" />-->
+<button>
+    @*<a href="@Url.Action("JobRegistration","Employer")" PostJobCode="@Model.PostJobCode">Post a Job</a>*@
+    @Html.ActionLink("Post a Job", "JobRegister")
+</button>
 <style>
     #tooltip {
         position: absolute;
@@ -50,10 +54,11 @@
             visibility: visible;
             opacity: 1;
         }
-        .dataTables_filter{
-            margin-left:70%;
-            margin-top:-30px;
-        }
+
+    .dataTables_filter {
+        margin-left: 70%;
+        margin-top: -30px;
+    }
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,11 +96,11 @@
 
     <script src="~/Content/js/main.js"></script>
 
-   
+
 </body>
 </html>
 
-<table class="table table-hover" id="Vitthal" style="width:120%;margin-left:10px;margin-top:10px;">
+<table class="table table-hover" id="Vitthal" style="width:90%;margin-left:10px;margin-top:10px;">
     <thead>
         <tr style="background-color: #435ebe; color: white;">
 
@@ -115,7 +120,7 @@
             <th style="width:130px">
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th >
+            <th>
                 @Html.DisplayNameFor(model => model.Actions)
             </th>
 
@@ -152,31 +157,31 @@
                 <td>
                     @*@Html.ActionLink("Sponcer This Job", "Actions", new { postjobcode = item.PostJobCode }, htmlAttributes: new { @class = "btn btn-info" }) |
         @Html.ActionLink("View Job Details", "JobDetails", new { postjobcode = item.PostJobCode }, htmlAttributes: new { @class = "btn btn-info popup" }) |*@
-                    <button type="button">
-                        <a class="sponcerjob" href="" data-id="@item.PostJobCode">Sponcer This Job</a>
-                    </button>
-                    &nbsp;&nbsp;
-                    <button type="button">
-                        <a class="Viewdetails " href="javascripts:;" data-id="@item.PostJobCode">View Job Detail</a>
-                    </button>
-                    <br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button">
-                        <a class="sharejob" href="" data-id="@item.PostJobCode">Share Job</a>
-                    </button>
-                    &nbsp;&nbsp;
+                    @*<button type="button">
+            <a class="sponcerjob" href="" data-id="@item.PostJobCode">Sponcer This Job</a>
+        </button>*@
+                   
+
+                    <a class="Viewdetails bi bi-eye-fill" title="View" style="font-size:20px;color:blue;padding:10px 10px 10px 10px;" href="javascripts:;" data-id="@item.PostJobCode"></a>
+
+                    @*<br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button">
+            <a class="sharejob" href="" data-id="@item.PostJobCode">Share Job</a>
+        </button>8
+        &nbsp;&nbsp;*@
                     @*<button type="button">
             <a  href="@Url.Action("RepostJob","Employer")"data-id="@item.PostJobCode"></a>
         </button>*@
-                    <button type="button">
-                        @Html.ActionLink("RepostJob", "RepostJob", new { PostJobCode = item.PostJobCode })
-                    </button>
+                    @*<button type="button">
+            @Html.ActionLink("RepostJob", "RepostJob", new { PostJobCode = item.PostJobCode })
+        </button>*@
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+
+                    <a class="bi bi-pencil-fill" title="Edit" style="font-size:20px;color:blue;padding:10px 10px 10px 10px;" href="@Url.Action("RepostJob", "Employer", new {PostJobCode = item.PostJobCode})"> </a>
 
 
                 </td>
             </tr>
-
-
-
         }
     </tbody>
 </table>
@@ -272,6 +277,14 @@
         });
     });</script>
 
-
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(document).tooltip({
+            track: true
+        });
+    });
+</script>
 
 

@@ -60,7 +60,10 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/UpdateRound3list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGridR3";
+                })
         });
 
         $('#btnReject').click(function () {
@@ -73,7 +76,13 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/RejectatRound3list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RejectionEmail?AppliedJobId=" + AppliedJobId;
+                })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGridR3";
+                })
         });
 
         $('#btnOpen').click(function () {

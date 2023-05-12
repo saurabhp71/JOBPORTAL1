@@ -1259,3 +1259,4 @@ C:\Users\Admin\Desktop\JOBPORTAL1\JobPortal\obj\Debug\JobPortal.csproj.CoreCompi
 C:\Users\Admin\Desktop\JOBPORTAL1\JobPortal\obj\Debug\JobPortal.csproj.CopyComplete
 C:\Users\Admin\Desktop\JOBPORTAL1\JobPortal\obj\Debug\JobPortal.dll
 C:\Users\Admin\Desktop\JOBPORTAL1\JobPortal\obj\Debug\JobPortal.pdb
+C:\Users\Admin\Desktop\JOBPORTAL1\JobPortal\bin\GoogleAuthentication.dll

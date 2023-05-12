@@ -584,7 +584,21 @@ namespace JobPortalLibrary.Employer
             
 
         }
+        public DataSet KTCompanyDeatilsGV(EmployerUser objuser)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "KTCompanyDeatilsGV");
+            cmd.Parameters.AddWithValue("@EmployeerCode", objuser.Employercode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
 
+
+        }
 
         //---------------------------------Kartik End----------------------------//
         //---------------------------------sachin start----------------------------//

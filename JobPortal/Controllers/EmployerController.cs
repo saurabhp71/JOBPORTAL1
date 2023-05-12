@@ -57,12 +57,8 @@ namespace JobPortal.Controllers
                 string Employercode = Session["Employercode"].ToString();
                 EmployerUser obj = new EmployerUser();
                 obj.Employercode = Employercode;
-
-
-
                 BALEmployer bal = new BALEmployer();
                 DataSet ds = new DataSet();
-
                 ds = bal.getjobgrid(obj);
 
                 EmployerUser user = new EmployerUser();
@@ -76,8 +72,6 @@ namespace JobPortal.Controllers
                     objuser.PostJobCode = ds.Tables[0].Rows[i]["PostJobCode"].ToString();
                     objuser.ApplicationReceived = Convert.ToInt32(ds.Tables[0].Rows[i]["ApplicationReceived"].ToString());
                     jobgridlst.Add(objuser);
-
-
 
                 }
                 user.joblist = jobgridlst;
@@ -494,6 +488,7 @@ namespace JobPortal.Controllers
         {
             if (Session["Employercode"] != null)
             {
+               
                 string employerCode = Session["Employercode"].ToString();
                 ObjEmployerUser.Employercode = employerCode;
                 PostJob_Code();
@@ -824,10 +819,45 @@ namespace JobPortal.Controllers
             return await Task.Run(() => View());
         }
 
-        //-----------------------------------------Kartik End----------------------------------//
-        //-----------------------------------------sachin start----------------------------------//
-
         [HttpGet]
+        public async Task<ActionResult> KTCompanyDeatilsGV(EmployerUser obj1)
+        {
+            if (Session["Employercode"] != null)
+            {
+                string Employercode = Session["Employercode"].ToString();
+                obj1.Employercode = Employercode;
+                // EmployerUser objss = new EmployerUser();
+                BALEmployer objUser = new BALEmployer();
+                DataSet ds = new DataSet();
+                ds = objUser.KTCompanyDeatilsGV(obj1);
+                EmployerUser objDetails = new EmployerUser();
+                List<EmployerUser> LTUser = new List<EmployerUser>();
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    EmployerUser obj = new EmployerUser();
+                    //  obj.Employercode = ds.Tables[0].Rows[i]["EmployerCode"].ToString();
+                    obj.CompanyName = ds.Tables[0].Rows[i]["CompanyName"].ToString();
+                    obj.ContactNo = Convert.ToInt64(ds.Tables[0].Rows[i]["ContactNo"].ToString());
+                    obj.CompanyWebsite = ds.Tables[0].Rows[i]["CompanyWebsite"].ToString();
+                    obj.CompanyEmail = ds.Tables[0].Rows[i]["CompanyEmail"].ToString();
+                    obj.AboutCompany = ds.Tables[0].Rows[i]["AboutCompany"].ToString();
+                    obj.HRName = ds.Tables[0].Rows[i]["HRName"].ToString();
+                    obj.HREmail = ds.Tables[0].Rows[i]["HREmail"].ToString();
+                    obj.HRNumber = ds.Tables[0].Rows[i]["HRNumber"].ToString();
+                    LTUser.Add(obj);
+                }
+                objDetails.LTUser = LTUser;
+                return await Task.Run(() => View(objDetails));
+            }
+            else
+            {
+                return await Task.Run(() => View("Login", "Account"));
+            }
+        }
+            //-----------------------------------------Kartik End----------------------------------//
+            //-----------------------------------------sachin start----------------------------------//
+
+            [HttpGet]
         public JsonResult GetJobCategory()
         {
 
@@ -1376,6 +1406,123 @@ namespace JobPortal.Controllers
             }
 
         }
+        public ActionResult RejectionEmail(EmployerUser obju, int AppliedJobId)
+        {
+            obju.AppliedJobId = AppliedJobId;
+            BALEmployer obj1 = new BALEmployer();
+            DataSet ds = new DataSet();           
+            ds = obj1.GetEmail(obju.AppliedJobId);
+            obju.EmailId = ds.Tables[1].Rows[0]["EmailId"].ToString();
+
+            DataSet ds1 = new DataSet();
+          
+            ds1 = obj1.GetCompanyName(obju.AppliedJobId);
+
+
+
+            obju.CompanyName = ds1.Tables[1].Rows[0]["CompanyName"].ToString();
+            obju.HRName = ds1.Tables[1].Rows[0]["HRName"].ToString();
+            obju.HRNumber = ds1.Tables[1].Rows[0]["HRNumber"].ToString();
+
+            MailMessage mail = new MailMessage();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<b>Dear Candidate,</b>");
+            sb.AppendFormat("<br />"); 
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<b>Greetings From</b>" + " " + obju.CompanyName + ",");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("Thanks a ton for taking time to apply for the job! Unfortunately, your technical expertise doesn't meet our current requirements and we regret to inform you that" +obju.CompanyName + "will not be pursuing your Candidacy for this role. We truely appreciate your interest in" +obju.CompanyName +"& wish you all the best in all your future endeavors.");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("Thanks and Regards, ");
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Hr Name :</b>" + obju.HRName);
+            sb.AppendFormat("<br />");
+            sb.AppendLine("<b>Hr Number:</b> " + obju.HRNumber);
+            //  mail.Body = sb.ToString();
+
+            mail.From = new MailAddress("8624077183a@gmail.com");
+            mail.Subject = "Interview Invitation";
+            //  string Address = obj.InterviewAddress;
+            // string Time = obj.StartTime.ToString();
+            mail.Body = sb.ToString();
+          
+                //     string EmailId = email[i];
+                mail.To.Add(new MailAddress(obju.EmailId));
+          
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("8624077183a@gmail.com", "mamuijmxmeiiybje"); // Enter senders User name and password  
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+            return View();
+        }
+        //public ActionResult ApprovalEmail(EmployerUser obju, int AppliedJobId)
+        //{
+        //    obju.AppliedJobId = AppliedJobId;
+        //    BALEmployer obj1 = new BALEmployer();
+        //    DataSet ds = new DataSet();
+        //    ds = obj1.GetEmail(obju.AppliedJobId);
+        //    obju.EmailId = ds.Tables[1].Rows[0]["EmailId"].ToString();
+
+        //    DataSet ds1 = new DataSet();
+
+        //    ds1 = obj1.GetCompanyName(obju.AppliedJobId);
+
+
+
+        //    obju.CompanyName = ds1.Tables[1].Rows[0]["CompanyName"].ToString();
+        //    obju.HRName = ds1.Tables[1].Rows[0]["HRName"].ToString();
+        //    obju.HRNumber = ds1.Tables[1].Rows[0]["HRNumber"].ToString();
+
+        //    MailMessage mail = new MailMessage();
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.AppendLine("<b>Dear Candidate,</b>");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<b>Greetings From</b>" + " " + obju.CompanyName + ",");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendLine("Thanks a ton for taking time to apply for the job! Unfortunately, your technical expertise doesn't meet our current requirements and we regret to inform you that" + obju.CompanyName + "will not be pursuing your Candidacy for this role. We truely appreciate your interest in" + obju.CompanyName + "& wish you all the best in all your future endeavors.");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendLine("Thanks and Regards, ");
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendLine("<b>Hr Name :</b>" + obju.HRName);
+        //    sb.AppendFormat("<br />");
+        //    sb.AppendLine("<b>Hr Number:</b> " + obju.HRNumber);
+        //    //  mail.Body = sb.ToString();
+
+        //    mail.From = new MailAddress("8624077183a@gmail.com");
+        //    mail.Subject = "Interview Invitation";
+        //    //  string Address = obj.InterviewAddress;
+        //    // string Time = obj.StartTime.ToString();
+        //    mail.Body = sb.ToString();
+
+        //    //     string EmailId = email[i];
+        //    mail.To.Add(new MailAddress(obju.EmailId));
+
+        //    mail.IsBodyHtml = true;
+        //    SmtpClient smtp = new SmtpClient();
+        //    smtp.Host = "smtp.gmail.com";
+        //    smtp.Port = 587;
+        //    smtp.UseDefaultCredentials = false;
+        //    smtp.Credentials = new System.Net.NetworkCredential("8624077183a@gmail.com", "mamuijmxmeiiybje"); // Enter senders User name and password  
+        //    smtp.EnableSsl = true;
+        //    smtp.Send(mail);
+        //    return View();
+        //}
+
         public async Task<ActionResult> UpdateRound1list(string Applylist)
         {
             if (Session["Employercode"] != null)
@@ -1930,14 +2077,16 @@ namespace JobPortal.Controllers
 
             obju.EmailId = ds.Tables[1].Rows[0]["EmailId"].ToString();
             obju.ContactNo = Convert.ToInt64(ds.Tables[1].Rows[0]["ContactNo"].ToString());
-          
+            obju.Password = ds.Tables[1].Rows[0]["Password"].ToString();
             return View(obju);
 
         }
 
         [HttpPost]
-        public ActionResult AccountEmployer(AccountUser obj)
+        public ActionResult AccountEmployer(EmployerUser obj)
         {
+            string Employercode = Session["EmployerCode"].ToString();
+            obj.Employercode = Employercode;
             BALEmployer ObjB = new BALEmployer();
             ObjB.Updateemployer(obj.Employercode, obj.EmailId, obj.ContactNo, obj.Password);
             return RedirectToAction("EmployeerIndex");
@@ -1949,6 +2098,12 @@ namespace JobPortal.Controllers
             Obj.IsDeleteEmployer(obj.Employercode);
             return RedirectToAction("Login");
         }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Account");
+        }
+
     }
 
 }

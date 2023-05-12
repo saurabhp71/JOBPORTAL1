@@ -599,3 +599,4 @@ C:\Users\Admin\Desktop\JOBPORTAL1\JobPortalLibrary\obj\Debug\JobPortalLibrary.cs
 C:\Users\Admin\Desktop\JOBPORTAL1\JobPortalLibrary\obj\Debug\JobPortalLibrary.csproj.CopyComplete
 C:\Users\Admin\Desktop\JOBPORTAL1\JobPortalLibrary\obj\Debug\JobPortalLibrary.dll
 C:\Users\Admin\Desktop\JOBPORTAL1\JobPortalLibrary\obj\Debug\JobPortalLibrary.pdb
+C:\Users\Admin\Desktop\JOBPORTAL1\JobPortalLibrary\bin\Debug\GoogleAuthentication.dll

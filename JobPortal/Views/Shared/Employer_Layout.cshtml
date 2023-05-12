@@ -23,6 +23,7 @@
 </head>
 <body>
 
+
     <div id="app">
         
         <div id="sidebar" class="active">
@@ -39,6 +40,15 @@
                     </div>
                 </div>
 
+            
+                @if (Session["Employercode"] != null)
+                {
+                    <h5 class="m-b-20"><strong> @Session["EmployerName"].ToString()</strong></h5>
+                }
+                else
+                {
+                    <h1 class="m-b-20"><strong>Welcome to<br> JobPortal</strong></h1>
+                }
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
@@ -51,9 +61,9 @@
                         </li>
 
                         <li class="sidebar-item ">
-                            <a href="@Url.Action("JobRegister","Employer")" class='sidebar-link'>
+                            <a href="@Url.Action("jobgrid","Employer")" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
-                                <span>Job Registration</span>
+                                <span>Post a Job</span>
                             </a>
 
                         </li>
@@ -65,7 +75,7 @@
 
                         </li>
                         <li class="sidebar-item  ">
-                            <a href="@Url.Action("CompanyRegistration","Employer")" class='sidebar-link'>
+                            <a href="@Url.Action("KTCompanyDeatilsGV","Employer")" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Company Registration</span>
                             </a>
@@ -83,7 +93,34 @@
                                 <span>Resume Alert</span>
                             </a>
                         </li>
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("AccountEmployer","Employer")" class='sidebar-link'>
+                                <i class="fa fa-cog"></i>
+                                <span>Account Setting</span>
+                            </a>
+                        </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="@Url.Action("Logout","Employer")" class='sidebar-link'>
+                                <i class="fa fa-sign-out"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                        @*<li>
+            <div style="margin-left: 8px;background-color:royalblue"; class="fa fa-users">
+                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"></a>
+                <div class="dropdown-menu rounded-0 m-0" style="padding-right:100px;">
+
+                    <a href="category.html" class="dropdown-item">My Profile</a>
+                    <a href="testimonial.html" class="dropdown-item">Manage Application</a>
+                    <a href="404.html" class="dropdown-item">My Reviews</a>
+
+                    <a href="@Url.Action("AccountEmployer","Employer")" , class="dropdown-item">Account Setting</a>
+
+                    <a href="@Url.Action("Logout","Employer")" class="dropdown-item">Sign Out</a>
+                </div>
+            </div>
+        </li>*@
 
                         @*<li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
@@ -121,112 +158,98 @@
                                 <span>Messages</span>
                             </a>
                         </li>
-                        @*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                        <div style="margin-left:800px">
-                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user" style="background-color:darkslategray"></i></a>
-                            <div class="dropdown-menu rounded-0 m-0" style="padding-right:100px">
-
-                                <a href="category.html" class="dropdown-item">My Profile</a>
-                                <a href="testimonial.html" class="dropdown-item">Manage Application</a>
-                                <a href="404.html" class="dropdown-item">My Reviews</a>
-
-                                <a href="@Url.Action("AccountEmployer","Employer")" , class="dropdown-item">Account Setting</a>
-
-                                <a href="@Url.Action("Logout","Employer")" class="dropdown-item">Sign Out</a>
 
 
-                                ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*@
+                        @*<li class="sidebar-item  ">
+            <a href="table-datatable.html" class='sidebar-link'>
+                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                <span>Datatable</span>
+            </a>
+        </li>*@
 
-                                @*<li class="sidebar-item  ">
-                    <a href="table-datatable.html" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                        <span>Datatable</span>
-                    </a>
-                </li>*@
+                        @*<li class="sidebar-title">Extra UI</li>
 
-                                @*<li class="sidebar-title">Extra UI</li>
-
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-pentagon-fill"></i>
-                        <span>Widgets</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-chatbox.html">Chatbox</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-pricing.html">Pricing</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-widgets-todolist.html">To-do List</a>
-                        </li>
-                    </ul>
-                </li>*@
-
-                                @*<li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-egg-fill"></i>
-                        <span>Icons</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-icons-bootstrap-icons.html">Bootstrap Icons </a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-icons-fontawesome.html">Fontawesome</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-icons-dripicons.html">Dripicons</a>
-                        </li>
-                    </ul>
-                </li>*@
-
-                                @*<li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-bar-chart-fill"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-chart-chartjs.html">ChartJS</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-chart-apexcharts.html">Apexcharts</a>
-                        </li>
-                    </ul>
+        <li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-pentagon-fill"></i>
+                <span>Widgets</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="ui-widgets-chatbox.html">Chatbox</a>
                 </li>
-
-                <li class="sidebar-item  ">
-                    <a href="ui-file-uploader.html" class='sidebar-link'>
-                        <i class="bi bi-cloud-arrow-up-fill"></i>
-                        <span>File Uploader</span>
-                    </a>
-                </li>*@
-
-                                @*<li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-map-fill"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="ui-map-google-map.html">Google Map</a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="ui-map-jsvectormap.html">JS Vector Map</a>
-                        </li>
-                    </ul>
+                <li class="submenu-item ">
+                    <a href="ui-widgets-pricing.html">Pricing</a>
                 </li>
+                <li class="submenu-item ">
+                    <a href="ui-widgets-todolist.html">To-do List</a>
+                </li>
+            </ul>
+        </li>*@
 
-                <li class="sidebar-title">Pages</li>
+                        @*<li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-egg-fill"></i>
+                <span>Icons</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="ui-icons-bootstrap-icons.html">Bootstrap Icons </a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="ui-icons-fontawesome.html">Fontawesome</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="ui-icons-dripicons.html">Dripicons</a>
+                </li>
+            </ul>
+        </li>*@
 
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-envelope-fill"></i>
-                        <span>Email Application</span>
-                    </a>
-                </li>*@
+                        @*<li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-bar-chart-fill"></i>
+                <span>Charts</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="ui-chart-chartjs.html">ChartJS</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="ui-chart-apexcharts.html">Apexcharts</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-item  ">
+            <a href="ui-file-uploader.html" class='sidebar-link'>
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+                <span>File Uploader</span>
+            </a>
+        </li>*@
+
+                        @*<li class="sidebar-item  has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-map-fill"></i>
+                <span>Maps</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="ui-map-google-map.html">Google Map</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="ui-map-jsvectormap.html">JS Vector Map</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="sidebar-title">Pages</li>
+
+        <li class="sidebar-item  ">
+            <a href="application-email.html" class='sidebar-link'>
+                <i class="bi bi-envelope-fill"></i>
+                <span>Email Application</span>
+            </a>
+        </li>*@
 
                         <li class="sidebar-item  ">
                             <a href="application-chat.html" class='sidebar-link'>
@@ -461,18 +484,19 @@
     </div>-->
 
 
-                    @RenderBody()
-                    <footer>
-                        <div class="footer clearfix mb-0 text-muted">
+            @RenderBody()
+          
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
 
-                            <div class="float-end">
-                                <p>
-                                    All Rights Reserved.&copy;2023 Gaya Software & Technology.
-                                </p>
-                            </div>
-                        </div>
-                    </footer>
+                    <div class="float-end">
+                        <p>
+                            All Rights Reserved.&copy;2023 Gaya Software & Technology.
+                        </p>
+                    </div>
                 </div>
+            </footer>
+        </div>
             </div>
             <script src="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
             <script src="~/Content/js/bootstrap.bundle.min.js"></script>

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "RejectionReason";
 }
-//----------------RejectSweetAlert--------///
+@*//----------------RejectSweetAlert--------///*@
 
 <script src="~/Scripts/Sweet.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -14,7 +14,7 @@
         $(".RejectionReason").click(function () {
             var PostJobCode = $(this).attr("data-id");
             $.ajax({
-             
+
                 url: "/Admin/UpdateReject/",
                 data: { "PostjobCode": PostJobCode },
                 success: function (Status) {
@@ -39,63 +39,89 @@
 @using (Html.BeginForm())
 {
     <div>
-        <h4>AdminUser</h4>
+
         <hr />
-        <dl class="dl-horizontal">
-            <dt class="form-group">
-                @Html.DisplayNameFor(model => model.PostJobCode)
-            </dt>
+        <dl class="dl-horizontal" style="font-size:large;color:black">
+            <div class="row">
+                &nbsp; &nbsp; &nbsp;&nbsp;   &nbsp;
+                <dt class="form-group">
+                    <b>
+                        @Html.DisplayNameFor(model => model.PostJobCode)&nbsp;&nbsp;&nbsp;:
+                    </b>
+                </dt>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+                <dd class="form-group">
+                    @Html.DisplayFor(model => model.PostJobCode)
+                </dd>
+            </div>
 
-            <dd class="form-group">
-                @Html.DisplayFor(model => model.PostJobCode)
-            </dd>
+            <div class="row">
 
-            <dt class="form-group">
-                @Html.DisplayNameFor(model => model.JobTitle)
-            </dt>
+            </div>
+            <div class="row">
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <dt class="form-group">
+                    @Html.DisplayNameFor(model => model.JobTitle)&nbsp;&nbsp;&nbsp;:
+                </dt>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;
+                <dd class="form-group">
+                    @Html.DisplayFor(model => model.JobTitle)
+                </dd>
+            </div>
+            <div class="row">
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <dt class="form-group">
+                    @Html.DisplayNameFor(model => model.JobDescription)&nbsp;&nbsp;&nbsp;:
+                </dt>
+           
+                <dd class="form-group">
+                    &nbsp; &nbsp;     &nbsp; &nbsp;&nbsp; &nbsp;    &nbsp; &nbsp;&nbsp; &nbsp;     &nbsp; &nbsp;&nbsp; &nbsp;   &nbsp; &nbsp;&nbsp; &nbsp;    &nbsp; &nbsp;&nbsp; &nbsp;
+                    @Html.DisplayFor(model => model.JobDescription)
+                </dd>
+            </div>
+            <div class="row">
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <dt class="form-group">
+                    @Html.DisplayNameFor(model => model.ApplicationStartDate)&nbsp;&nbsp;&nbsp;:
+                </dt>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <dd class="form-group">
+                    @Html.DisplayFor(model => model.ApplicationStartDate)
+                </dd>
+            </div>
+            <div class="row">
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <dt class="form-group">
+                    @Html.DisplayNameFor(model => model.Status)&nbsp;&nbsp;&nbsp;:
+                </dt>
+                &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;    &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;   &nbsp; &nbsp;&nbsp; &nbsp;
+                <dd class="form-group">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </div>
+            <div class="row">
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <dt class="form-group">
+                    @Html.DisplayNameFor(model => model.RejectionReason)&nbsp;&nbsp;&nbsp;:
+                </dt>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;   &nbsp; &nbsp;&nbsp; &nbsp;
+                <dd class="form-group">
+                    @Html.EditorFor(model => model.RejectionReason, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RejectionReason, "", new { @class = "text-danger" })
+                </dd>
+            </div>
 
-            <dd class="form-group">
-                @Html.DisplayFor(model => model.JobTitle)
-            </dd>
 
-            <dt class="form-group">
-                @Html.DisplayNameFor(model => model.JobDescription)
-            </dt>
 
-            <dd class="form-group">
-                @Html.DisplayFor(model => model.JobDescription)
-            </dd>
 
-            <dt class="form-group">
-                @Html.DisplayNameFor(model => model.ApplicationStartDate)
-            </dt>
-
-            <dd class="form-group">
-                @Html.DisplayFor(model => model.ApplicationStartDate)
-            </dd>s
-            <dt class="form-group">
-                @Html.DisplayNameFor(model => model.Status)
-            </dt>
-
-            <dd class="form-group">
-                @Html.DisplayFor(model => model.Status)
-            </dd>
-            <dt class="form-group">
-                @Html.DisplayNameFor(model => model.RejectionReason)
-            </dt>
-
-            <dd class="form-group">
-                @Html.EditorFor(model => model.RejectionReason, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RejectionReason, "", new { @class = "text-danger" })
-            </dd>
 
             @*<div class="form-group">
-                    @Html.LabelFor(model => model.RejectionReason, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.RejectionReason, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.RejectionReason, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
+            @Html.LabelFor(model => model.RejectionReason, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RejectionReason, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RejectionReason, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
 
         </dl>
@@ -109,30 +135,27 @@
         </div>*@
 
 
-<p class="form-group">
-    <!--<div class="form-group">
+    <p class="form-group">
+        <!--<div class="form-group">
 
-        <input  type="submit" data-id="@Model.PostJobCode" value="Create" formmethod="post" class="UpdateReject" />-->
-    @*<button  onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1" class="btn btn-primary"  for>
-            Save
-        </button>*@
-    <!--</div>-->
+            <input  type="submit" data-id="@Model.PostJobCode" value="Create" formmethod="post" class="UpdateReject" />-->
+       
+        <!--</div>-->
 
-    <button type="button" id="Reject" class="btn btn-danger response" style="margin-left:15px">
+        <button type="button" id="Reject" class="btn btn-bg-cl-dribbble-tw" style="margin-left:15px;background-color:cyan;">
 
-        @*<i class="fa fa-times"></i>*@
-        @*@Html.ActionLink("Reject", "UpdateReject", new { PostjobCode = item.PostJobCode })*@
-        <a class="RejectionReason" href="#" data-id="@Model.PostJobCode"> &#10060</a>
-    </button>
+            @*<i class="fa fa-times"></i>*@
+            @*@Html.ActionLink("Reject", "UpdateReject", new { PostjobCode = item.PostJobCode })*@
+            <a style="color:black" class="RejectionReason" href="#" data-id="@Model.PostJobCode"> Save</a>
+        </button>
 
 
 
-    @*<button>
-            @Html.ActionLink("Save", onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1", new { PostjobCode = Model.PostJobCode })
-        </button>*@
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        @*<button>
+                @Html.ActionLink("Save", onclick="location.href='/Admin/RejectionReason1'" formmethod="post" formaction="RejectionReason1", new { PostjobCode = Model.PostJobCode })
+            </button>*@
+      
+    </p>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

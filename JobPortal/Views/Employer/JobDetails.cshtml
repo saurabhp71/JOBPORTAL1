@@ -1,116 +1,128 @@
 ﻿@model JobPortalLibrary.Employer.EmployerUser
 
+@using (Html.BeginForm())
+{
+
+    <div>
+
+        <dl class="dl-horizontal">
+            <div class="row">
+
+            </div>
+
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.CompanyName)
+            </dd>
+            <div class="row">
+                <dt class="form-group">
+                    @Html.DisplayNameFor(model => model.ContactPerson)
+                </dt>
+
+                <dd class="form-group">
+                    @Html.DisplayFor(model => model.ContactPerson)
+                </dd>
+            </div>
+
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.JobTitle)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.JobDescription)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.JobDescription)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.JobCategory)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.JobCategory)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.OpportunityType)
+            </dt>
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.OpportunityType)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.WorkingShifts)
+            </dt>
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.WorkingShifts)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.NoOfOpenings)
+            </dt>
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.NoOfOpenings)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.TotalExperience)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.TotalExperience)
+            </dd>
+
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.ExpectedJoiningDate1)
+            </dt>
+
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.ExpectedJoiningDate1)
+            </dd>
 
 
-<div>
+            <dt class="form-group">
+                @Html.DisplayNameFor(model => model.ApplicationEndDate1)
+            </dt>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </dt>
+            <dd class="form-group">
+                @Html.DisplayFor(model => model.ApplicationEndDate1)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CompanyName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactPerson)
-        </dt>
+        </dl>
+        <a href="https://facebook.com/sharer.php?url=@Session["url"]">Facebook</a>
+        <br />
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]">LinkedIn</a>
+        <br />
+        <a href="https://twitter.com/intent/tweet?url=@Session["url"]">Twitter</a>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ContactPerson)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.JobTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JobTitle)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.JobDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JobDescription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.JobCategory)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JobCategory)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OpportunityType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OpportunityType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkingShifts)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WorkingShifts)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NoOfOpenings)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NoOfOpenings)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalExperience)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalExperience)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExpectedJoiningDate1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExpectedJoiningDate1)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationEndDate1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationEndDate1)
-        </dd>
-
-    </dl>
-    <a href="https://facebook.com/sharer.php?url=@Session["url"]">Facebook</a>
-    <br />
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]">LinkedIn</a>
-    <br />
-    <a href="https://twitter.com/intent/tweet?url=@Session["url"]">Twitter</a>
-</div>
-
-    <button type="button" style="margin-left:400px;background-color:aquamarine;"height="30px;"width="40px;">
-        @Html.ActionLink("Close","jobgrid")
+    <button type="button" style="margin-left:400px;background-color:aquamarine;" height="30px;" width="40px;">
+        @Html.ActionLink("Close", "jobgrid")
     </button>
 
 
-@*<div class="modal-footer">
-        <button type="button" class="btn" href="@Url.Action("jobgrid"  "Employer")">Close</button>
-    </div>*@
+    @*<div class="modal-footer">
+            <button type="button" class="btn" href="@Url.Action("jobgrid"  "Employer")">Close</button>
+        </div>*@
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 

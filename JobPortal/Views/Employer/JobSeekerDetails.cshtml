@@ -1,53 +1,119 @@
 ﻿@model JobPortalLibrary.Employer.EmployerUser
 
 <div>
-    <h4>EmployerUser</h4>
-    <hr />
-  
+    @*<h4 class="modal-header">JobSeekarDetails</h4>
+    <hr />*@
+    <style>
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        /* Add Animation */
+        -webkit-keyframes animatetop {
+            from
+
+        {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+
+        }
+
+        keyframes animatetop {
+            from
+
+        {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+
+        }
+        .modal-header {
+            padding: 16px 45px;
+            font-size:30px;
+            background-color:cadetblue;
+            color: black;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: cadetblue;
+            color: white;
+        }
+    </style>
 
 
-                        <dl class="dl-horizontal">
+
+    <dl class="dl-horizontal">
 
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.SeekerName)
-                            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.SeekerName)
+        </dt>
 
-                            <dd>
-                                @Html.DisplayFor(model => model.SeekerName)
-                            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.SeekerName)
+        </dd>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.EmailId)
-                            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
 
-                            <dd>
-                                @Html.DisplayFor(model => model.EmailId)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ContactNo)
-                            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
 
-                            <dd>
-                                @Html.DisplayFor(model => model.ContactNo)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.City)
-                            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
 
-                            <dd>
-                                @Html.DisplayFor(model => model.City)
-                            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ResumePDF)
-                            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </dt>
 
-                            <dd>
-                                <a href="@ViewBag.ResumePDF" target="_blank">Download</a>
-                            </dd>
-
-                        </dl>
-                    </div>
+        <dd>
+            <a href="@ViewBag.ResumePDF" target="_blank">Download</a>
+        </dd>
+        <dt>
+            <label>Message</label>
+            <br />
+            <input type="text" style="height:70px;width:350px;" />
+        </dt>
+    </dl>
+</div>
                   <p>
                         @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
                             @Html.ActionLink("Back to List", "Index")*@

@@ -9,7 +9,16 @@
 
 
 <head>
-    
+
+    <script>
+        $(function () {
+            $(".LocationList").chosen({
+                width: "100%"
+            });
+        });
+
+    </script>
+
     <style>
 
         .img {
@@ -25,6 +34,7 @@
         .navbar .nav-item .dropdown-menu {
             left: -50px;
         }
+
         body {
             font: 14px Times New Roman;
         }
@@ -48,12 +58,11 @@
 
         /* Add some padding inside the card container */
         .container {
-            padding: 2px 16px;
+            padding: 2px 16px 10px 5px;
         }
 
         .ApplyJobs {
             padding: 0px;
-            background-color: darkgreen;
         }
 
         .ApplyJobs {
@@ -70,7 +79,7 @@
             line-height: 40px;
             font-size: 16px;
             font-family: Times New Roman;
-            color: black;
+            color: white;
             letter-spacing: 2px;
             text-align: center;
             position: relative;
@@ -86,7 +95,6 @@
                 left: 0;
                 width: 0;
                 height: 100%;
-                background: #ff003b;
                 transition: all .35s;
             }
 
@@ -94,164 +102,195 @@
             padding: 0px;
             width: 900px;
             height: 20px;
-            background-color: lightseagreen;
-        }
-
-        .SearchView {
-            background-image: linear-gradient(to right, rgba(0,25,40,0), rgba(0,22,0,2));
         }
     </style>
 
-    </head>
-    <body class="SearchView">
-
-       
-
-
-        <br />
-        <br />
-        <br />
-        <br />
+   
+</head>
+<body class="SearchView">
 
 
-        <script>
 
-            $(document).ready(function () {
-                gridDataTableView("Grid Example.xls");
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <script>
+
+        $(document).ready(function () {
+            gridDataTableView("Grid Example.xls");
+        });
+
+        gridDataTableView = function (fname) {
+            $('#tblGrid').dataTable({
+                "bFilter": true,
+                "bLengthChange": false, "bPaginate": true, "bInfo": true,
+                dom: 'Bfrtip',
+                "order": [[0, 'desc'], [1, 'desc']],
+                buttons: [{ extend: 'excelHtml5', text: 'Export to Excel', className: 'link_button', title: fname }]
             });
+        }
+    </script>
+    <style>
+        .form-horizontal {
+            display: flex;
+            margin-top: 100px;
+            margin-left: -95px;
+        }
 
-            gridDataTableView = function (fname) {
-                $('#tblGrid').dataTable({
-                    "bFilter": true,
-                    "bLengthChange": false, "bPaginate": true, "bInfo": true,
-                    dom: 'Bfrtip',
-                    "order": [[0, 'desc'], [1, 'desc']],
-                    buttons: [{ extend: 'excelHtml5', text: 'Export to Excel', className: 'link_button', title: fname }]
-                });
-            }
-        </script>
+        .form-inline {
+            width: 200px;
+        }
+
+        .col-md-1 {
+            margin-left: 15px;
+        }
+
+        .form-horizontal {
+            margin-left: 5%;
+        }
+
+        .col-md-5 {
+            margin-left: 20px;
+        }
+    </style>
 
 
-        <div style="padding-left:300px;">
-            <form method="Post">
-                <label for="Search"></label>
-                <input type="text" name="jobTitle" id="Search" style="width:200px;height:20px; padding-left:50px" placeholder="Enter Job Title" />
+    <div style="margin-left:50px;">
+
+        <form method="Post">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label for="Search"></label>
+                    <input type="text" name="jobTitle" id="Search" style="width:200px;height:40px; padding-left:50px;border-radius:10px;border:10px;" placeholder="Search for Job Title" />
+                </div>
                 &nbsp;
 
+
+                @*@Html.LabelFor(model => model.City, "City", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-3" style="margin-left:-50px">
+                    @Html.DropDownListFor(m => m.CityId, new SelectList(ViewBag.City, "Value", "Text"), "Choose Location", new { @class = "form-control LocationList", Style = "background-color:transparent;border:thin;" })
+                    @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                    <br />
+                </div>
                 <form method="Post">
-                    <label for="Search"></label>
-                    <input type="text" name="JobLocation" id="Search" style="width:200px;height:20px; padding-left:50px"placeholder="Enter Location" />
-                    &nbsp;
-
-                    <form method="Post">
+                    <div class="col-md-3">
                         <label for="Search"></label>
-                        <input type="text" name="Salary" id="Search" style="width:200px; height:20px; padding-left:50px"placeholder="Enter Salary" />
-                        &nbsp;
+                        <input type="text" name="Salary" id="Search" style="width: 200px; height: 40px; border: thin;" placeholder="Search for Salary" />
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-outline-success" id="submit" style="width:200px;">Search</button>
+                    </div>
+            </div>
 
-                        <button = class="btn btn-outline-danger" id="submit" style="padding:0px; width:200px;">Search</button>
 
 
-                    </form>
-                    <label>
-                        @Html.DisplayFor(model => model.JobTitle)
-                    </label>
-                    <br />
-                    <br />
-                    <br />
 
-                    @if (@Model != null)
-                    {
-                        foreach (var item in @Model.user)
-                        {
-                            <br />
-                            <br />
-                            <div class="card mt-4" style="width:60rem;height:10rem;background-color:skyblue">
-                                <table id="tblGrid">
-                                    <thead>
-                                        <tr>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                        <tr>
-                                            <td>
-                                                @Html.HiddenFor(modelItem => item.PostJobCode)
-                                            </td>
-                                            <td>
-                                                <strong style="font-size:30px">@item.JobTitle</strong>
-                                                <br />
-                                                @item.JobLocation
-                                                <br />
-                                                @item.Salary
-                                                <br />
-                                                @item.JobType
-                                                <br />
-                                                @item.EndDate
-                                            </td>
-                                            <td>
-                                                <button type="button">
-                                                    <a class="ApplyJobs" href="javascript:;" style="background-color:burlywood" data-id="@item.PostJobCode">ApplyJobs</a>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <br />
-                            <br />
-                        }
-                    }
-        </div>
 
-        <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" style="color:lightgreen; font-size:xx-large"></h3>
-                        @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </form>              <label>
+            @Html.DisplayFor(model => model.JobTitle)
+        </label>
+        <br />
+        <br />
+        <br />
+
+        @if (@Model != null)
+        {
+            foreach (var item in @Model.user)
+            {
+                <br />
+                <br />
+                <div class="card mt-4" style="width:60rem;height:10rem;margin-left:100px">
+                    <table id="tblGrid">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    @Html.HiddenFor(modelItem => item.PostJobCode)
+                                </td>
+                                <td>
+                                    <strong style="font-size:30px">@item.JobTitle</strong>
+                                    <br />
+                                    @item.JobLocation
+                                    <br />
+                                    @item.Salary
+                                    <br />
+                                    @item.JobType
+                                    <br />
+                                    @item.EndDate
+                                </td>
+                                <td>
+                                    <button type="button" style="background-color:seagreen">
+                                        <a class="ApplyJobs" href="javascript:;"  data-id="@item.PostJobCode">ApplyJobs</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <br />
+            }
+        }
+    </div>
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="color:lightgreen; font-size:xx-large"></h3>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>*@
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    @*<div class="modal-footer">
-                        <button type="button"><a href="~/JobSeeker/Search">Close</a></button>
-                    </div>*@
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button"><a href="~/JobSeeker/Search">Close</a></button>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <script src="~/Scripts/bootstrap.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $(".ApplyJobs").click(function () {
-                    var $buttonClicked = $(this);
-                    var id = $buttonClicked.attr('data-id')
-                    /* var id = $(this).closest("tr").find("td").eq(0).html();*/
-                    $.ajax({
-                        type: "GET",
-                        url: "/JobSeeker/ApplyJobs",
-                        data: { PostJobCode: id },
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "html",
-                        success: function (response) {
-                            $("#partialModal").find(".modal-body").html(response);
-                            $("#partialModal").modal('show');
-                        },
-                        failure: function (response) {
-                            alert(response.responseText);
-                        },
-                        error: function (response) {
-                            alert(response.responseText);
-                        }
-                    });
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".ApplyJobs").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+                    type: "GET",
+                    url: "/JobSeeker/ApplyJobs",
+                    data: { PostJobCode: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
                 });
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
 </html>
 
 

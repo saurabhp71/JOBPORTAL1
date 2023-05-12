@@ -592,7 +592,7 @@ namespace JobPortalLibrary.JobSeeker
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@flag", "FindJobs1");
             cmd.Parameters.AddWithValue("@JobTitle", objsekUser.JobTitle);
-            cmd.Parameters.AddWithValue("@JobLocation", objsekUser.JobLocation);
+            cmd.Parameters.AddWithValue("@CityId", objsekUser.CityId);
             cmd.Parameters.AddWithValue("@Salary", objsekUser.Salary);
             SqlDataAdapter adpt = new SqlDataAdapter();
             adpt.SelectCommand = cmd;
@@ -721,17 +721,31 @@ namespace JobPortalLibrary.JobSeeker
         }
         //--------------------deleteemployer-------------------------------------------------
 
-        public void IsDeleteSeeker(int isDelete, string seekercode)
+        public void IsDeleteSeeker(int seekerid)
         {
+            con.Close();
             con.Open();
             SqlCommand cmd = new SqlCommand("SPSeeker", con);
             cmd.Parameters.AddWithValue("@flag", "Deleteseeker");
-            cmd.Parameters.AddWithValue("@isDelete", isDelete);
-            cmd.Parameters.AddWithValue("@Seekercode", seekercode);
+          //  cmd.Parameters.AddWithValue("@isDelete", isDelete);
+            cmd.Parameters.AddWithValue("@SeekerId", seekerid);
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public DataSet fetchseekerId(SeekerUser objsekUser /*string jobtitle,string joblocation,string salary*/)
+        {
+            ManageConnection();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "fetchseekerId");
+            cmd.Parameters.AddWithValue("@Seekercode", objsekUser.Seekercode);
+            SqlDataAdapter adpt = new SqlDataAdapter();
+            adpt.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            adpt.Fill(ds);
+            return ds;
 
+        }
         //--------------------------------------Muskan End-----------------------------------------------------------------------//
 
     }

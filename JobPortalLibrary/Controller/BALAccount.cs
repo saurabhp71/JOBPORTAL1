@@ -218,5 +218,94 @@ namespace JobPortalLibrary.Controller
             return dr;
             
         }
+        public SqlDataReader ExternalLogin(string EmailId)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "CheckExternalLogin");
+            cmd.Parameters.AddWithValue("@EmailId", EmailId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
+        //--------------------signinwithgoogle(ExternalRegisterSeeker)-----------------------------
+        public void ExternalRegister(string Seekercode, string name, string email, DateTime Dateofregistration)
+        {
+            con.Close();
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "RegisterExternalLogin");
+            cmd.Parameters.AddWithValue("@Seekercode", Seekercode);
+            cmd.Parameters.AddWithValue("@SeekerName", name);
+            cmd.Parameters.AddWithValue("@EmailId", email);
+            cmd.Parameters.AddWithValue("@DateOfRegistration", Dateofregistration);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public SqlDataReader ExternalLogine(string EmailId)
+        {
+            con.Close();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "CheckExternalLoginE");
+            cmd.Parameters.AddWithValue("@EmailId", EmailId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
+
+        //--------------------externalRegisterEmployer---------------------------------------------------
+        public void ExternalRegisterEmp(string Employercode, string EmployerName, string EmailId, string Password, Int64 ContactNo)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "RegisterExternalLoginEmp");
+            cmd.Parameters.AddWithValue("@EmployeerCode", Employercode);
+            cmd.Parameters.AddWithValue("@EmployerName", EmployerName);
+            cmd.Parameters.AddWithValue("@EmailId", EmailId);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public SqlDataReader forgetpasswords(string EmailId)
+        {
+            
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SPSeeker", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "ForgetPasswordseek");
+            cmd.Parameters.AddWithValue("@EmailId", EmailId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
+
+        public SqlDataReader forgetpasswordE(string EmailId)
+        {
+           
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Employeer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@flag", "ForgetPasswordemp");
+            cmd.Parameters.AddWithValue("@EmailId", EmailId);
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            return dr;
+            con.Close();
+        }
     }
 }

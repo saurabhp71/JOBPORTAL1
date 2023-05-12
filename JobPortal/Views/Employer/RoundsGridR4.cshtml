@@ -60,7 +60,10 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/UpdateRound4list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGridR4";
+                })
         });
 
         $('#btnReject').click(function () {
@@ -73,7 +76,13 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/RejectatRound4list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RejectionEmail?AppliedJobId=" + AppliedJobId;
+                })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGridR4";
+                })
         });
 
         $('#btnOpen').click(function () {
@@ -115,7 +124,6 @@
             });
 
         });
-
 
         $("#selectall").click(function () {
             if (this.checked) {

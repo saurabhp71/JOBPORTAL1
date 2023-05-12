@@ -7,7 +7,7 @@
 
 <h2>Manage Application</h2>
 
-<table class="table">
+<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive">
     <tr>
         <th>
             @Html.HiddenFor(model => model.Seekercode)
@@ -94,14 +94,14 @@
                 <button type="submit" id="Message" style="margin-left:10px ; background-color:transparent; border:none">
                     <img class="flex-shrink-0 img-fluid border rounded"
                     <img src="~/Content/img/Message.png" alt="" style="width:20px; height:20px;">
-                    <i class="fa fa-check"></i>
+                    @*<i class="fa fa-check"></i>*@
                 </button>
             </td>
         </tr>
     }
 </table>
 
-<style type="text/css">
+@*<style type="text/css">
     body {
         font: 14px Times New Roman;
     }
@@ -135,4 +135,4 @@
         }
 
         .
-</style>
+</style>*@

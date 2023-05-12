@@ -24,7 +24,7 @@
 
                     })
                         .then(function () {
-                        window.location.href = "/Employer/RoundsGridR2";
+                        window.location.href = "/Employer/RoundsGridR5";
                     })
 
 
@@ -44,7 +44,7 @@
 
                     })
                         .then(function () {
-                            window.location.href = "/Employer/RoundsGridR2";
+                            window.location.href = "/Employer/RoundsGridR5";
                         })
 
                 }
@@ -61,7 +61,10 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/UpdateRound5list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGridR5";
+                })
         });
 
         $('#btnReject').click(function () {
@@ -74,7 +77,13 @@
             var Applylist = selectedApplylist.toString();
             $.get("/Employer/RejectatRound5list", {
                 Applylist: Applylist
-            });
+            })
+                .then(function () {
+                    window.location.href = "/Employer/RejectionEmail?AppliedJobId=" + AppliedJobId;
+                })
+                .then(function () {
+                    window.location.href = "/Employer/RoundsGridR5";
+                })
         });
 
         $('#btnOpen').click(function () {

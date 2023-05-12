@@ -6,6 +6,69 @@
 }
 
 <h2 style="margin-left:300px">ApplicationApproval</h2>
+<style>
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+    /* Add Animation */
+    -webkit-keyframes animatetop {
+        from
+
+    {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+
+    }
+
+    keyframes animatetop {
+        from
+
+    {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+
+    }
+
+
+    .modal-header {
+        padding: 2px 16px;
+        background-color: lightblue;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+    }
+
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: lightblue;
+        color: white;
+    }
+</style>
 
 @*<script src="~/Scripts/Sweet.js"></script>
     <script src="~/Content/js/jquery-3.4.1.min.js"></script>
@@ -34,7 +97,7 @@
             });
         });
         </script>*@
-///------------Approvel SweetAlert---------------//
+@*Approvel SweetAlert*@
 <script src="~/Scripts/Sweet.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
@@ -64,14 +127,14 @@
 </script>
 
 
-<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" style="margin-left:300px;width:1000px; border:solid ">
+<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" id="example" style="margin-left:300px;width:1000px; border:solid ">
     <thead>
         <tr>
             <b>
             <th style="width: 100px; text-align: center;font-size:15px">
                 @Html.DisplayNameFor(model => model.PostJobCode)
             </th>
-            <th style="width: 100px; text-align: center; font-size: 15px">
+            <th style="width: 200px; text-align: center; font-size: 15px">
                 @Html.DisplayNameFor(model => model.JobTitle)
             </th>
             <th style="width: 260px; text-align: center; font-size: 15px">
@@ -113,20 +176,22 @@
                 <td style="width:150px">
 
 
-                    <button type="button" class="btn btn-success response">
+                    <button type="button" class="btn btn-success response border-success" style="background:white;">
+                        <p style="font-size:20px;height:9px">
+                            @*<i class="fa fa-check"></i>*@
+                            @*@Html.ActionLink("Aproval", "Update", new { PostJobCode = item.PostJobCode })*@
 
-                        @*<i class="fa fa-check"></i>*@
-                        @*@Html.ActionLink("Aproval", "Update", new { PostJobCode = item.PostJobCode })*@
-
-                        @*<a href="@Url.Action("Update","Admin",new { PostjobCode = @item.PostJobCode })"> &#10004 </a>*@
-                        <a class="sweetApprove" href="#" data-id="@item.PostJobCode"> &#10004 </a>
+                            @*<a href="@Url.Action("Update","Admin",new { PostjobCode = @item.PostJobCode })"> &#10004 </a>*@
+                            <a class="sweetApprove" href="#" data-id="@item.PostJobCode"> &#10004 </a>
+                        </p>
                     </button>
 
-                    <button type="button" id="Reject" class="btn btn-danger response" style="margin-left:15px">
-
-                        @*<i class="fa fa-times"></i>*@
-                        @*@Html.ActionLink("Reject", "UpdateReject", new { PostjobCode = item.PostJobCode })*@
-                        <a class="RejectionReason" href="javascript:;" data-id="@item.PostJobCode"> &#10060</a>
+                    <button type="button" id="Reject" class="btn btn-success response border-danger" style="background:white;">
+                        <p style="font-size:18px;height:9px;width:20px;">
+                            @*<i class="fa fa-times"></i>*@
+                            @*@Html.ActionLink("Reject", "UpdateReject", new { PostjobCode = item.PostJobCode })*@
+                            <a class="RejectionReason" href="javascript:;" data-id="@item.PostJobCode"> &#10060</a>
+                        </p>
                     </button>
 
                 </td>
@@ -138,9 +203,8 @@
                     @*<button type="button" id="Details">
                             @Html.ActionLink("Details", "Details", new { PostJobCode = item.PostJobCode })
                         </button>*@
-                    <button type="button">
-                        <a class="Details" href="javascript:;" data-id="@item.PostJobCode" style="font-size:20px">Details</a>
-                    </button>
+                    <a class="Details fa fa-eye" title="View" style="font-size:25px;color:black;padding:10px 10px 10px 45px" href="javascript:;" data-id="@item.PostJobCode" style="font-size:20px"></a>
+
                     @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
                 </td>
 
@@ -153,10 +217,10 @@
 
 
 <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" style="color:lightgreen; font-size:xx-large">Post Job Details</h3>
+                <h3 class="modal-title" style="color:black; font-size:xx-large">Post Job Details</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -201,49 +265,59 @@
 </script>
 <script>
 <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h3 class="modal-title" style="color:lightgreen; font-size:xx-large">User RejectReason</h3>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" style="color:black; font-size:xx-large">User RejectReason</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 </div>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/bootstrap.js"></script>
 <script type="text/javascript">
-                                $(function () {
-                                    $(".RejectionReason").click(function () {
-                                        var $buttonClicked = $(this);
-                                        var id = $buttonClicked.attr('data-id')
-                                        /* var id = $(this).closest("tr").find("td").eq(0).html();*/
-                                        $.ajax({
-                                            type: "GET",
-                                            url: "/Admin/RejectionReason",
-                                            data: {PostJobCode:id},
-                                            contentType: "application/json; charset=utf-8",
-                                            dataType: "html",
-                                            success: function (response) {
-                                                $("#partialModal").find(".modal-body").html(response);
-                                                $("#partialModal").modal('show');
-                                            },
-                                            failure: function (response) {
-                                                alert(response.responseText);
-                                            },
-                                            error: function (response) {
-                                                alert(response.responseText);
-                                            }
+                                    $(function () {
+                                        $(".RejectionReason").click(function () {
+                                            var $buttonClicked = $(this);
+                                            var id = $buttonClicked.attr('data-id')
+                                            /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "/Admin/RejectionReason",
+                                                data: {PostJobCode:id},
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: "html",
+                                                success: function (response) {
+                                                    $("#partialModal").find(".modal-body").html(response);
+                                                    $("#partialModal").modal('show');
+                                                },
+                                                failure: function (response) {
+                                                    alert(response.responseText);
+                                                },
+                                                error: function (response) {
+                                                    alert(response.responseText);
+                                                }
+                                            });
                                         });
                                     });
-                                });
+</script>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $(document).tooltip({
+                track: true
+            });
+        });
 </script>
 
