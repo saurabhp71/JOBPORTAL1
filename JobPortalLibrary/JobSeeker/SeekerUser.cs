@@ -127,7 +127,7 @@ namespace JobPortalLibrary.JobSeeker
 
         public int CompanyId { get; set; }
 
-        public string Employercode { get; set; }
+        public string EmployerCode { get; set; }
 
         public string Rating { get; set; }
 
@@ -246,6 +246,7 @@ namespace JobPortalLibrary.JobSeeker
         public string JobTitle { get; set; }
 
         public List<SeekerUser> lstuser {  get; set; }
+        public List<SeekerUser> lstuser1 { get; set; }
         public string PostJobCode { get; set; }
         public string JobType { get; set; }
 

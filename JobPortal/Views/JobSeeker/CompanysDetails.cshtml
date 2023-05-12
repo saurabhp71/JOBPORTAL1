@@ -32,11 +32,13 @@
             color: gold;
         }
         .follow-user {
-            margin-left: 227px;
-            height: 42px;
-            font-size: 27px;
-            border-radius: 16px;
-            background-color: blue;
+            font-size: 20px;
+            border: 0;
+            width: 120px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #457eff;
+            color: floralwhite;
         }
     </style>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -60,8 +62,10 @@
                     //    icon: "success",
                     //    button: "Ok",
                     //});
-                    parent.find(".follow-user").css("background-color", "red");
-
+                    $(".follow-user").css("background-color", "#e8f9f6");
+                    $(".follow-user").css("color", "#18c1a3")
+                    $(".follow-user").attr("value", "Following");
+                    $(".follow-user").icon("primary", "fa fa-check");
                 }
                 if (data.status == "false") {
 
@@ -70,7 +74,9 @@
                     //    icon: "success",
                     //    button: "Ok",
                     //});
-                    parent.find(".follow-user").css("background-color", "blue");
+                    $(".follow-user").css("background-color", "#457eff");
+                    $(".follow-user").attr("value", "+ Follow");
+                    $(".follow-user").css("color", "#fff")
                 }
             },
             error: function (result) {
@@ -92,59 +98,75 @@
 
 
     <div class="tabprofile">
-        <div class="card" style="width:60rem;height:450px; margin-left:85px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">     
+        <div class="card" style="width:65rem;height:500px; margin-left:60px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">     
 
               
-                    <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
-                        <div class="profile-image">
-                            <dd style="font-size:22px;color:black">
-                                @Html.HiddenFor(modelItem => Model.CompanyId)
-                                @Html.HiddenFor(modelItem => Model.Employercode)
-                            </dd>
-                            <dd style="font-size:25px;color:black">
-                                <img class="img-seeker" src="~/Content/images/@Model.CompanyLogo" height="100" width="100">
-                            </dd>
-                        </div>
-                        <div class="company">
-                            <dd style="font-size:40px;color:black">
-                                @Html.DisplayFor(modelItem => Model.CompanyName)
-                            </dd>
+            <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+                <div class="profile-image">
+                    <dd style="font-size:22px;color:black">
+                        @Html.HiddenFor(modelItem => Model.CompanyId)
+                        @Html.HiddenFor(modelItem => Model.EmployerCode)
+                    </dd>
+                    <dd style="font-size:25px;color:black">
+                        <img class="img-seeker" src="~/Content/images/@Model.CompanyLogo" height="100" width="100">
+                    </dd>
+                </div>
+                <div class="company">
+                    <dd style="font-size:40px;color:black">
+                        @Html.DisplayFor(modelItem => Model.CompanyName)
+                    </dd>
 
-                            <dd style="margin-top:20px;margin-left:10px;">
-                                <i class="fa fa-star checked"></i> @Html.DisplayFor(modelItem => Model.Rating) |
-                                @Html.DisplayFor(modelItem => Model.Follow) reviews
-                            </dd>
-                            <dd>
-                                @*<a class="follow-user fg-button ui-state-default" href="#" data-id="@Model.CompanyId"></a>*@
-                                <span  id="sp-@Model.CompanyId"><input @*id="@Model.CompanyId"*@ data-id="@Model.CompanyId" name="submit" type="submit" value="Follow" class="follow-user fg-button ui-state-default" /></span>
-                            </dd>
-
-                        </div>
-                        <dd style="font-size: 17px; color: darkslategray;margin-top:2px;margin-left:140px">
-                            @Html.DisplayFor(modelItem => Model.Slogan)
-                        </dd>
-                        <div class="About">
-                            <label for="html" style="color: black;margin-left:35px;margin-top:40px;font-size:22px; ">About Company</label>
-                            <dd style="font-size: 17px; color: darkslategray;margin-top:2px;margin-left:40px">
-                                @Html.DisplayFor(modelItem => Model.AboutCompany)
-                            </dd>
-                        </div>
-                        <div class="More">
-                            <label for="html" style="color: black;margin-left:35px;margin-top:40px;font-size:18px; ">More Information</label>
-                            <dd style="font-size: 14px; color: darkslategray;margin-top:2px;margin-left:40px">
-                                @Html.LabelFor(modelItem => Model.NoOfEmployees, "Company Size:")
-                                @Html.DisplayFor(modelItem => Model.NoOfEmployees)
-                            </dd>
-                            <dd style="font-size: 14px; color: blue;margin-top:2px;margin-left:40px">
-                                <label for="html" style="color: darkslategray; ">Company Website:</label>
-                                @Html.DisplayFor(modelItem => Model.CompanyWebsite)
-                            </dd>
-                        </div>
-                    </dl>
+                    <dd style="margin-top:20px;margin-left:10px;">
+                        <i class="fa fa-star checked"></i> @Html.DisplayFor(modelItem => Model.Rating) |
+                        @Html.DisplayFor(modelItem => Model.Follow) reviews
+                    </dd>
+                </div>
+                <dd style="margin-left:715px;margin-top:-20px;">
+                    <span id="sp-@Model.CompanyId"><input data-id="@Model.CompanyId" name="submit" type="submit" value="+ Follow" class="follow-user fg-button ui-state-default" /></span>
+                </dd>
+                <dd style="font-size: 17px; color: darkslategray;margin-top:-30px;margin-left:140px">
+                    @Html.DisplayFor(modelItem => Model.Slogan)
+                </dd>
+                <div class="About">
+                    <label for="html" style="color: black;margin-left:10px;margin-top:40px;font-size:22px; ">About Company</label>
+                    <dd style="font-size: 17px; color: darkslategray;margin-top:2px;margin-left:10px">
+                        @Html.DisplayFor(modelItem => Model.AboutCompany)
+                    </dd>
+                </div>
+                <div class="More">
+                    <label for="html" style="color: black;margin-left:35px;margin-top:40px;font-size:18px; ">More Information</label>
+                    <dd style="font-size: 14px; color: darkslategray;margin-top:2px;margin-left:40px">
+                        @Html.LabelFor(modelItem => Model.NoOfEmployees, "Company Size:")
+                        @Html.DisplayFor(modelItem => Model.NoOfEmployees)
+                    </dd>
+                    <dd style="font-size: 14px; color: blue;margin-top:2px;margin-left:40px">
+                        <label for="html" style="color: darkslategray; ">Company Website:</label>
+                        @Html.DisplayFor(modelItem => Model.CompanyWebsite)
+                    </dd>
+                </div>
+            </dl>
           
         </div>
 
     </div>
 
+    <script>
+        $(document).ready(function () {
+            var id = $(".follow-user").attr("data-id");
+            $.get("/JobSeeker/FollowCompany1", { companyid: id }, function (data) {
+                if (data.data == "True") {
+                    $(".follow-user").css("background-color", "#e8f9f6")
+                    $(".follow-user").css("color", "#18c1a3")
+                    $(".follow-user").attr("value", "Following");
+                    $(".follow-user").icon("primary", "fa fa-check");
+            }
+            else {
+                    $(".follow-user").css("background-color", "#457eff")
+                    $(".follow-user").attr("value", "+ Follow");
+                    $(".follow-user").css("color", "#fff")
+            }
+        })
+    })
+ </script>
 
 

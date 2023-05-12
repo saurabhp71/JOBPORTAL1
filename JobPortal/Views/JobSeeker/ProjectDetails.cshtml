@@ -130,6 +130,7 @@
 
     <hr />
     <hr />
+
     <!-- ProfilePanel Start -->
     <form style="margin-left:35px">
         <div class="ProfilePanel">
@@ -138,11 +139,23 @@
                 <a href="javascript:void(0);" class="SeekerDetailsPhoto" data-id="@Model.Seekercode">
                     <i class='fa fa-camera' style='font-size:25px'></i>
                 </a>
-                <dd style="margin-left:16%;margin-top:-5%; font-size:24px;color:black;">
+                <dd style="margin-left:16%;margin-top:-11%; font-size:25px;color:black;">
                     @Html.DisplayFor(model => model.SeekerName)
                 </dd>
+                <dd style="margin-left:16%;margin-top:-1%; font-size:15px;color:blue;">
+                    <i class="fa fa-envelope"></i>
+                    @Html.DisplayFor(model => model.EmailId)
+                </dd>
+                <dd style="margin-left:56%;margin-top:-3%; font-size:15px;color:black;">
+                    <i class="fa fa-phone"></i>
+                    @Html.DisplayFor(model => model.ContactNo1)
+                </dd>
+                <dd style="margin-left:16%;margin-top:3%; font-size:15px;color:black;">
+                    <label for="html" style="color:black">Profile Completed</label>
+                    <lable style="margin-left:617px;" for="html" value="@ViewBag.TotalCount">@ViewBag.TotalCount </lable><br />
+                </dd>
             </div><br />
-            <div class="progress" style="width:70%; height:10px; margin-left:19%;margin-top:-60px;">
+            <div class="progress" style="width:70%; height:10px; margin-left:19%;margin-top:-82px;">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:@ViewBag.Total%;">
                     <span class="sr-only">70% Complete</span>
                 </div>
@@ -164,6 +177,7 @@
                 <li class="list-group-item">  <a href="@Url.Action("EmploymentDetails", "JobSeeker")">Employment Details</a></li>
                 <li class="list-group-item">  <a href="@Url.Action("ProjectDetails", "JobSeeker")">Project Details</a></li>
                 <li class="list-group-item">  <a href="@Url.Action("CareerProfile", "JobSeeker")">Career Profile</a></li>
+                <li class="list-group-item">  <a href="@Url.Action("SeekerResume", "JobSeeker")">Resume</a></li>
             </ul>
         </div>
     </form>
